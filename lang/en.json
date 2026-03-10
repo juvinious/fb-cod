@@ -1,0 +1,18 @@
+{
+    "TYPES": {
+        "Actor": {
+            "fb-cod.colossus": "Colossus"
+        },
+        "Item": {
+            "fb-cod.colossal-segment": "Colossal Segment"
+        }
+    },
+    "FOUNDRYBORNE-GIANTS": {
+        "ActorTypes": {
+            "Colossus": "Colossus"
+        },
+        "ItemTypes": {
+            "ColossalSegment": "Colossal Segment"
+        }
+    }
+}

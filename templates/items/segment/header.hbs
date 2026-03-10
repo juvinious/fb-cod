@@ -1,0 +1,32 @@
+<header class='item-sheet-header'>
+    <img class='profile' src='{{source.img}}' data-action='editImage' data-edit='img' />
+    <div class='item-info'>
+        <line-div></line-div>
+        <h1 class='item-name'>
+            <input type='text' name='name' value='{{source.name}}' />
+        </h1>
+        <div class='item-description'>
+            {{!-- Show the segment type as the subtitle instead of "Passive Feature" --}}
+            <h3>Colossal Segment
+                {{#if source.system.segmentType}}
+                &mdash; {{lookup segmentTypeChoices source.system.segmentType}}
+                {{/if}}
+                {{#if source.system.fatal}}
+                <span style="color:#e74c3c; margin-left:6px;" title="Destroying this segment defeats the Colossus">
+                    <i class="fa-solid fa-skull"></i> Fatal
+                </span>
+                {{/if}}
+                {{#if source.system.broken}}
+                <span style="color:#e67e22; margin-left:6px;">
+                    <i class="fa-solid fa-link-slash"></i> Broken
+                </span>
+                {{/if}}
+                {{#if source.system.destroyed}}
+                <span style="color:#7f8c8d; margin-left:6px;">
+                    <i class="fa-solid fa-ban"></i> Destroyed
+                </span>
+                {{/if}}
+            </h3>
+        </div>
+    </div>
+</header>

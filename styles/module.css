@@ -1,0 +1,96 @@
+/* Colossus Sheet Styling */
+.daggerheart.sheet.colossus.dh-style.window-app {
+    background: #1a101b;
+    border: 2px solid #f5b85a;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #000;
+    color: #fcefe2;
+}
+
+.daggerheart.sheet.colossus .window-content {
+    background: transparent;
+    padding: 10px;
+    color: #fcefe2;
+}
+
+.daggerheart.sheet.colossus .sheet-header {
+    flex: 0 0 120px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f5b85a;
+    margin-bottom: 10px;
+}
+
+/* Colossus-specific styles for the Segments tab */
+
+.daggerheart.sheet.colossus .segment-card {
+    border: 1px solid rgba(245, 184, 90, 0.5);
+    border-radius: 5px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.3);
+    margin-bottom: 10px;
+}
+
+.daggerheart.sheet.colossus .segment-card:hover {
+    border-color: #f5b85a;
+    box-shadow: 0 0 5px rgba(245, 184, 90, 0.3);
+}
+
+.daggerheart.sheet.colossus .segment-header h4 {
+    margin: 0;
+    font-family: "Modesto Condensed", "Palatino Linotype", serif;
+    font-size: 1.4rem;
+    color: #f5b85a;
+}
+
+.daggerheart.sheet.colossus .segment-stats .stat {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 4px 10px;
+    border-radius: 3px;
+    font-size: 0.95em;
+    color: #fcefe2;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.daggerheart.sheet.colossus .segment-controls a {
+    color: #fcefe2;
+    margin-left: 8px;
+    cursor: pointer;
+}
+
+.daggerheart.sheet.colossus .segment-controls a:hover {
+    color: #f5b85a;
+    text-shadow: 0 0 5px rgba(245, 184, 90, 0.8);
+}
+
+/* Custom width for reaction button to fit sidebar better if needed */
+.daggerheart.sheet.colossus .reaction-section button {
+    background: #f5b85a;
+    color: #1a101b;
+    border: none;
+    border-radius: 3px;
+    padding: 10px;
+    font-weight: bold;
+    font-family: inherit;
+    cursor: pointer;
+    width: calc(100% - 20px);
+    margin: 10px;
+}
+
+.daggerheart.sheet.colossus .item-controls {
+    flex: 0 0 60px;
+    text-align: right;
+}
+
+.daggerheart.sheet.colossus .item-control {
+    color: #fcefe2;
+}
+
+.daggerheart.sheet.colossus .item-control:hover {
+    color: #f5b85a;
+    text-shadow: 0 0 5px #f5b85a;
+}@import "./colossus-segment-controls.css";

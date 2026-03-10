@@ -1,0 +1,80 @@
+{
+    "id": "fb-cod",
+    "title": "Foundryborne Giants",
+    "description": "Daggerheart extension adding Colossal adversaries and related content.",
+    "version": "1.0.0",
+    "compatibility": {
+        "minimum": "13",
+        "verified": "13.351"
+    },
+    "relationships": {
+        "systems": [
+            {
+                "id": "daggerheart",
+                "type": "system",
+                "compatibility": {
+                    "minimum": "1.8.0"
+                }
+            }
+        ]
+    },
+    "esmodules": [
+        "scripts/module.mjs"
+    ],
+    "styles": [
+        "styles/module.css"
+    ],
+    "languages": [
+        {
+            "lang": "en",
+            "name": "English",
+            "path": "lang/en.json"
+        }
+    ],
+    "documentTypes": {
+        "Actor": {
+            "colossus": {
+                "htmlFields": [
+                    "notes",
+                    "description"
+                ]
+            }
+        },
+        "Item": {
+            "colossal-segment": {
+                "htmlFields": [
+                    "description"
+                ]
+            }
+        }
+    },
+    "packs": [
+        {
+            "name": "colossal-adversaries",
+            "label": "Colossal Adversaries",
+            "system": "daggerheart",
+            "path": "packs/colossal-adversaries.db",
+            "type": "Actor",
+            "private": false,
+            "flags": {}
+        },
+        {
+            "name": "colossal-weapons",
+            "label": "Colossal Weapons",
+            "system": "daggerheart",
+            "path": "packs/colossal-weapons.db",
+            "type": "Item",
+            "private": false,
+            "flags": {}
+        },
+        {
+            "name": "colossal-loot",
+            "label": "Colossal Loot",
+            "system": "daggerheart",
+            "path": "packs/colossal-loot.db",
+            "type": "Item",
+            "private": false,
+            "flags": {}
+        }
+    ]
+}

@@ -1,0 +1,134 @@
+<section class="tab {{tabs.segments.cssClass}} segments" data-tab="segments" data-group="primary">
+    {{!-- Condition Immunities Section --}}
+    <div class="colossus-conditions"
+        style="display:flex; justify-content:space-around; background:rgba(0,0,0,0.2); border:1px solid #f5b85a; border-radius:5px; padding:10px; margin-bottom:15px;">
+        <h4
+            style="margin:0; font-family:'Modesto Condensed', serif; font-size:1.2rem; color:#f5b85a; align-self:center;">
+            Condition Immunities:</h4>
+        <div class="condition-toggle {{#if conditionImmunities.hidden}}active{{/if}}" data-action="toggleCondition"
+            data-condition="hidden"
+            style="cursor:pointer; opacity:{{#if conditionImmunities.hidden}}1{{else}}0.5{{/if}};">
+            <i class="fas fa-ghost"></i> Hidden
+        </div>
+        <div class="condition-toggle {{#if conditionImmunities.restrained}}active{{/if}}" data-action="toggleCondition"
+            data-condition="restrained"
+            style="cursor:pointer; opacity:{{#if conditionImmunities.restrained}}1{{else}}0.5{{/if}};">
+            <i class="fas fa-link"></i> Restrained
+        </div>
+        <div class="condition-toggle {{#if conditionImmunities.vulnerable}}active{{/if}}" data-action="toggleCondition"
+            data-condition="vulnerable"
+            style="cursor:pointer; opacity:{{#if conditionImmunities.vulnerable}}1{{else}}0.5{{/if}};">
+            <i class="fas fa-skull"></i> Vulnerable
+        </div>
+    </div>
+
+    <div class="segments-header"
+        style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:5px;">
+        <h3 style="margin:0; font-family:'Modesto Condensed', serif; color:#f5b85a;">{{localize "Colossal Segments"}}
+        </h3>
+        <a data-action="addSegment" data-tooltip="Add Segment">
+            <i class="fa-solid fa-plus icon-button"></i>
+        </a>
+    </div>
+
+    <ul class="items-list segments-list">
+        {{#each segments as |segment|}}
+        <li class="inventory-item segment-item {{#if segment.system.destroyed}}destroyed{{/if}} {{#if segment.system.broken}}broken{{/if}}"
+            data-item-id="{{segment.id}}" data-item-uuid="{{segment.uuid}}" data-type="fb-cod.colossal-segment">
+            <div class="inventory-item-header padded">
+                {{!-- Image/Portrait opens the native FeatureSheet --}}
+                <div class="img-portait" data-action="editDoc" data-item-uuid="{{segment.uuid}}"
+                    data-tooltip="Edit Segment">
+                    <img src="{{segment.img}}" class="item-img" />
+                    <img class="roll-img d20" src="systems/daggerheart/assets/icons/dice/default/d20.svg" alt="d20">
+                </div>
+
+                {{!-- Name & Tags --}}
+                <div class="item-label">
+                    <span class="item-name">{{segment.name}} <span
+                            style="opacity:0.6; font-size:0.8em;">({{segment.system.segmentType}})</span></span>
+                    <div class="item-tags">
+                        {{#each segment._getTags as |tag|}}
+                        <div class="tag">{{tag}}</div>
+                        {{/each}}
+                    </div>
+                </div>
+
+                {{!-- Stats/Resources (Difficulty & HP) --}}
+                <div class="item-resource"
+                    style="display:flex; align-items:center; gap:12px; margin-right:15px; flex-wrap:nowrap; min-width:140px;">
+                    <div class="stat" title="Difficulty"><i class="fas fa-shield-alt"></i> {{segment.system.difficulty}}
+                    </div>
+
+                    {{!-- Custom Interactive Segment HP Control --}}
+                    <div class="stat segment-hp-control" title="HP">
+                        <i class="fas fa-heart" style="color:#d55; margin-right:4px;"></i>
+                        <a data-action="adjustSegmentHP" data-item-id="{{segment.id}}" data-adjustment="-1"
+                            title="-1 HP">
+                            <i class="fas fa-minus"></i>
+                        </a>
+                        <span class="hp-value">{{segment.system.hp.value}} / {{segment.system.hp.max}}</span>
+                        <a data-action="adjustSegmentHP" data-item-id="{{segment.id}}" data-adjustment="1"
+                            title="+1 HP">
+                            <i class="fas fa-plus"></i>
+                        </a>
+                    </div>
+                </div>
+
+                {{!-- Controls --}}
+                <div class="controls">
+                    {{!-- Broken Toggle --}}
+                    <a class="toggle-broken {{#if segment.system.broken}}active{{/if}}"
+                        data-action="toggleSegmentBroken" data-item-id="{{segment.id}}"
+                        data-tooltip="{{#if segment.system.broken}}Restore Broken Segment{{else}}Break Segment{{/if}}">
+                        <i class="fa-solid fa-link-slash"></i>
+                    </a>
+                    {{!-- Destroyed Toggle --}}
+                    <a class="toggle-destroyed {{#if segment.system.destroyed}}active{{/if}}"
+                        data-action="toggleSegmentDestroyed" data-item-id="{{segment.id}}"
+                        data-tooltip="{{#if segment.system.destroyed}}Restore Segment{{else}}Destroy Segment{{/if}}">
+                        <i class="fa-solid fa-skull"></i>
+                    </a>
+                    {{!-- Edit opens the native Daggerheart FeatureSheet (tabs: Description, Settings, Actions, Effects)
+                    --}}
+                    <a data-action="editDoc" data-item-uuid="{{segment.uuid}}" data-tooltip="Edit Segment">
+                        <i class="fa-solid fa-edit"></i>
+                    </a>
+                    {{!-- Delete uses the native deleteDoc dialog --}}
+                    <a data-action="deleteDoc" data-item-uuid="{{segment.uuid}}" data-tooltip="Delete Segment"
+                        style="color: #933;">
+                        <i class="fa-solid fa-trash"></i>
+                    </a>
+                </div>
+            </div>
+
+            {{!-- Actions List: uses rollSegmentAttack so cancel doesn't trigger toChat() --}}
+            {{#if segment.system.actions.size}}
+            <div class="item-buttons">
+                {{#each segment.system.actions as |action|}}
+                <div class="item-button">
+                    <button type="button" data-action="rollSegmentAttack" data-action-id="{{action.id}}"
+                        data-segment-uuid="{{segment.uuid}}">
+                        <i class="fa-solid {{action.typeIcon}} action-icon"></i>
+                        {{action.name}}
+                    </button>
+                    {{#if action.uses.max}}
+                    <div class="spacer"></div>
+                    <button type="button" class="action-uses-button" data-action="increaseActionUses"
+                        data-item-uuid="{{action.uuid}}">
+                        {{action.remainingUses}}/{{action.uses.max}}
+                    </button>
+                    {{/if}}
+                </div>
+                {{/each}}
+            </div>
+            {{/if}}
+
+        </li>
+
+        {{else}}
+        <li style="text-align:center; opacity:0.7; padding:20px;">No segments added yet. Press the + button to begin.
+        </li>
+        {{/each}}
+    </ul>
+</section>
