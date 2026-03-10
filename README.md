@@ -17,20 +17,6 @@ You can install this module directly in Foundry VTT by pasting the manifest link
 **Manifest URL:**
 `https://github.com/juvinious/fb-cod/releases/latest/download/module.json`
 
-### For Developers (Deploying a Release)
-To publish a new version of the module so it can be installed via the manifest link:
-
-1. Update the `version` field in your `module.json` file.
-2. Zip the contents of this repository into a file named `module.zip`. From your project directory you can run:
-   ```bash
-   zip -r module.zip ./* -x ".*" -x "*/.*"
-   ```
-3. Go to the "Releases" section of your GitHub repository and click **Draft a new release**.
-4. Create a new tag matching your version (e.g., `v1.0.0`) and set a release title.
-5. In the "Attach binaries" section, upload **both** `module.json` and your newly created `module.zip`.
-6. Click **Publish release**.
-
-Foundry uses the `/releases/latest/` route in the Manifest URL to automatically fetch and parse your newest uploaded `module.json` and `module.zip`!
 
 ## License
 
