@@ -1,0 +1,105 @@
+{
+    "name": "Rifle",
+    "type": "weapon",
+    "_id": "rifle00000000000",
+    "img": "modules/fb-cod/assets/weapons/rifle.webp",
+    "system": {
+        "description": {
+            "value": "<p>Sightline: Spend 2 Hope to gain advantage on an attack roll.</p>"
+        },
+        "actions": {},
+        "attached": [],
+        "tier": 1,
+        "equipped": false,
+        "secondary": false,
+        "burden": "twoHanded",
+        "weaponFeatures": [],
+        "attack": {
+            "name": "Attack",
+            "img": "icons/skills/melee/blood-slash-foam-red.webp",
+            "_id": "rifle000000atk01",
+            "baseAction": true,
+            "systemPath": "attack",
+            "type": "attack",
+            "range": "veryFar",
+            "target": {
+                "type": "any",
+                "amount": 1
+            },
+            "roll": {
+                "trait": "agility",
+                "type": "attack",
+                "difficulty": null,
+                "bonus": null,
+                "advState": "neutral",
+                "diceRolling": {
+                    "multiplier": "prof",
+                    "flatMultiplier": 1,
+                    "dice": "d8",
+                    "compare": null,
+                    "treshold": null
+                },
+                "useDefault": false
+            },
+            "damage": {
+                "parts": [
+                    {
+                        "type": [
+                            "physical"
+                        ],
+                        "value": {
+                            "multiplier": "prof",
+                            "dice": "d8",
+                            "flatMultiplier": 1,
+                            "bonus": 1,
+                            "custom": {
+                                "enabled": false
+                            }
+                        },
+                        "applyTo": "hitPoints",
+                        "resultBased": false,
+                        "base": false
+                    }
+                ],
+                "includeBase": false
+            },
+            "description": "",
+            "chatDisplay": false,
+            "actionType": "action",
+            "cost": [],
+            "uses": {
+                "value": null,
+                "max": null,
+                "recovery": null
+            },
+            "effects": [],
+            "save": {
+                "trait": null,
+                "difficulty": null,
+                "damageMod": "none"
+            }
+        },
+        "rules": {
+            "attack": {
+                "roll": {
+                    "trait": null
+                }
+            }
+        }
+    },
+    "effects": [],
+    "sort": 0,
+    "ownership": {
+        "default": 0
+    },
+    "flags": {},
+    "_stats": {
+        "systemId": "daggerheart",
+        "systemVersion": "1.0.0",
+        "coreVersion": "13",
+        "createdTime": 1773112944559,
+        "modifiedTime": 1773117111543,
+        "lastModifiedBy": "antigravity"
+    },
+    "_key": "!items!rifle00000000000"
+}
