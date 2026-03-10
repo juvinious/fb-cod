@@ -1,4 +1,4 @@
-# Foundryborne Giants
+# Foundryborne COD
 
 A Foundry VTT supplementary module for the **[Daggerheart](https://foundryborne.online/)** system that introduces the **Colossal** adversary type. This module allows you to import and manage giant, multi-segmented colossi the same way they are presented in the official source materials.
 
