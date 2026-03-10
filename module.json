@@ -1,6 +1,6 @@
 {
     "id": "fb-cod",
-    "title": "Foundryborne Giants",
+    "title": "Colossus of Destiny (COD)",
     "description": "Daggerheart extension adding Colossal adversaries and related content.",
     "version": "1.0.0",
     "compatibility": {
@@ -56,7 +56,7 @@
             "name": "colossal-adversaries",
             "label": "Colossal Adversaries",
             "system": "daggerheart",
-            "path": "packs/colossal-adversaries.db",
+            "path": "packs/colossal-adversaries",
             "type": "Actor",
             "private": false,
             "flags": {}
@@ -65,7 +65,7 @@
             "name": "colossal-weapons",
             "label": "Colossal Weapons",
             "system": "daggerheart",
-            "path": "packs/colossal-weapons.db",
+            "path": "packs/colossal-weapons",
             "type": "Item",
             "private": false,
             "flags": {}
@@ -74,7 +74,7 @@
             "name": "colossal-loot",
             "label": "Colossal Loot",
             "system": "daggerheart",
-            "path": "packs/colossal-loot.db",
+            "path": "packs/colossal-loot",
             "type": "Item",
             "private": false,
             "flags": {}

@@ -56,13 +56,13 @@
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.daggerheart.sheet.colossus .segment-controls a {
+.daggerheart.sheet.colossus .controls a {
     color: #fcefe2;
     margin-left: 8px;
     cursor: pointer;
 }
 
-.daggerheart.sheet.colossus .segment-controls a:hover {
+.daggerheart.sheet.colossus .controls a:hover {
     color: #f5b85a;
     text-shadow: 0 0 5px rgba(245, 184, 90, 0.8);
 }
@@ -93,4 +93,6 @@
 .daggerheart.sheet.colossus .item-control:hover {
     color: #f5b85a;
     text-shadow: 0 0 5px #f5b85a;
-}@import "./colossus-segment-controls.css";
+}
+
+@import "./colossus-segment-controls.css";

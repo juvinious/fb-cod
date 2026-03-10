@@ -1,3 +1,24 @@
-2026/03/09-16:05:00.650414 744b96ffd6c0 Recovering log #95
-2026/03/09-16:05:00.652083 744b96ffd6c0 Delete type=0 #95
-2026/03/09-16:05:00.652113 744b96ffd6c0 Delete type=3 #94
+2026/03/10-00:15:25.236749 74bea1fbd6c0 Recovering log #16
+2026/03/10-00:15:25.236835 74bea1fbd6c0 Level-0 table #18: started
+2026/03/10-00:15:25.238326 74bea1fbd6c0 Level-0 table #18: 3486 bytes OK
+2026/03/10-00:15:25.239640 74bea1fbd6c0 Delete type=0 #16
+2026/03/10-00:15:25.239676 74bea1fbd6c0 Delete type=3 #15
+2026/03/10-00:15:25.242085 74bea0bff6c0 Level-0 table #21: started
+2026/03/10-00:15:25.242730 74bea0bff6c0 Level-0 table #21: 3482 bytes OK
+2026/03/10-00:15:25.243348 74bea0bff6c0 Delete type=0 #19
+2026/03/10-00:15:25.243415 74bea0bff6c0 Manual compaction at level-0 from '!items!lassoPackItNow01' @ 72057594037927935 : 1 .. '!items!smrevolverPack01' @ 0 : 0; will stop at '!items!smrevolverPack01' @ 20 : 1
+2026/03/10-00:15:25.243421 74bea0bff6c0 Compacting 2@0 + 0@1 files
+2026/03/10-00:15:25.243997 74bea0bff6c0 Generated table #22@0: 5 keys, 3482 bytes
+2026/03/10-00:15:25.244004 74bea0bff6c0 Compacted 2@0 + 0@1 files => 3482 bytes
+2026/03/10-00:15:25.244577 74bea0bff6c0 compacted to: files[ 0 1 1 0 0 0 0 ]
+2026/03/10-00:15:25.244623 74bea0bff6c0 Delete type=2 #21
+2026/03/10-00:15:25.244665 74bea0bff6c0 Delete type=2 #18
+2026/03/10-00:15:25.244729 74bea0bff6c0 Manual compaction at level-0 from '!items!smrevolverPack01' @ 20 : 1 .. '!items!smrevolverPack01' @ 0 : 0; will stop at (end)
+2026/03/10-00:15:25.244753 74bea0bff6c0 Manual compaction at level-1 from '!items!lassoPackItNow01' @ 72057594037927935 : 1 .. '!items!smrevolverPack01' @ 0 : 0; will stop at '!items!smrevolverPack01' @ 25 : 1
+2026/03/10-00:15:25.244773 74bea0bff6c0 Compacting 1@1 + 1@2 files
+2026/03/10-00:15:25.245354 74bea0bff6c0 Generated table #23@1: 5 keys, 3482 bytes
+2026/03/10-00:15:25.245363 74bea0bff6c0 Compacted 1@1 + 1@2 files => 3482 bytes
+2026/03/10-00:15:25.245936 74bea0bff6c0 compacted to: files[ 0 0 1 0 0 0 0 ]
+2026/03/10-00:15:25.245970 74bea0bff6c0 Delete type=2 #22
+2026/03/10-00:15:25.246028 74bea0bff6c0 Delete type=2 #14
+2026/03/10-00:15:25.246086 74bea0bff6c0 Manual compaction at level-1 from '!items!smrevolverPack01' @ 25 : 1 .. '!items!smrevolverPack01' @ 0 : 0; will stop at (end)

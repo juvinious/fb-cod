@@ -56,7 +56,7 @@ export function openColossusImportDialog() {
                         const parsed = parseColossus(raw);
                         await importColossus(parsed);
                     } catch (err) {
-                        console.error('Foundryborne Giants | Colossus import failed:', err);
+                        console.error('fb-cod | Colossus import failed:', err);
                         ui.notifications.error(
                             `Colossus import failed: ${err.message}. Check the console for details.`
                         );

@@ -3,16 +3,16 @@
  * @returns {typeof foundry.abstract.TypeDataModel}
  */
 export function setupColossusModel() {
-    console.log("Foundryborne Giants | setupColossusModel called");
-    console.log("Foundryborne Giants | game.system.api available:", !!game.system.api);
+    console.log("fb-cod | setupColossusModel called");
+    console.log("fb-cod | game.system.api available:", !!game.system.api);
 
     // Fallback to CONFIG if API isn't fully ready
     const AdversaryModel = game.system.api?.models?.actors?.DhAdversary || CONFIG.Actor.dataModels.adversary;
 
-    console.log("Foundryborne Giants | AdversaryModel found:", !!AdversaryModel);
+    console.log("fb-cod | AdversaryModel found:", !!AdversaryModel);
 
     if (!AdversaryModel) {
-        console.error("Foundryborne Giants | Could not find Adversary base model! CONFIG.Actor.dataModels keys:", Object.keys(CONFIG.Actor.dataModels));
+        console.error("fb-cod | Could not find Adversary base model! CONFIG.Actor.dataModels keys:", Object.keys(CONFIG.Actor.dataModels));
         return null;
     }
 
@@ -31,7 +31,7 @@ export function setupColossusModel() {
                 hasAttribution: false,
                 hasLimitedView: true
             });
-            console.log("Foundryborne Giants | ColossusDataModel.metadata (static) called, usesSize:", metadata.usesSize);
+            console.log("fb-cod | ColossusDataModel.metadata (static) called, usesSize:", metadata.usesSize);
             return metadata;
         }
 

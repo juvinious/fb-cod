@@ -98,7 +98,7 @@ export function setupColossusSheet() {
                         // Open native FeatureSheet immediately so user can fill in description, actions, etc.
                         if (item) item.sheet.render({ force: true });
                     } catch (err) {
-                        console.error("Foundryborne Giants | Error creating segment:", err);
+                        console.error("fb-cod | Error creating segment:", err);
                         ui.notifications.error("Failed to create segment.");
                     }
                 },
@@ -110,15 +110,14 @@ export function setupColossusSheet() {
                     const segment = this.document.items.get(segmentId);
                     if (!segment) return;
 
-                    const currentHP = segment.system.hp.value;
-                    const maxHP = segment.system.hp.max;
-                    let newHP = currentHP + adjustment;
+                    const { value, max } = segment.system.resource;
+                    let newHP = value + adjustment;
 
                     // Clamp HP between 0 and Max
-                    newHP = Math.max(0, Math.min(newHP, maxHP));
+                    newHP = Math.max(0, Math.min(newHP, max));
 
-                    if (newHP !== currentHP) {
-                        await segment.update({ "system.hp.value": newHP });
+                    if (newHP !== value) {
+                        await segment.update({ "system.resource.value": newHP });
                     }
                 },
                 toggleSegmentDestroyed: async function (event, target) {
@@ -192,6 +191,18 @@ export function setupColossusSheet() {
                     const condition = target.dataset.condition;
                     const currentValue = this.document.system.conditionImmunities[condition];
                     await this.document.update({ [`system.conditionImmunities.${condition}`]: !currentValue });
+                },
+                editDoc: async function (event, target) {
+                    const uuid = target.dataset.itemUuid;
+                    if (!uuid) return;
+                    const doc = await fromUuid(uuid);
+                    if (doc) doc.sheet.render(true);
+                },
+                deleteDoc: async function (event, target) {
+                    const uuid = target.dataset.itemUuid;
+                    if (!uuid) return;
+                    const doc = await fromUuid(uuid);
+                    if (doc) doc.deleteDialog();
                 }
 
             }
@@ -259,7 +270,7 @@ export function setupColossusSheet() {
             );
 
             // Prepare Segments
-            console.log("Foundryborne Giants | Preparing context, item types present:", [...new Set(this.document.items.map(i => i.type))]);
+            console.log("fb-cod | Preparing context, item types present:", [...new Set(this.document.items.map(i => i.type))]);
             context.segments = this.document.system.segments.sort((a, b) => {
                 const order = {
                     'head': 1, 'neck': 2, 'torso': 3, 'core': 3,
@@ -271,7 +282,7 @@ export function setupColossusSheet() {
                 };
                 return (order[a.system.segmentType] || 99) - (order[b.system.segmentType] || 99);
             });
-            console.log(`Foundryborne Giants | Context segments count: ${context.segments.length}`);
+            console.log(`fb-cod | Context segments count: ${context.segments.length}`);
 
             // Aggregate all attack-type actions from each segment into the sidebar attack list.
             // We store the actual action model instance so inventory-item-compact can call _getLabels.

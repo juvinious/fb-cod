@@ -9,7 +9,7 @@ export function setupColossalSegmentSheet() {
     // Grab the native FeatureSheet from the Daggerheart system API
     const FeatureSheet = game.system.api?.applications?.sheets?.items?.Feature;
     if (!FeatureSheet) {
-        console.error("Foundryborne Giants | Cannot find native FeatureSheet for segment sheet inheritance.");
+        console.error("fb-cod | Cannot find native FeatureSheet for segment sheet inheritance.");
         return null;
     }
 

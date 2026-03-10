@@ -1,0 +1,11 @@
+{
+    "name": "fb-cod",
+    "version": "1.0.0",
+    "scripts": {
+        "build:packs": "npx fvtt package pack --type Module --id fb-cod -n colossal-weapons --in src/packs/colossal-weapons --out packs",
+        "extract:packs": "npx fvtt package unpack --type Module --id fb-cod -n colossal-weapons --in packs --out src/packs/colossal-weapons"
+    },
+    "devDependencies": {
+        "@foundryvtt/foundryvtt-cli": "^1.0.3"
+    }
+}

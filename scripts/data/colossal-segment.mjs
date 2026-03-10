@@ -4,13 +4,13 @@
  * @returns {typeof foundry.abstract.TypeDataModel}
  */
 export function setupColossalSegmentModel() {
-    console.log("Foundryborne Giants | setupColossalSegmentModel called");
+    console.log("fb-cod | setupColossalSegmentModel called");
 
     // Get DHFeature from system API or CONFIG
     const FeatureModel = game.system.api?.models?.items?.DHFeature || CONFIG.Item.dataModels.feature;
 
     if (!FeatureModel) {
-        console.error("Foundryborne Giants | Could not find Feature base model! CONFIG.Item.dataModels keys:", Object.keys(CONFIG.Item.dataModels));
+        console.error("fb-cod | Could not find Feature base model! CONFIG.Item.dataModels keys:", Object.keys(CONFIG.Item.dataModels));
         // Fallback to basic TypeDataModel if system isn't ready
         return class ColossalSegmentDataModel extends foundry.abstract.TypeDataModel {
             static get metadata() { return { label: "Colossal Segment", type: "fb-cod.colossal-segment" }; }
@@ -60,8 +60,11 @@ export function setupColossalSegmentModel() {
                     'torso': 'Torso',
                     'arm-left': 'Left Arm',
                     'arm-right': 'Right Arm',
-                    'foreleg': 'Forelegs',
-                    'hindleg': 'Hindlegs',
+                    'foreleg-left': 'Left Foreleg',
+                    'foreleg-right': 'Right Foreleg',
+                    'hindleg-left': 'Left Hindleg',
+                    'hindleg-right': 'Right Hindleg',
+                    'leg': 'Leg',
                     'leg-left': 'Left Leg',
                     'leg-right': 'Right Leg',
                     'core': 'Core',
@@ -69,6 +72,8 @@ export function setupColossalSegmentModel() {
                     'tail': 'Tail',
                     'wing-left': 'Left Wing',
                     'wing-right': 'Right Wing',
+                    'claw-left': 'Left Claw',
+                    'claw-right': 'Right Claw',
                     'claw': 'Claw',
                     'other': 'Other'
                 }

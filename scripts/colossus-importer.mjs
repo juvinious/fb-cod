@@ -15,44 +15,62 @@
  * @returns {object} parsed colossus data
  */
 export function parseColossus(rawText) {
-    // Normalise line endings and split into non-empty "blocks" separated by blank lines
-    const lines = rawText.replace(/\r\n/g, '\n').split('\n').map(l => l.trim());
+    // Normalise line endings and split into lines
+    const rawLines = rawText.replace(/\r\n/g, '\n').split('\n').map(l => l.trim());
+    const lines = rawLines.filter(l => l !== '');
 
-    // ── Header (always lines 0–1) ─────────────────────────────────────────────
-    const firstLine = lines[0] ?? '';
-    const commaIdx = firstLine.indexOf(',');
-    const name = commaIdx > 0 ? firstLine.slice(0, commaIdx).trim() : firstLine;
-    const subtitle = commaIdx > 0 ? firstLine.slice(commaIdx + 1).trim() : '';
+    // ── Header (Find the Tier line as the anchor) ─────────────────────────────
+    const tierIdx = rawLines.findIndex(l => /Tier\s+(\d+)/i.test(l));
+    let name = '';
+    let subtitle = '';
+    let tier = 1;
 
-    const tierMatch = (lines[1] ?? '').match(/Tier\s+(\d+)/i);
-    const tier = tierMatch ? parseInt(tierMatch[1]) : 1;
+    if (tierIdx >= 0) {
+        const tierMatch = rawLines[tierIdx].match(/Tier\s+(\d+)/i);
+        tier = parseInt(tierMatch[1]);
+
+        // Collect all lines before the Tier line for name and subtitle
+        const headerLines = rawLines.slice(0, tierIdx).filter(l => l !== '');
+        if (headerLines.length > 0) {
+            const fullTitle = headerLines[0];
+            const commaIdx = fullTitle.indexOf(',');
+            if (commaIdx > 0) {
+                name = fullTitle.slice(0, commaIdx).trim();
+                subtitle = (fullTitle.slice(commaIdx + 1) + " " + headerLines.slice(1).join(" ")).trim();
+            } else {
+                name = fullTitle;
+                subtitle = headerLines.slice(1).join(" ");
+            }
+        }
+    } else {
+        // Fallback for unexpected format
+        const firstLine = lines[0] ?? '';
+        const commaIdx = firstLine.indexOf(',');
+        name = commaIdx > 0 ? firstLine.slice(0, commaIdx).trim() : firstLine;
+        subtitle = commaIdx > 0 ? firstLine.slice(commaIdx + 1).trim() : '';
+    }
 
     // First word of the colossus name is the shared prefix for segment headers
-    const prefix = name.split(/\s+/)[0];
-
-    // ── Group lines into blank-line-separated blocks ──────────────────────────
-    const blocks = [];
-    let current = [];
-    for (const line of lines) {
-        if (line === '') {
-            if (current.length) { blocks.push(current); current = []; }
-        } else {
-            current.push(line);
-        }
-    }
-    if (current.length) blocks.push(current);
+    const prefix = name.split(/\s+/)[0].toUpperCase();
 
     // ── Find where segment blocks start ───────────────────────────────────────
-    // A segment block starts when the first line begins with "<prefix> " and
-    // the block contains "Adjacent" or "Difficulty" somewhere.
-    const segmentStartIdx = blocks.findIndex((b, i) => {
-        if (i === 0) return false;
-        const header = b[0];
-        if (!header.startsWith(prefix + ' ')) return false;
-        return b.some(l => /^Adjacent|^Difficulty|^HP/i.test(l));
-    });
+    // A segment header starts with prefix + ' ' and is followed by stats
+    const segmentHeaderIdxs = [];
+    for (let i = 0; i < rawLines.length; i++) {
+        const l = rawLines[i].toUpperCase();
+        if (l.startsWith(prefix + ' ') && i > 0) {
+            // Check next 5 lines for segment keywords
+            const nextLines = rawLines.slice(i + 1, i + 6);
+            if (nextLines.some(nl => /^(Adjacent|Difficulty|HP)/i.test(nl))) {
+                segmentHeaderIdxs.push(i);
+            }
+        }
+    }
 
-    // ── Parse pre-segment (colossus-level) blocks ─────────────────────────────
+    const firstSegmentIdx = segmentHeaderIdxs[0] ?? rawLines.length;
+
+    // ── Parse Colossus-Level Data ─────────────────────────────────────────────
+    const colLines = rawLines.slice(0, firstSegmentIdx);
     let description = '';
     let motives = '';
     let size = '';
@@ -60,58 +78,70 @@ export function parseColossus(rawText) {
     let stress = 0;
     const experiences = [];
     const colFeatures = [];
-
-    // Everything before segmentStartIdx that isn't the name/tier line
-    const headerBlocks = segmentStartIdx > 0 ? blocks.slice(0, segmentStartIdx) : blocks;
     let inFeatures = false;
+    let currentFeature = null;
 
-    for (const block of headerBlocks) {
-        if (block[0] === 'Features') { inFeatures = true; continue; }
+    for (let i = 0; i < colLines.length; i++) {
+        const line = colLines[i];
+        if (!line) continue;
+
+        if (line.toUpperCase() === 'FEATURES') { inFeatures = true; continue; }
 
         if (inFeatures) {
-            for (const line of block) {
-                const feat = parseFeatureLine(line);
-                if (feat) colFeatures.push(feat);
+            const feat = parseFeatureLine(line);
+            if (feat) {
+                if (currentFeature) colFeatures.push(currentFeature);
+                currentFeature = feat;
+            } else if (currentFeature) {
+                currentFeature.description += " " + line;
             }
             continue;
         }
 
-        for (const line of block) {
-            const threshM = line.match(/Thresholds:\s*(\d+)\/(\d+)\s*\|\s*Stress:\s*(\d+)/i);
-            if (threshM) {
-                thresholds = { major: parseInt(threshM[1]), severe: parseInt(threshM[2]) };
-                stress = parseInt(threshM[3]);
-                continue;
-            }
-            if (/^Experience:/i.test(line)) {
-                const expStr = line.replace(/^Experience:\s*/i, '');
-                for (const chunk of expStr.split(',')) {
-                    const m = chunk.trim().match(/^(.+?)\s*\+(\d+)$/);
-                    if (m) experiences.push({ name: m[1].trim(), value: parseInt(m[2]) });
-                }
-                continue;
-            }
-            if (/^Motives\s*[&and]*\s*Tactics/i.test(line)) {
-                motives = line.replace(/^[^:]+:\s*/, '');
-                continue;
-            }
-            if (/^Size:/i.test(line)) { size = line.replace(/^Size:\s*/i, ''); continue; }
+        const threshM = line.match(/Thresholds:\s*(\d+)\/(\d+)\s*\|\s*Stress:\s*(\d+)/i);
+        if (threshM) {
+            thresholds = { major: parseInt(threshM[1]), severe: parseInt(threshM[2]) };
+            stress = parseInt(threshM[3]);
+            continue;
         }
+        if (/^Experience:/i.test(line)) {
+            const expStr = line.replace(/^Experience:\s*/i, '');
+            for (const chunk of expStr.split(',')) {
+                const m = chunk.trim().match(/^(.+?)\s*\+(\d+)$/);
+                if (m) experiences.push({ name: m[1].trim(), value: parseInt(m[2]) });
+            }
+            continue;
+        }
+        if (/^Motives\s*[&and]*\s*Tactics/i.test(line)) {
+            motives = line.replace(/^[^:]+:\s*/, '');
+            continue;
+        }
+        if (/^Size:/i.test(line)) { size = line.replace(/^Size:\s*/i, ''); continue; }
+        if (/^Segments:/i.test(line)) continue;
+        if (i <= tierIdx) continue; // Skip header/tier lines
 
-        // First non-header, non-labeled paragraph → description
-        const blockText = block.join(' ');
-        if (!description && !block[0].match(/^(Tier|Segments:|Thresholds|Experience|Motives|Size|Features)/i)) {
-            description = blockText;
+        // Anything else before Features is description
+        if (!description && line.length > 20) {
+            description = line;
+            // Potential multi-line description? Check if next line is not a labeled line
+            let next = i + 1;
+            while (next < colLines.length &&
+                !colLines[next].match(/^(Thresholds|Experience|Motives|Size|Segments:|FEATURES)/i)) {
+                if (colLines[next]) description += " " + colLines[next];
+                next++;
+            }
+            i = next - 1;
         }
     }
+    if (currentFeature) colFeatures.push(currentFeature);
 
-    // ── Parse segment blocks ──────────────────────────────────────────────────
+    // ── Parse Segments ────────────────────────────────────────────────────────
     const segments = [];
-    if (segmentStartIdx >= 0) {
-        for (let i = segmentStartIdx; i < blocks.length; i++) {
-            if (!blocks[i][0].startsWith(prefix + ' ')) continue;
-            segments.push(parseSegmentBlock(blocks, i, prefix));
-        }
+    for (let j = 0; j < segmentHeaderIdxs.length; j++) {
+        const start = segmentHeaderIdxs[j];
+        const end = segmentHeaderIdxs[j + 1] ?? rawLines.length;
+        const segLines = rawLines.slice(start, end);
+        segments.push(parseSegmentBlock(segLines, prefix));
     }
 
     return { name, subtitle, tier, description, motives, size, thresholds, stress, experiences, features: colFeatures, segments };
@@ -154,7 +184,7 @@ export async function importColossus(parsed) {
     };
 
     const actor = await Actor.create(actorData);
-    if (!actor) { ui.notifications.error('Foundryborne Giants | Failed to create Colossus actor.'); return; }
+    if (!actor) { ui.notifications.error('fb-cod | Failed to create Colossus actor.'); return; }
 
     // ── Colossus-level features ───────────────────────────────────────────────
     const featureItems = features.map(f => ({
@@ -169,7 +199,7 @@ export async function importColossus(parsed) {
     if (segmentItems.length) await actor.createEmbeddedDocuments('Item', segmentItems);
 
     ui.notifications.info(
-        `Foundryborne Giants | "${actorData.name}" imported with ${segmentItems.length} segment(s).`
+        `fb-cod | "${actorData.name}" imported with ${segmentItems.length} segment(s).`
     );
     actor.sheet.render({ force: true });
     return actor;
@@ -193,25 +223,28 @@ function parseFeatureLine(line) {
 
 /**
  * Extract all lines that belong to a segment block (until the next segment header).
- * @param {string[][]} blocks  All blocks
- * @param {number}     start   Index of the segment's starting block
+ * @param {string[][]} blocks  The blocks belonging to this segment
  * @param {string}     prefix  Colossus name prefix (e.g. "Ikeri")
  * @returns {object}  Parsed segment data
  */
-function parseSegmentBlock(blocks, start, prefix) {
-    // Collect lines from this block onward until the next segment header
-    const lines = [];
-    for (let i = start; i < blocks.length; i++) {
-        if (i > start && blocks[i][0].startsWith(prefix + ' ')) break;
-        lines.push(...blocks[i], '');
-    }
-
+function parseSegmentBlock(blocks, prefix) {
+    const lines = blocks.flat();
     const headerLine = lines[0] ?? '';
 
     // Parse count suffix, e.g. "Ikeri Arm (2)" → count=2
     const countM = headerLine.match(/\((\d+)\)/);
     const count = countM ? parseInt(countM[1]) : 1;
-    const rawSegName = headerLine.replace(/\s*\(\d+\)/, '').replace(prefix + ' ', '').trim();
+
+    // Remove prefix and count to get the "clean" name
+    let rawSegName = headerLine.replace(/\s*\(\d+\)/, '')
+        .replace(new RegExp("^" + prefix, 'i'), '')
+        .trim();
+
+    // Title Case the segment name (e.g. "HEAD" -> "Head")
+    if (rawSegName === rawSegName.toUpperCase()) {
+        rawSegName = rawSegName.charAt(0) + rawSegName.slice(1).toLowerCase();
+    }
+
     const segType = inferSegmentType(rawSegName);
 
     // Parse stat fields
@@ -222,6 +255,7 @@ function parseSegmentBlock(blocks, start, prefix) {
     const attacks = [];
     const features = [];
     let inFeatures = false;
+    let currentFeature = null;
 
     for (const line of lines) {
         if (!line) continue;
@@ -229,31 +263,41 @@ function parseSegmentBlock(blocks, start, prefix) {
         if (/^Adjacent Segments?:/i.test(line)) {
             adjacentSegments = line.replace(/^Adjacent Segments?:\s*/i, '').trim();
         } else if (/^Difficulty:/i.test(line)) {
-            const m = line.match(/Difficulty:\s*(\d+)\s*\|\s*HP:\s*(\d+)/i);
-            if (m) { difficulty = parseInt(m[1]); hp = parseInt(m[2]); }
+            // Difficulty: 16 | HP: 5
+            // or Difficulty: 15 | HP: None
+            const m = line.match(/Difficulty:\s*(\d+)\s*\|\s*HP:\s*([\w\d]+)/i);
+            if (m) {
+                difficulty = parseInt(m[1]);
+                const hpStr = m[2].trim().toLowerCase();
+                hp = hpStr === 'none' ? 0 : (parseInt(hpStr) || 5);
+            }
         } else if (/^ATK:/i.test(line)) {
             // Format: "ATK: +2 | PeckName: Range | 1d10+1 phy"
-            // or      "ATK: +2 | PeckName Range | 1d10+1 phy"
             const m = line.match(/ATK:\s*([+-]?\d+)\s*\|\s*([^|]+)\s*\|\s*(.+)/i);
             if (m) {
                 atkModifier = parseInt(m[1]);
                 const middlePart = m[2].trim();
                 const dmgStr = m[3].trim();
 
-                // "Peck: Melee" or "Punch: Very Close" or without colon "Stomp Very Close"
                 const colonSplit = middlePart.match(/^([^:]+):\s*(.+)$/);
                 const atkName = colonSplit ? colonSplit[1].trim() : middlePart.split(/\s+/)[0];
                 const rangeStr = colonSplit ? colonSplit[2].trim() : middlePart.replace(atkName, '').trim();
 
                 attacks.push({ name: atkName, range: mapRange(rangeStr), damage: dmgStr });
             }
-        } else if (line === 'Features') {
+        } else if (line.toUpperCase() === 'FEATURES') {
             inFeatures = true;
         } else if (inFeatures) {
             const feat = parseFeatureLine(line);
-            if (feat) features.push(feat);
+            if (feat) {
+                if (currentFeature) features.push(currentFeature);
+                currentFeature = feat;
+            } else if (currentFeature) {
+                currentFeature.description += " " + line;
+            }
         }
     }
+    if (currentFeature) features.push(currentFeature);
 
     // Parse chainGroup from the Chain feature text, e.g. "Chain (A) - Passive: ..."
     let chainGroup = '';
@@ -279,8 +323,10 @@ function inferSegmentType(name) {
     if (l === 'neck') return 'neck';
     if (l === 'core') return 'core';
     if (l === 'tail') return 'tail';
+    if (l.includes('foreleg')) return 'foreleg-left';
+    if (l.includes('hindleg')) return 'hindleg-left';
     if (l.includes('arm')) return 'arm-left';
-    if (l.includes('leg')) return 'leg-left';
+    if (l.includes('leg')) return 'leg';
     if (l.includes('wing')) return 'wing-left';
     if (l.includes('claw')) return 'claw';
     return 'other';
@@ -405,13 +451,19 @@ function buildSegmentItems(seg) {
     /** Side name pairs for symmetric body parts */
     const SIDES = {
         arm: ['Left Arm', 'Right Arm'],
+        foreleg: ['Left Foreleg', 'Right Foreleg'],
+        hindleg: ['Left Hindleg', 'Right Hindleg'],
         leg: ['Left Leg', 'Right Leg'],
-        wing: ['Left Wing', 'Right Wing']
+        wing: ['Left Wing', 'Right Wing'],
+        claw: ['Left Claw', 'Right Claw']
     };
     const TYPE_PAIRS = {
         arm: ['arm-left', 'arm-right'],
+        foreleg: ['foreleg-left', 'foreleg-right'],
+        hindleg: ['hindleg-left', 'hindleg-right'],
         leg: ['leg-left', 'leg-right'],
-        wing: ['wing-left', 'wing-right']
+        wing: ['wing-left', 'wing-right'],
+        claw: ['claw-left', 'claw-right']
     };
 
     const items = [];
@@ -423,11 +475,17 @@ function buildSegmentItems(seg) {
         if (seg.count > 1) {
             const base = seg.name.toLowerCase();
             const sideKey = Object.keys(SIDES).find(k => base.includes(k));
-            if (sideKey) {
+
+            // If it's a simple pair (count === 2), use Left/Right
+            if (sideKey && seg.count === 2) {
                 segName = SIDES[sideKey][i] ?? `${seg.name} ${i + 1}`;
                 segType = TYPE_PAIRS[sideKey]?.[i] ?? seg.segmentType;
             } else {
-                segName = `${seg.name} ${i + 1}`;
+                // For count > 2 (spiders/crabs) or unknown parts, use numbered naming
+                // Try to singularize the name (e.g. "Legs" -> "Leg")
+                const singularBase = seg.name.replace(/s$/i, '');
+                segName = `${singularBase} ${i + 1}`;
+                // Keep the base segmentType (e.g. 'leg' or 'claw')
             }
         }
 

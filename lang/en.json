@@ -7,8 +7,8 @@
             "fb-cod.colossal-segment": "Colossal Segment"
         }
     },
-    "FOUNDRYBORNE-GIANTS": {
-        "ActorTypes": {
+    "FB-COD": {
+        "Colossus": {
             "Colossus": "Colossus"
         },
         "ItemTypes": {
