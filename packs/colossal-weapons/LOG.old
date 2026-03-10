@@ -1,5 +1,23 @@
-2026/03/10-10:35:15.363010 705b2cbf86c0 Recovering log #30
-2026/03/10-10:35:15.363083 705b2cbf86c0 Level-0 table #32: started
-2026/03/10-10:35:15.363834 705b2cbf86c0 Level-0 table #32: 275 bytes OK
-2026/03/10-10:35:15.365664 705b2cbf86c0 Delete type=0 #30
-2026/03/10-10:35:15.365743 705b2cbf86c0 Delete type=3 #29
+2026/03/10-10:59:36.219678 77af40bf96c0 Recovering log #33
+2026/03/10-10:59:36.222017 77af40bf96c0 Delete type=3 #31
+2026/03/10-10:59:36.222059 77af40bf96c0 Delete type=0 #33
+2026/03/10-10:59:36.224366 77af12bff6c0 Level-0 table #37: started
+2026/03/10-10:59:36.225010 77af12bff6c0 Level-0 table #37: 3157 bytes OK
+2026/03/10-10:59:36.225610 77af12bff6c0 Delete type=0 #35
+2026/03/10-10:59:36.225670 77af12bff6c0 Manual compaction at level-0 from '!items!lasso00000000000' @ 72057594037927935 : 1 .. '!items!smallrevolver000' @ 0 : 0; will stop at '!items!smrevolverPack01' @ 30 : 1
+2026/03/10-10:59:36.225675 77af12bff6c0 Compacting 3@0 + 0@1 files
+2026/03/10-10:59:36.226247 77af12bff6c0 Generated table #38@0: 10 keys, 3250 bytes
+2026/03/10-10:59:36.226257 77af12bff6c0 Compacted 3@0 + 0@1 files => 3250 bytes
+2026/03/10-10:59:36.226819 77af12bff6c0 compacted to: files[ 0 1 1 0 0 0 0 ]
+2026/03/10-10:59:36.226861 77af12bff6c0 Delete type=2 #27
+2026/03/10-10:59:36.226914 77af12bff6c0 Delete type=2 #32
+2026/03/10-10:59:36.226951 77af12bff6c0 Delete type=2 #37
+2026/03/10-10:59:36.227002 77af12bff6c0 Manual compaction at level-0 from '!items!smrevolverPack01' @ 30 : 1 .. '!items!smallrevolver000' @ 0 : 0; will stop at (end)
+2026/03/10-10:59:36.227022 77af12bff6c0 Manual compaction at level-1 from '!items!lasso00000000000' @ 72057594037927935 : 1 .. '!items!smallrevolver000' @ 0 : 0; will stop at '!items!smrevolverPack01' @ 35 : 0
+2026/03/10-10:59:36.227025 77af12bff6c0 Compacting 1@1 + 1@2 files
+2026/03/10-10:59:36.227562 77af12bff6c0 Generated table #39@1: 5 keys, 3157 bytes
+2026/03/10-10:59:36.227569 77af12bff6c0 Compacted 1@1 + 1@2 files => 3157 bytes
+2026/03/10-10:59:36.228125 77af12bff6c0 compacted to: files[ 0 0 1 0 0 0 0 ]
+2026/03/10-10:59:36.228160 77af12bff6c0 Delete type=2 #38
+2026/03/10-10:59:36.228199 77af12bff6c0 Delete type=2 #23
+2026/03/10-10:59:36.228256 77af12bff6c0 Manual compaction at level-1 from '!items!smrevolverPack01' @ 35 : 0 .. '!items!smallrevolver000' @ 0 : 0; will stop at (end)
