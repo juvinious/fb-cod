@@ -15,7 +15,7 @@ A Foundry VTT supplementary module for the **[Daggerheart](https://foundryborne.
 You can install this module directly in Foundry VTT by pasting the manifest link into the Add-On Modules menu:
 
 **Manifest URL:**
-`https://github.com/juvinious/fb-cod/releases/latest/download/module.json`
+`https://raw.githubusercontent.com/juvinious/fb-cod/main/module.json`
 
 
 ## License
