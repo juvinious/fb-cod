@@ -1,0 +1,22 @@
+{
+  "name": "Torso",
+  "type": "fb-cod.colossal-segment",
+  "_id": "sgtorso000000000",
+  "img": "icons/skills/wounds/injury-body-pain-gray.webp",
+  "system": {
+    "description": "<p>The main body segment.</p>",
+    "difficulty": 12,
+    "atkModifier": 0,
+    "segmentType": "torso",
+    "position": "",
+    "adjacentSegments": ["Head", "Arms", "Legs"],
+    "fatal": false,
+    "chainGroup": "",
+    "destroyed": false,
+    "broken": false,
+    "brokenTokens": 0,
+    "actions": {}
+  },
+  "folder": null,
+  "_key": "!items!sgtorso000000000"
+}

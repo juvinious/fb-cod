@@ -1,0 +1,22 @@
+{
+  "name": "Tail",
+  "type": "fb-cod.colossal-segment",
+  "_id": "sgtail0000000000",
+  "img": "icons/commodities/biological/tail-scaled-green.webp",
+  "system": {
+    "description": "<p>A sweeping tail segment.</p>",
+    "difficulty": 12,
+    "atkModifier": 0,
+    "segmentType": "tail",
+    "position": "",
+    "adjacentSegments": ["Torso", "Abdomen"],
+    "fatal": false,
+    "chainGroup": "",
+    "destroyed": false,
+    "broken": false,
+    "brokenTokens": 0,
+    "actions": {}
+  },
+  "folder": null,
+  "_key": "!items!sgtail0000000000"
+}

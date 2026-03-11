@@ -1,0 +1,22 @@
+{
+  "name": "Forelimb",
+  "type": "fb-cod.colossal-segment",
+  "_id": "sgforelimb000000",
+  "img": "icons/commodities/biological/hand-clawed-grey.webp",
+  "system": {
+    "description": "<p>Powerful front limb.</p>",
+    "difficulty": 12,
+    "atkModifier": 2,
+    "segmentType": "forelimb",
+    "position": "",
+    "adjacentSegments": ["Torso"],
+    "fatal": false,
+    "chainGroup": "",
+    "destroyed": false,
+    "broken": false,
+    "brokenTokens": 0,
+    "actions": {}
+  },
+  "folder": null,
+  "_key": "!items!sgforelimb000000"
+}

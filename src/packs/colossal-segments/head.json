@@ -1,0 +1,22 @@
+{
+  "name": "Head",
+  "type": "fb-cod.colossal-segment",
+  "_id": "sghead0000000000",
+  "img": "icons/creatures/abilities/bull-head-horns-glowing.webp",
+  "system": {
+    "description": "<p>Standard head segment.</p>",
+    "difficulty": 12,
+    "atkModifier": 0,
+    "segmentType": "head",
+    "position": "",
+    "adjacentSegments": ["Neck", "Torso"],
+    "fatal": true,
+    "chainGroup": "",
+    "destroyed": false,
+    "broken": false,
+    "brokenTokens": 0,
+    "actions": {}
+  },
+  "folder": null,
+  "_key": "!items!sghead0000000000"
+}

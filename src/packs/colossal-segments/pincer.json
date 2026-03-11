@@ -1,0 +1,22 @@
+{
+  "name": "Pincer",
+  "type": "fb-cod.colossal-segment",
+  "_id": "sgpincer00000000",
+  "img": "icons/commodities/biological/mouth-pincer-brown.webp",
+  "system": {
+    "description": "<p>A crushing pincer.</p>",
+    "difficulty": 13,
+    "atkModifier": 2,
+    "segmentType": "pincer",
+    "position": "",
+    "adjacentSegments": [],
+    "fatal": false,
+    "chainGroup": "",
+    "destroyed": false,
+    "broken": false,
+    "brokenTokens": 0,
+    "actions": {}
+  },
+  "folder": null,
+  "_key": "!items!sgpincer00000000"
+}

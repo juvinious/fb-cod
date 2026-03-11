@@ -18,7 +18,7 @@ export function setupColossusModel() {
 
     return class ColossusDataModel extends AdversaryModel {
         /**@inheritdoc */
-        static DEFAULT_ICON = 'systems/daggerheart/assets/icons/documents/actors/dragon-head.svg';
+        static DEFAULT_ICON = 'icons/creatures/magical/construct-iron-stomping-yellow.webp';
 
         /** @returns {ActorDataModelMetadata} */
         static get metadata() {

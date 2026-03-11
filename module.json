@@ -78,6 +78,15 @@
             "type": "Item",
             "private": false,
             "flags": {}
+        },
+        {
+            "name": "colossal-segments",
+            "label": "Colossal Segments",
+            "system": "daggerheart",
+            "path": "packs/colossal-segments",
+            "type": "Item",
+            "private": false,
+            "flags": {}
         }
     ]
 }

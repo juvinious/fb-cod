@@ -20,7 +20,7 @@ export function setupColossalSegmentModel() {
 
     return class ColossalSegmentDataModel extends FeatureModel {
         /**@inheritdoc */
-        static DEFAULT_ICON = 'systems/daggerheart/assets/icons/documents/actors/dragon-head.svg';
+        static DEFAULT_ICON = 'icons/creatures/magical/construct-iron-stomping-yellow.webp';
 
         /** @type {ActorDataModelMetadata} */
         static get metadata() {
@@ -53,35 +53,33 @@ export function setupColossalSegmentModel() {
             /** The type/location of this segment on the colossus body. */
             schema.segmentType = new fields.StringField({
                 required: true,
-                initial: 'body',
+                initial: 'other',
                 choices: {
                     'head': 'Head',
                     'neck': 'Neck',
                     'torso': 'Torso',
-                    'arm-left': 'Left Arm',
-                    'arm-right': 'Right Arm',
-                    'foreleg-left': 'Left Foreleg',
-                    'foreleg-right': 'Right Foreleg',
-                    'hindleg-left': 'Left Hindleg',
-                    'hindleg-right': 'Right Hindleg',
+                    'thorax': 'Thorax',
+                    'abdomen': 'Abdomen',
+                    'carapace': 'Carapace',
+                    'shell': 'Shell',
+                    'arm': 'Arm',
+                    'forelimb': 'Forelimb',
                     'leg': 'Leg',
-                    'leg-left': 'Left Leg',
-                    'leg-right': 'Right Leg',
-                    'core': 'Core',
-                    'body': 'Body',
-                    'tail': 'Tail',
-                    'wing-left': 'Left Wing',
-                    'wing-right': 'Right Wing',
-                    'claw-left': 'Left Claw',
-                    'claw-right': 'Right Claw',
+                    'hindlimb': 'Hindlimb',
+                    'wing': 'Wing',
                     'claw': 'Claw',
+                    'talon': 'Talon',
+                    'pincer': 'Pincer',
+                    'tentacle': 'Tentacle',
+                    'antennae': 'Antennae',
+                    'tail': 'Tail',
                     'other': 'Other'
                 }
             });
 
             // --- Adjacency ---
-            /** Comma-separated names of adjacent segments (e.g. "Torso, Head"). */
-            schema.adjacentSegments = new fields.StringField({ required: false, initial: '', nullable: true });
+            /** Array of Document IDs for adjacent segments on the same actor. */
+            schema.adjacentSegments = new fields.ArrayField(new fields.StringField({ required: true }), { initial: [] });
 
             // --- Defeat Conditions ---
             /** If true, destroying this segment defeats the entire colossus. */
@@ -103,24 +101,72 @@ export function setupColossalSegmentModel() {
              */
             schema.broken = new fields.BooleanField({ initial: false });
 
-            /** Number of "Broken" tokens currently on this segment. */
-            schema.brokenTokens = new fields.NumberField({ required: false, integer: true, initial: 0, min: 0, nullable: false });
+            /**
+             * Whether this segment is currently Collapsed (a temporary state,
+             * often token-based in the tabletop ruleset).
+             */
+            schema.collapsed = new fields.BooleanField({ initial: false });
+
+            // --- Metadata ---
+            /** The relative position or instance identifier (e.g. "Left", "Right", "1", "Front"). */
+            schema.position = new fields.StringField({ required: false, initial: '', nullable: true });
 
             return schema;
         }
 
+        /**
+         * Is this segment considered Broken?
+         * @type {boolean}
+         */
+        get isBroken() {
+            return this.broken;
+        }
+
+        /**
+         * Is this segment considered Collapsed?
+         * @type {boolean}
+         */
+        get isCollapsed() {
+            return this.collapsed;
+        }
+
         /** @override */
         _getTags() {
-            const tags = super._getTags?.() || [];
+            const tags = [];
+
+            // 1. Segment Type & Position
             if (this.segmentType) {
                 const label = this.schema.getField('segmentType').choices[this.segmentType];
-                tags.push(label || this.segmentType.capitalize());
+                let typeLabel = label || this.segmentType.capitalize();
+                if (this.position) typeLabel += ` [${this.position}]`;
+                tags.push(typeLabel);
             }
-            tags.push(`Diff: ${this.difficulty}`);
+
+            // 2. Difficulty - using safe access with multiple fallbacks
+            const diffValue = this.difficulty || this._source?.difficulty || 12;
+            tags.push(`Diff: ${diffValue}`);
+
+            // 3. Status Flags
             if (this.fatal) tags.push("FATAL");
-            if (this.broken) tags.push("BROKEN");
+            if (this.isBroken) tags.push("BROKEN");
+            if (this.isCollapsed) tags.push("COLLAPSED");
             if (this.destroyed) tags.push("DESTROYED");
+
             return tags;
+        }
+
+        /**
+         * Check if this segment's actions or features can be used.
+         * According to the Daggerheart rules:
+         * - Broken segments cannot use Actions or Reactions.
+         * - Destroyed segments cannot use ANY features.
+         * @param {string} featureForm - 'passive', 'action', or 'reaction'
+         * @returns {boolean}
+         */
+        canUseFeature(featureForm) {
+            if (this.destroyed) return false;
+            if (this.isBroken && (featureForm === 'action' || featureForm === 'reaction' || featureForm === 'attack')) return false;
+            return true;
         }
 
         /**

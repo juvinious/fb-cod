@@ -1,0 +1,22 @@
+{
+  "name": "Wing",
+  "type": "fb-cod.colossal-segment",
+  "_id": "sgwing0000000000",
+  "img": "icons/svg/wing.svg",
+  "system": {
+    "description": "<p>A massive wing segment.</p>",
+    "difficulty": 12,
+    "atkModifier": 0,
+    "segmentType": "wing",
+    "position": "",
+    "adjacentSegments": ["Torso"],
+    "fatal": false,
+    "chainGroup": "",
+    "destroyed": false,
+    "broken": false,
+    "brokenTokens": 0,
+    "actions": {}
+  },
+  "folder": null,
+  "_key": "!items!sgwing0000000000"
+}

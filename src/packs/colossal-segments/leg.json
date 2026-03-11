@@ -1,0 +1,22 @@
+{
+  "name": "Leg",
+  "type": "fb-cod.colossal-segment",
+  "_id": "sgleg00000000000",
+  "img": "icons/svg/leg.svg",
+  "system": {
+    "description": "<p>A sturdy leg segment.</p>",
+    "difficulty": 12,
+    "atkModifier": 0,
+    "segmentType": "leg",
+    "position": "",
+    "adjacentSegments": ["Torso"],
+    "fatal": false,
+    "chainGroup": "",
+    "destroyed": false,
+    "broken": false,
+    "brokenTokens": 0,
+    "actions": {}
+  },
+  "folder": null,
+  "_key": "!items!sgleg00000000000"
+}

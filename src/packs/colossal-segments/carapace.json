@@ -1,0 +1,22 @@
+{
+  "name": "Carapace",
+  "type": "fb-cod.colossal-segment",
+  "_id": "sgcarapace000000",
+  "img": "icons/commodities/biological/shell-conch-gray.webp",
+  "system": {
+    "description": "<p>Protective outer shell.</p>",
+    "difficulty": 14,
+    "atkModifier": 0,
+    "segmentType": "carapace",
+    "position": "",
+    "adjacentSegments": [],
+    "fatal": false,
+    "chainGroup": "",
+    "destroyed": false,
+    "broken": false,
+    "brokenTokens": 0,
+    "actions": {}
+  },
+  "folder": null,
+  "_key": "!items!sgcarapace000000"
+}

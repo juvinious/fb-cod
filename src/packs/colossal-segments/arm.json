@@ -1,0 +1,22 @@
+{
+  "name": "Arm",
+  "type": "fb-cod.colossal-segment",
+  "_id": "sgarm00000000000",
+  "img": "icons/commodities/biological/hand-clawed-grey.webp",
+  "system": {
+    "description": "<p>A powerful arm segment.</p>",
+    "difficulty": 12,
+    "atkModifier": 2,
+    "segmentType": "arm",
+    "position": "",
+    "adjacentSegments": ["Torso"],
+    "fatal": false,
+    "chainGroup": "",
+    "destroyed": false,
+    "broken": false,
+    "brokenTokens": 0,
+    "actions": {}
+  },
+  "folder": null,
+  "_key": "!items!sgarm00000000000"
+}

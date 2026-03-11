@@ -1,0 +1,22 @@
+{
+  "name": "Talon",
+  "type": "fb-cod.colossal-segment",
+  "_id": "sgtalon000000000",
+  "img": "icons/commodities/biological/hand-clawed-tan.webp",
+  "system": {
+    "description": "<p>A razor-sharp talon.</p>",
+    "difficulty": 12,
+    "atkModifier": 2,
+    "segmentType": "talon",
+    "position": "",
+    "adjacentSegments": [],
+    "fatal": false,
+    "chainGroup": "",
+    "destroyed": false,
+    "broken": false,
+    "brokenTokens": 0,
+    "actions": {}
+  },
+  "folder": null,
+  "_key": "!items!sgtalon000000000"
+}

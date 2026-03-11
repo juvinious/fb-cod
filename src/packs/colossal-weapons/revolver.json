@@ -1,105 +1,109 @@
 {
-    "name": "Revolver",
-    "type": "weapon",
-    "_id": "revolver00000000",
-    "img": "modules/fb-cod/assets/weapons/revolver.webp",
-    "system": {
-        "description": {
-            "value": "<p>Six Shot: Place 6 Ammo tokens on your character sheet. Spend 1 Ammo token to make an attack. You can mark a Stress to regain spent Ammo tokens.</p>"
+  "name": "Revolver",
+  "type": "weapon",
+  "_id": "revolver00000000",
+  "img": "modules/fb-cod/assets/icons/weapons/revolver.webp",
+  "system": {
+    "description": {
+      "value": "<p>Six Shot: Place 6 Ammo tokens on your character sheet. Spend 1 Ammo token to make an attack. You can mark a Stress to regain spent Ammo tokens.</p>"
+    },
+    "actions": {},
+    "attached": [],
+    "tier": 1,
+    "equipped": false,
+    "secondary": false,
+    "burden": "oneHanded",
+    "weaponFeatures": [],
+    "attack": {
+      "name": "Attack",
+      "img": "icons/skills/melee/blood-slash-foam-red.webp",
+      "_id": "revolver000atk01",
+      "baseAction": true,
+      "systemPath": "attack",
+      "type": "attack",
+      "range": "far",
+      "target": {
+        "type": "any",
+        "amount": 1
+      },
+      "roll": {
+        "trait": "finesse",
+        "type": "attack",
+        "difficulty": null,
+        "bonus": null,
+        "advState": "neutral",
+        "diceRolling": {
+          "multiplier": "prof",
+          "flatMultiplier": 1,
+          "dice": "d8",
+          "compare": null,
+          "treshold": null
         },
-        "actions": {},
-        "attached": [],
-        "tier": 1,
-        "equipped": false,
-        "secondary": false,
-        "burden": "oneHanded",
-        "weaponFeatures": [],
-        "attack": {
-            "name": "Attack",
-            "img": "icons/skills/melee/blood-slash-foam-red.webp",
-            "_id": "revolver000atk01",
-            "baseAction": true,
-            "systemPath": "attack",
-            "type": "attack",
-            "range": "far",
-            "target": {
-                "type": "any",
-                "amount": 1
+        "useDefault": false
+      },
+      "damage": {
+        "parts": [
+          {
+            "type": [
+              "physical"
+            ],
+            "value": {
+              "multiplier": "prof",
+              "dice": "d8",
+              "flatMultiplier": 1,
+              "bonus": null,
+              "custom": {
+                "enabled": false
+              }
             },
-            "roll": {
-                "trait": "finesse",
-                "type": "attack",
-                "difficulty": null,
-                "bonus": null,
-                "advState": "neutral",
-                "diceRolling": {
-                    "multiplier": "prof",
-                    "flatMultiplier": 1,
-                    "dice": "d8",
-                    "compare": null,
-                    "treshold": null
-                },
-                "useDefault": false
-            },
-            "damage": {
-                "parts": [
-                    {
-                        "type": [
-                            "physical"
-                        ],
-                        "value": {
-                            "multiplier": "prof",
-                            "dice": "d8",
-                            "flatMultiplier": 1,
-                            "bonus": null,
-                            "custom": {
-                                "enabled": false
-                            }
-                        },
-                        "applyTo": "hitPoints",
-                        "resultBased": false,
-                        "base": false
-                    }
-                ],
-                "includeBase": false
-            },
-            "description": "",
-            "chatDisplay": false,
-            "actionType": "action",
-            "cost": [],
-            "uses": {
-                "value": null,
-                "max": null,
-                "recovery": null
-            },
-            "effects": [],
-            "save": {
-                "trait": null,
-                "difficulty": null,
-                "damageMod": "none"
-            }
-        },
-        "rules": {
-            "attack": {
-                "roll": {
-                    "trait": null
-                }
-            }
+            "applyTo": "hitPoints",
+            "resultBased": false,
+            "base": false
+          }
+        ],
+        "includeBase": false
+      },
+      "description": "",
+      "chatDisplay": false,
+      "actionType": "action",
+      "cost": [],
+      "uses": {
+        "value": null,
+        "max": null,
+        "recovery": null
+      },
+      "effects": [],
+      "save": {
+        "trait": null,
+        "difficulty": null,
+        "damageMod": "none"
+      }
+    },
+    "rules": {
+      "attack": {
+        "roll": {
+          "trait": null
         }
-    },
-    "effects": [],
-    "sort": 0,
-    "ownership": {
-        "default": 0
-    },
-    "flags": {},
-    "_stats": {
-        "systemId": "daggerheart",
-        "systemVersion": "1.0.0",
-        "coreVersion": "13",
-        "createdTime": 1773112930291,
-        "modifiedTime": 1773117111543,
-        "lastModifiedBy": "antigravity"
-    },
-    "_key": "!items!revolver00000000"
+      }
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.0.0",
+    "coreVersion": "13.351",
+    "createdTime": 1773112930291,
+    "modifiedTime": 1773117111543,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "folder": null,
+  "_key": "!items!revolver00000000"
 }

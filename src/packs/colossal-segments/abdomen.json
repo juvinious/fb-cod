@@ -1,0 +1,22 @@
+{
+  "name": "Abdomen",
+  "type": "fb-cod.colossal-segment",
+  "_id": "sgabdomen0000000",
+  "img": "icons/commodities/biological/organ-stomach.webp",
+  "system": {
+    "description": "<p>The abdomen segment.</p>",
+    "difficulty": 12,
+    "atkModifier": 0,
+    "segmentType": "abdomen",
+    "position": "",
+    "adjacentSegments": [],
+    "fatal": false,
+    "chainGroup": "",
+    "destroyed": false,
+    "broken": false,
+    "brokenTokens": 0,
+    "actions": {}
+  },
+  "folder": null,
+  "_key": "!items!sgabdomen0000000"
+}

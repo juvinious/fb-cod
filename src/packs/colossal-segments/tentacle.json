@@ -1,0 +1,22 @@
+{
+  "name": "Tentacle",
+  "type": "fb-cod.colossal-segment",
+  "_id": "sgtentacle000000",
+  "img": "icons/commodities/biological/tentacle-pink.webp",
+  "system": {
+    "description": "<p>A writhing tentacle.</p>",
+    "difficulty": 11,
+    "atkModifier": 1,
+    "segmentType": "tentacle",
+    "position": "",
+    "adjacentSegments": [],
+    "fatal": false,
+    "chainGroup": "",
+    "destroyed": false,
+    "broken": false,
+    "brokenTokens": 0,
+    "actions": {}
+  },
+  "folder": null,
+  "_key": "!items!sgtentacle000000"
+}

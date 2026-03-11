@@ -155,6 +155,24 @@ export function parseColossus(rawText) {
 export async function importColossus(parsed) {
     const { name, subtitle, tier, description, motives, size, thresholds, stress, experiences, features, segments } = parsed;
 
+    // ── Pre-fetch Segment Footprints ──────────────────────────────────────────
+    const pack = game.packs.get("fb-cod.colossal-segments");
+    const footprints = {};
+    if (pack) {
+        console.log(`fb-cod | Found pack ${pack.collection}, fetching documents...`);
+        const docs = await pack.getDocuments();
+        console.log(`fb-cod | Fetched ${docs.length} documents from pack.`);
+        for (const doc of docs) {
+            const type = doc.system.segmentType;
+            if (type) {
+                footprints[type] = doc.toObject();
+                console.log(`fb-cod | Cached footprint for type: ${type}, img: ${footprints[type].img}`);
+            }
+        }
+    } else {
+        console.error("fb-cod | Could not find compendium pack 'fb-cod.colossal-segments'");
+    }
+
     // Build experiences object (keyed by random ID, as the system stores them)
     const expObj = {};
     for (const exp of experiences) {
@@ -202,15 +220,76 @@ export async function importColossus(parsed) {
     const allSegmentItems = [];
     const allSegmentFeatures = [];
     for (const seg of segments) {
-        const { segmentItems, segmentFeatures } = buildSegmentItems(seg);
+        const { segmentItems, segmentFeatures } = buildSegmentItems(seg, footprints);
         allSegmentItems.push(...segmentItems);
         allSegmentFeatures.push(...segmentFeatures);
     }
-    if (allSegmentItems.length) await actor.createEmbeddedDocuments('Item', allSegmentItems);
-    if (allSegmentFeatures.length) await actor.createEmbeddedDocuments('Item', allSegmentFeatures);
+
+    let createdSegments = [];
+    if (allSegmentItems.length) {
+        createdSegments = await actor.createEmbeddedDocuments('Item', allSegmentItems);
+    }
+    if (allSegmentFeatures.length) {
+        await actor.createEmbeddedDocuments('Item', allSegmentFeatures);
+    }
+
+    // ── Second Pass: Resolve Adjacency Names to IDs ──────────────────────────
+    if (createdSegments.length > 0) {
+        // Build a mapping of Name -> ID and SegmentType -> ID (Array)
+        const nameToId = new Map();
+        const typeToIds = new Map();
+
+        for (const segDoc of createdSegments) {
+            nameToId.set(segDoc.name.toLowerCase(), segDoc.id);
+            
+            const typeKey = segDoc.system.segmentType;
+            if (typeKey) {
+                if (!typeToIds.has(typeKey)) typeToIds.set(typeKey, []);
+                typeToIds.get(typeKey).push(segDoc.id);
+            }
+        }
+
+        const updates = [];
+        for (const segDoc of createdSegments) {
+            const pendingNames = segDoc.system.adjacentSegments || [];
+            if (pendingNames.length === 0) continue;
+
+            const resolvedIds = [];
+            for (const name of pendingNames) {
+                const lowerName = name.toLowerCase();
+                
+                // 1. Try exact name match (e.g. "Left Arm")
+                if (nameToId.has(lowerName)) {
+                    resolvedIds.push(nameToId.get(lowerName));
+                    continue;
+                }
+
+                // 2. Try segment type match (e.g. "Arms" -> "arm")
+                // Resolve to ALL instances of that type found on the colossus
+                const inferredType = inferSegmentType(name);
+                if (typeToIds.has(inferredType)) {
+                    resolvedIds.push(...typeToIds.get(inferredType));
+                }
+            }
+
+            // Deduplicate and filter nulls
+            const finalIds = [...new Set(resolvedIds)].filter(Boolean);
+
+            if (finalIds.length > 0) {
+                updates.push({
+                    _id: segDoc.id,
+                    'system.adjacentSegments': finalIds
+                });
+            }
+        }
+
+        if (updates.length > 0) {
+            await actor.updateEmbeddedDocuments('Item', updates);
+        }
+    }
 
     ui.notifications.info(
-        `fb-cod | "${actorData.name}" imported with ${allSegmentItems.length} segment(s).`
+        `fb-cod | "${actorData.name}" imported with ${createdSegments.length} segment(s).`
     );
     actor.sheet.render({ force: true });
     return actor;
@@ -260,7 +339,7 @@ function parseSegmentBlock(blocks, prefix) {
     const segType = inferSegmentType(rawSegName);
 
     // Parse stat fields
-    let adjacentSegments = '';
+    let adjacentSegments = [];
     let difficulty = 12;
     let hp = 5;
     let atkModifier = null;
@@ -268,13 +347,16 @@ function parseSegmentBlock(blocks, prefix) {
     const features = [];
     let inFeatures = false;
     let currentFeature = null;
+    const prefixCaseInsensitive = new RegExp("^" + prefix, 'i');
 
     for (let line of lines) {
         if (!line) continue;
         line = line.trim();
 
         if (/^Adjacent Segments?:/i.test(line)) {
-            adjacentSegments = line.replace(/^Adjacent Segments?:\s*/i, '').trim();
+            const rawAdjacent = line.replace(/^Adjacent Segments?:\s*/i, '').trim();
+            // Split by comma or semicolon, trim, and remove empty strings
+            adjacentSegments = rawAdjacent.split(/[,;]/).map(s => s.trim()).filter(Boolean);
         } else if (/^Difficulty:/i.test(line)) {
             // Difficulty: 16 | HP: 5
             // or Difficulty: 15 | HP: None
@@ -346,17 +428,27 @@ function parseSegmentBlock(blocks, prefix) {
  */
 function inferSegmentType(name) {
     const l = name.toLowerCase();
-    if (l === 'head') return 'head';
-    if (l === 'torso') return 'torso';
-    if (l === 'neck') return 'neck';
-    if (l === 'core') return 'core';
-    if (l === 'tail') return 'tail';
-    if (l.includes('foreleg')) return 'foreleg-left';
-    if (l.includes('hindleg')) return 'hindleg-left';
-    if (l.includes('arm')) return 'arm-left';
+    if (l.includes('head')) return 'head';
+    if (l.includes('neck')) return 'neck';
+    if (l.includes('torso')) return 'torso';
+    if (l.includes('thorax')) return 'thorax';
+    if (l.includes('abdomen')) return 'abdomen';
+    if (l.includes('carapace')) return 'carapace';
+    if (l.includes('clipping')) return 'carapace';
+    if (l.includes('shell')) return 'shell';
+    if (l.includes('arm')) return 'arm';
+    if (l.includes('forelimb')) return 'forelimb';
+    if (l.includes('foreleg')) return 'forelimb';
+    if (l.includes('hindlimb')) return 'hindlimb';
+    if (l.includes('hindleg')) return 'hindlimb';
     if (l.includes('leg')) return 'leg';
-    if (l.includes('wing')) return 'wing-left';
+    if (l.includes('wing')) return 'wing';
     if (l.includes('claw')) return 'claw';
+    if (l.includes('talon')) return 'talon';
+    if (l.includes('pincer')) return 'pincer';
+    if (l.includes('tentacle')) return 'tentacle';
+    if (l.includes('antenna') || l.includes('antennae')) return 'antennae';
+    if (l.includes('tail')) return 'tail';
     return 'other';
 }
 
@@ -530,26 +622,23 @@ function buildFeatureActionSource(feat) {
 
 /**
  * Build one or more segment item data objects, expanding count > 1 into named copies.
- * @param {object} seg  Parsed segment data
+ * @param {object} seg         Parsed segment data
+ * @param {object} footprints  Map of segmentType -> footprint item data
  * @returns {object[]}  Array of Foundry item creation data objects
  */
-function buildSegmentItems(seg) {
-    /** Side name pairs for symmetric body parts */
+function buildSegmentItems(seg, footprints = {}) {
+    /** Side name suffixes for symmetric body parts */
     const SIDES = {
         arm: ['Left Arm', 'Right Arm'],
-        foreleg: ['Left Foreleg', 'Right Foreleg'],
-        hindleg: ['Left Hindleg', 'Right Hindleg'],
+        forelimb: ['Left Forelimb', 'Right Forelimb'],
+        hindlimb: ['Left Hindlimb', 'Right Hindlimb'],
         leg: ['Left Leg', 'Right Leg'],
         wing: ['Left Wing', 'Right Wing'],
-        claw: ['Left Claw', 'Right Claw']
-    };
-    const TYPE_PAIRS = {
-        arm: ['arm-left', 'arm-right'],
-        foreleg: ['foreleg-left', 'foreleg-right'],
-        hindleg: ['hindleg-left', 'hindleg-right'],
-        leg: ['leg-left', 'leg-right'],
-        wing: ['wing-left', 'wing-right'],
-        claw: ['claw-left', 'claw-right']
+        claw: ['Left Claw', 'Right Claw'],
+        talon: ['Left Talon', 'Right Talon'],
+        pincer: ['Left Pincer', 'Right Pincer'],
+        tentacle: ['Left Tentacle', 'Right Tentacle'],
+        antennae: ['Left Antenna', 'Right Antenna']
     };
 
     const segmentItems = [];
@@ -558,21 +647,20 @@ function buildSegmentItems(seg) {
     for (let i = 0; i < seg.count; i++) {
         let segName = seg.name;
         let segType = seg.segmentType;
+        let position = '';
 
         if (seg.count > 1) {
-            const base = seg.name.toLowerCase();
-            const sideKey = Object.keys(SIDES).find(k => base.includes(k));
+            // Find side naming mapping based on the inferred segment type
+            const sideNameMap = SIDES[segType];
 
-            // If it's a simple pair (count === 2), use Left/Right
-            if (sideKey && seg.count === 2) {
-                segName = SIDES[sideKey][i] ?? `${seg.name} ${i + 1}`;
-                segType = TYPE_PAIRS[sideKey]?.[i] ?? seg.segmentType;
+            if (sideNameMap && seg.count === 2) {
+                const sideName = sideNameMap[i]; // "Left Arm", "Right Arm"
+                segName = sideName;
+                position = sideName.split(' ')[0]; // "Left", "Right"
             } else {
-                // For count > 2 (spiders/crabs) or unknown parts, use numbered naming
-                // Try to singularize the name (e.g. "Legs" -> "Leg")
                 const singularBase = seg.name.replace(/s$/i, '');
                 segName = `${singularBase} ${i + 1}`;
-                // Keep the base segmentType (e.g. 'leg' or 'claw')
+                position = `${i + 1}`;
             }
         }
 
@@ -598,24 +686,34 @@ function buildSegmentItems(seg) {
             });
         }
 
-        segmentItems.push({
+        const footprint = footprints[segType];
+        if (!footprint) console.warn(`fb-cod | No footprint found in compendium for segment type: ${segType}`);
+        const footprintData = footprint ? foundry.utils.deepClone(footprint) : null;
+
+        const segmentData = {
             name: segName,
             type: 'fb-cod.colossal-segment',
-            system: {
-                difficulty: seg.difficulty,
-                atkModifier: seg.atkModifier,
-                adjacentSegments: seg.adjacentSegments,
+            img: footprintData?.img || 'systems/daggerheart/assets/icons/documents/actors/dragon-head.svg',
+            system: foundry.utils.mergeObject(footprintData?.system || {}, {
+                difficulty: seg.difficulty || footprintData?.system?.difficulty || 12,
+                atkModifier: seg.atkModifier || footprintData?.system?.atkModifier || 0,
+                adjacentSegments: (seg.adjacentSegments && seg.adjacentSegments.length > 0)
+                    ? seg.adjacentSegments
+                    : (footprintData?.system?.adjacentSegments || []),
                 segmentType: segType,
-                fatal: seg.fatal,
-                chainGroup: seg.chainGroup,
+                position,
+                fatal: seg.fatal || footprintData?.system?.fatal || false,
+                chainGroup: seg.chainGroup || footprintData?.system?.chainGroup || "",
                 resource: {
                     type: 'simple',
                     name: 'HP',
-                    value: seg.hp,
-                    max: seg.hp
+                    value: seg.hp ?? footprintData?.system?.difficulty ?? 5,
+                    max: seg.hp ?? footprintData?.system?.difficulty ?? 5
                 }
-            }
-        });
+            })
+        };
+
+        segmentItems.push(segmentData);
     }
 
     return { segmentItems, segmentFeatures };

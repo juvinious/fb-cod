@@ -1,0 +1,22 @@
+{
+  "name": "Antennae",
+  "type": "fb-cod.colossal-segment",
+  "_id": "sgantennae000000",
+  "img": "icons/commodities/biological/antenna-blue.webp",
+  "system": {
+    "description": "<p>Standard antennae segment.</p>",
+    "difficulty": 12,
+    "atkModifier": 0,
+    "segmentType": "antennae",
+    "position": "",
+    "adjacentSegments": ["Head"],
+    "fatal": false,
+    "chainGroup": "",
+    "destroyed": false,
+    "broken": false,
+    "brokenTokens": 0,
+    "actions": {}
+  },
+  "folder": null,
+  "_key": "!items!sgantennae000000"
+}

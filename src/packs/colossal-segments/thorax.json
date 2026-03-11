@@ -1,0 +1,22 @@
+{
+  "name": "Thorax",
+  "type": "fb-cod.colossal-segment",
+  "_id": "sgthorax00000000",
+  "img": "icons/commodities/biological/legs-insect-brown.webp",
+  "system": {
+    "description": "<p>Central thorax segment.</p>",
+    "difficulty": 12,
+    "atkModifier": 0,
+    "segmentType": "thorax",
+    "position": "",
+    "adjacentSegments": [],
+    "fatal": false,
+    "chainGroup": "",
+    "destroyed": false,
+    "broken": false,
+    "brokenTokens": 0,
+    "actions": {}
+  },
+  "folder": null,
+  "_key": "!items!sgthorax00000000"
+}

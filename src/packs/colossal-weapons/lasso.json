@@ -1,105 +1,109 @@
 {
-    "name": "Lasso",
-    "type": "weapon",
-    "_id": "lasso00000000000",
-    "img": "modules/fb-cod/assets/weapons/lasso.webp",
-    "system": {
-        "description": {
-            "value": "<p>Roped: On a successful attack, you can temporarily Rope the target instead of dealing damage. While Roped, the target is Restrained and Vulnerable, but you must remain within Very Close range of the target. When the target clears this condition, you can make a Strength Reaction Roll. On a success, they remain Roped.</p>"
+  "name": "Lasso",
+  "type": "weapon",
+  "_id": "lasso00000000000",
+  "img": "modules/fb-cod/assets/icons/weapons/lasso.webp",
+  "system": {
+    "description": {
+      "value": "<p>Roped: On a successful attack, you can temporarily Rope the target instead of dealing damage. While Roped, the target is Restrained and Vulnerable, but you must remain within Very Close range of the target. When the target clears this condition, you can make a Strength Reaction Roll. On a success, they remain Roped.</p>"
+    },
+    "actions": {},
+    "attached": [],
+    "tier": 1,
+    "equipped": false,
+    "secondary": true,
+    "burden": "oneHanded",
+    "weaponFeatures": [],
+    "attack": {
+      "name": "Attack",
+      "img": "icons/skills/melee/blood-slash-foam-red.webp",
+      "_id": "lasso000000atk01",
+      "baseAction": true,
+      "systemPath": "attack",
+      "type": "attack",
+      "range": "veryClose",
+      "target": {
+        "type": "any",
+        "amount": 1
+      },
+      "roll": {
+        "trait": "agility",
+        "type": "attack",
+        "difficulty": null,
+        "bonus": null,
+        "advState": "neutral",
+        "diceRolling": {
+          "multiplier": "prof",
+          "flatMultiplier": 1,
+          "dice": "d4",
+          "compare": null,
+          "treshold": null
         },
-        "actions": {},
-        "attached": [],
-        "tier": 1,
-        "equipped": false,
-        "secondary": true,
-        "burden": "oneHanded",
-        "weaponFeatures": [],
-        "attack": {
-            "name": "Attack",
-            "img": "icons/skills/melee/blood-slash-foam-red.webp",
-            "_id": "lasso000000atk01",
-            "baseAction": true,
-            "systemPath": "attack",
-            "type": "attack",
-            "range": "veryClose",
-            "target": {
-                "type": "any",
-                "amount": 1
+        "useDefault": false
+      },
+      "damage": {
+        "parts": [
+          {
+            "type": [
+              "physical"
+            ],
+            "value": {
+              "multiplier": "prof",
+              "dice": "d4",
+              "flatMultiplier": 1,
+              "bonus": null,
+              "custom": {
+                "enabled": false
+              }
             },
-            "roll": {
-                "trait": "agility",
-                "type": "attack",
-                "difficulty": null,
-                "bonus": null,
-                "advState": "neutral",
-                "diceRolling": {
-                    "multiplier": "prof",
-                    "flatMultiplier": 1,
-                    "dice": "d4",
-                    "compare": null,
-                    "treshold": null
-                },
-                "useDefault": false
-            },
-            "damage": {
-                "parts": [
-                    {
-                        "type": [
-                            "physical"
-                        ],
-                        "value": {
-                            "multiplier": "prof",
-                            "dice": "d4",
-                            "flatMultiplier": 1,
-                            "bonus": null,
-                            "custom": {
-                                "enabled": false
-                            }
-                        },
-                        "applyTo": "hitPoints",
-                        "resultBased": false,
-                        "base": false
-                    }
-                ],
-                "includeBase": false
-            },
-            "description": "",
-            "chatDisplay": false,
-            "actionType": "action",
-            "cost": [],
-            "uses": {
-                "value": null,
-                "max": null,
-                "recovery": null
-            },
-            "effects": [],
-            "save": {
-                "trait": null,
-                "difficulty": null,
-                "damageMod": "none"
-            }
-        },
-        "rules": {
-            "attack": {
-                "roll": {
-                    "trait": null
-                }
-            }
+            "applyTo": "hitPoints",
+            "resultBased": false,
+            "base": false
+          }
+        ],
+        "includeBase": false
+      },
+      "description": "",
+      "chatDisplay": false,
+      "actionType": "action",
+      "cost": [],
+      "uses": {
+        "value": null,
+        "max": null,
+        "recovery": null
+      },
+      "effects": [],
+      "save": {
+        "trait": null,
+        "difficulty": null,
+        "damageMod": "none"
+      }
+    },
+    "rules": {
+      "attack": {
+        "roll": {
+          "trait": null
         }
-    },
-    "effects": [],
-    "sort": 0,
-    "ownership": {
-        "default": 0
-    },
-    "flags": {},
-    "_stats": {
-        "systemId": "daggerheart",
-        "systemVersion": "1.0.0",
-        "coreVersion": "13",
-        "createdTime": 1773112968527,
-        "modifiedTime": 1773117111543,
-        "lastModifiedBy": "antigravity"
-    },
-    "_key": "!items!lasso00000000000"
+      }
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.0.0",
+    "coreVersion": "13.351",
+    "createdTime": 1773112968527,
+    "modifiedTime": 1773117111543,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "folder": null,
+  "_key": "!items!lasso00000000000"
 }

@@ -1,0 +1,22 @@
+{
+  "name": "Claw",
+  "type": "fb-cod.colossal-segment",
+  "_id": "sgclaw0000000000",
+  "img": "icons/commodities/biological/hand-clawed-tan.webp",
+  "system": {
+    "description": "<p>A sharp claw segment.</p>",
+    "difficulty": 12,
+    "atkModifier": 2,
+    "segmentType": "claw",
+    "position": "",
+    "adjacentSegments": ["Forelimb", "Arm"],
+    "fatal": false,
+    "chainGroup": "",
+    "destroyed": false,
+    "broken": false,
+    "brokenTokens": 0,
+    "actions": {}
+  },
+  "folder": null,
+  "_key": "!items!sgclaw0000000000"
+}

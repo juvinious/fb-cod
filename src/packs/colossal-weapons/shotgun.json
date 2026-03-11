@@ -1,105 +1,109 @@
 {
-    "name": "Shotgun",
-    "type": "weapon",
-    "_id": "shotgun000000000",
-    "img": "modules/fb-cod/assets/weapons/shotgun.webp",
-    "system": {
-        "description": {
-            "value": "<p>Scattershot: When you make an attack, target all creatures in front of you within range.</p>"
+  "name": "Shotgun",
+  "type": "weapon",
+  "_id": "shotgun000000000",
+  "img": "modules/fb-cod/assets/icons/weapons/shotgun.webp",
+  "system": {
+    "description": {
+      "value": "<p>Scattershot: When you make an attack, target all creatures in front of you within range.</p>"
+    },
+    "actions": {},
+    "attached": [],
+    "tier": 1,
+    "equipped": false,
+    "secondary": false,
+    "burden": "twoHanded",
+    "weaponFeatures": [],
+    "attack": {
+      "name": "Attack",
+      "img": "icons/skills/melee/blood-slash-foam-red.webp",
+      "_id": "shotgun0000atk01",
+      "baseAction": true,
+      "systemPath": "attack",
+      "type": "attack",
+      "range": "veryClose",
+      "target": {
+        "type": "any",
+        "amount": 1
+      },
+      "roll": {
+        "trait": "strength",
+        "type": "attack",
+        "difficulty": null,
+        "bonus": null,
+        "advState": "neutral",
+        "diceRolling": {
+          "multiplier": "prof",
+          "flatMultiplier": 1,
+          "dice": "d6",
+          "compare": null,
+          "treshold": null
         },
-        "actions": {},
-        "attached": [],
-        "tier": 1,
-        "equipped": false,
-        "secondary": false,
-        "burden": "twoHanded",
-        "weaponFeatures": [],
-        "attack": {
-            "name": "Attack",
-            "img": "icons/skills/melee/blood-slash-foam-red.webp",
-            "_id": "shotgun0000atk01",
-            "baseAction": true,
-            "systemPath": "attack",
-            "type": "attack",
-            "range": "veryClose",
-            "target": {
-                "type": "any",
-                "amount": 1
+        "useDefault": false
+      },
+      "damage": {
+        "parts": [
+          {
+            "type": [
+              "physical"
+            ],
+            "value": {
+              "multiplier": "prof",
+              "dice": "d6",
+              "flatMultiplier": 1,
+              "bonus": 1,
+              "custom": {
+                "enabled": false
+              }
             },
-            "roll": {
-                "trait": "strength",
-                "type": "attack",
-                "difficulty": null,
-                "bonus": null,
-                "advState": "neutral",
-                "diceRolling": {
-                    "multiplier": "prof",
-                    "flatMultiplier": 1,
-                    "dice": "d6",
-                    "compare": null,
-                    "treshold": null
-                },
-                "useDefault": false
-            },
-            "damage": {
-                "parts": [
-                    {
-                        "type": [
-                            "physical"
-                        ],
-                        "value": {
-                            "multiplier": "prof",
-                            "dice": "d6",
-                            "flatMultiplier": 1,
-                            "bonus": 1,
-                            "custom": {
-                                "enabled": false
-                            }
-                        },
-                        "applyTo": "hitPoints",
-                        "resultBased": false,
-                        "base": false
-                    }
-                ],
-                "includeBase": false
-            },
-            "description": "",
-            "chatDisplay": false,
-            "actionType": "action",
-            "cost": [],
-            "uses": {
-                "value": null,
-                "max": null,
-                "recovery": null
-            },
-            "effects": [],
-            "save": {
-                "trait": null,
-                "difficulty": null,
-                "damageMod": "none"
-            }
-        },
-        "rules": {
-            "attack": {
-                "roll": {
-                    "trait": null
-                }
-            }
+            "applyTo": "hitPoints",
+            "resultBased": false,
+            "base": false
+          }
+        ],
+        "includeBase": false
+      },
+      "description": "",
+      "chatDisplay": false,
+      "actionType": "action",
+      "cost": [],
+      "uses": {
+        "value": null,
+        "max": null,
+        "recovery": null
+      },
+      "effects": [],
+      "save": {
+        "trait": null,
+        "difficulty": null,
+        "damageMod": "none"
+      }
+    },
+    "rules": {
+      "attack": {
+        "roll": {
+          "trait": null
         }
-    },
-    "effects": [],
-    "sort": 0,
-    "ownership": {
-        "default": 0
-    },
-    "flags": {},
-    "_stats": {
-        "systemId": "daggerheart",
-        "systemVersion": "1.0.0",
-        "coreVersion": "13",
-        "createdTime": 1773112954914,
-        "modifiedTime": 1773117111543,
-        "lastModifiedBy": "antigravity"
-    },
-    "_key": "!items!shotgun000000000"
+      }
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.0.0",
+    "coreVersion": "13.351",
+    "createdTime": 1773112954914,
+    "modifiedTime": 1773117111543,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "folder": null,
+  "_key": "!items!shotgun000000000"
 }

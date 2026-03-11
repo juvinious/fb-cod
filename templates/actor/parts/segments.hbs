@@ -36,12 +36,12 @@
         {{#each segmentGroups as |group|}}
         <h4 class="chain-header"
             style="margin-top:15px; margin-bottom:5px; margin-left:10px; font-family:'Modesto Condensed', serif; color:#cda36f; text-shadow: 1px 1px 2px black;">
-            {{group.name}} {{#if group.isBroken}}<span
-                style="color:#d55; font-size: 0.8em; vertical-align: middle;">[Chain Broken]</span>{{/if}}
+            {{group.name}} {{#if group.isChainDefeated}}<span
+                style="color:#d55; font-size: 0.8em; vertical-align: middle;">[Chain Defeated]</span>{{/if}}
         </h4>
         <ul class="items-list segments-list">
             {{#each group.segments as |segment|}}
-            <li class="inventory-item segment-item {{#if segment.system.destroyed}}destroyed{{/if}} {{#if segment.computedBroken}}broken{{/if}}"
+                <li class="inventory-item segment-item {{#if segment.system.destroyed}}destroyed{{/if}} {{#if segment.system.isBroken}}broken{{/if}} {{#if segment.system.isCollapsed}}collapsed{{/if}}"
                 data-item-id="{{segment.id}}" data-item-uuid="{{segment.uuid}}" data-type="fb-cod.colossal-segment">
                 <div class="inventory-item-header padded">
                     {{!-- Image/Portrait opens the native FeatureSheet --}}
@@ -57,27 +57,29 @@
                         <span class="item-name">{{segment.name}} <span
                                 style="opacity:0.6; font-size:0.8em;">({{segment.system.segmentType}})</span></span>
                         <div class="item-tags">
-                            {{#each segment._getTags as |tag|}}
+                            {{#each segment.computedTags as |tag|}}
                             <div class="tag">{{tag}}</div>
                             {{/each}}
                         </div>
                     </div>
 
-                    {{!-- Stats/Resources (Difficulty & HP) --}}
+                    {{!-- Stats/Resources (Difficulty, HP, Tokens) --}}
                     <div class="item-resource"
-                        style="display:flex; align-items:center; gap:12px; margin-right:15px; flex-wrap:nowrap; min-width:140px;">
+                        style="display:flex; align-items:center; gap:12px; margin-right:15px; flex-wrap:nowrap; min-width:300px; justify-content: flex-end;">
+                        
+                        {{!-- Difficulty --}}
                         <div class="stat" title="Difficulty"><i class="fas fa-shield-alt"></i>
                             {{segment.system.difficulty}}
                         </div>
 
-                        {{!-- Custom Interactive Segment HP Control --}}
+                        {{!-- Segment HP Control (Pill Style) --}}
                         <div class="stat segment-hp-control" title="HP">
                             <i class="fas fa-heart" style="color:#d55; margin-right:4px;"></i>
                             <a data-action="adjustSegmentHP" data-item-id="{{segment.id}}" data-adjustment="-1"
                                 title="-1 HP">
                                 <i class="fas fa-minus"></i>
                             </a>
-                            <span class="hp-value">{{segment.system.hp.value}} / {{segment.system.hp.max}}</span>
+                            <span class="token-value">{{segment.system.resource.value}} / {{segment.system.resource.max}}</span>
                             <a data-action="adjustSegmentHP" data-item-id="{{segment.id}}" data-adjustment="1"
                                 title="+1 HP">
                                 <i class="fas fa-plus"></i>
@@ -85,20 +87,34 @@
                         </div>
                     </div>
 
-                    {{!-- Controls --}}
-                    <div class="controls">
+                    {{!-- Controls (Binary Toggles) --}}
+                    <div class="controls" style="flex: 0 0 100px;">
+                        {{!-- Broken Toggle --}}
+                        <a class="toggle-broken {{#if segment.system.isBroken}}active{{/if}}"
+                            data-action="toggleSegmentBroken" data-item-id="{{segment.id}}"
+                            data-tooltip="Toggle Broken State">
+                            <i class="fa-solid fa-hammer"></i>
+                        </a>
+
+                        {{!-- Collapsed Toggle --}}
+                        <a class="toggle-collapsed {{#if segment.system.isCollapsed}}active{{/if}}"
+                            data-action="toggleSegmentCollapsed" data-item-id="{{segment.id}}"
+                            data-tooltip="Toggle Collapsed State">
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </a>
+
                         {{!-- Destroyed Toggle --}}
                         <a class="toggle-destroyed {{#if segment.system.destroyed}}active{{/if}}"
                             data-action="toggleSegmentDestroyed" data-item-id="{{segment.id}}"
                             data-tooltip="{{#if segment.system.destroyed}}Restore Segment{{else}}Destroy Segment{{/if}}">
                             <i class="fa-solid fa-skull"></i>
                         </a>
-                        {{!-- Edit opens the native Daggerheart FeatureSheet (tabs: Description, Settings, Actions,
-                        Effects)
-                        --}}
+                        
+                        {{!-- Edit --}}
                         <a data-action="editDoc" data-item-uuid="{{segment.uuid}}" data-tooltip="Edit Segment">
                             <i class="fa-solid fa-edit"></i>
                         </a>
+                        
                         {{!-- Delete --}}
                         <a data-action="deleteDoc" data-item-uuid="{{segment.uuid}}" data-tooltip="Delete Segment">
                             <i class="fas fa-trash"></i>

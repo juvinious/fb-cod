@@ -162,11 +162,22 @@ export function setupColossalSegmentSheet() {
                     return !isAttack;
                 }).map(buildActionView);
 
+                // Adjacency Candidates (all other segments on the actor)
+                const currentId = this.document.id;
+                context.neighborCandidates = this.document.parent.items
+                    .filter(i => i.type === 'fb-cod.colossal-segment' && i.id !== currentId)
+                    .map(i => ({
+                        id: i.id,
+                        name: i.name,
+                        checked: (this.document.system.adjacentSegments || []).includes(i.id)
+                    }));
+
                 // Keep associatedFeatures for backward compatibility in templates if needed
                 context.associatedFeatures = allSegmentItems;
             } else {
                 context.segmentAttacks = [];
                 context.segmentFeatures = [];
+                context.neighborCandidates = [];
                 context.associatedFeatures = [];
             }
 

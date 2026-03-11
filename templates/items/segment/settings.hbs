@@ -15,8 +15,16 @@
         {{formInput document.system.schema.fields.atkModifier value=document.system.atkModifier}}
 
         <span>Adjacent Segments</span>
-        {{formInput document.system.schema.fields.adjacentSegments value=document.system.adjacentSegments
-        placeholder="e.g. Torso, Head"}}
+        <div class="adjacent-segments-list">
+            {{#each neighborCandidates}}
+            <label class="checkbox-pill">
+                <input type="checkbox" name="system.adjacentSegments" value="{{this.id}}" {{checked this.checked}}>
+                <span>{{this.name}}</span>
+            </label>
+            {{else}}
+            <p class="notes">No other segments found on this Colossus.</p>
+            {{/each}}
+        </div>
     </fieldset>
 
     {{!-- === Defeat Conditions === --}}
@@ -45,8 +53,8 @@
         </div>
 
         <div class="form-group">
-            <span>Broken Tokens</span>
-            {{formInput document.system.schema.fields.brokenTokens value=document.system.brokenTokens}}
+            {{formInput document.system.schema.fields.collapsed value=document.system.collapsed}}
+            <span>Collapsed</span>
         </div>
 
         <div class="form-group">

@@ -1,0 +1,22 @@
+{
+  "name": "Neck",
+  "type": "fb-cod.colossal-segment",
+  "_id": "sgneck0000000000",
+  "img": "icons/skills/wounds/anatomy-bone-joint.webp",
+  "system": {
+    "description": "<p>A vulnerable neck segment.</p>",
+    "difficulty": 12,
+    "atkModifier": 0,
+    "segmentType": "neck",
+    "position": "",
+    "adjacentSegments": ["Head", "Torso"],
+    "fatal": false,
+    "chainGroup": "",
+    "destroyed": false,
+    "broken": false,
+    "brokenTokens": 0,
+    "actions": {}
+  },
+  "folder": null,
+  "_key": "!items!sgneck0000000000"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Hindlimb",
+  "type": "fb-cod.colossal-segment",
+  "_id": "sghindlimb000000",
+  "img": "icons/commodities/biological/foot-black-grey.webp",
+  "system": {
+    "description": "<p>Powerful rearing limb.</p>",
+    "difficulty": 12,
+    "atkModifier": 0,
+    "segmentType": "hindlimb",
+    "position": "",
+    "adjacentSegments": ["Torso"],
+    "fatal": false,
+    "chainGroup": "",
+    "destroyed": false,
+    "broken": false,
+    "brokenTokens": 0,
+    "actions": {}
+  },
+  "folder": null,
+  "_key": "!items!sghindlimb000000"
+}

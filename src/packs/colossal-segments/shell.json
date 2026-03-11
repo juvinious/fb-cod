@@ -1,0 +1,22 @@
+{
+  "name": "Shell",
+  "type": "fb-cod.colossal-segment",
+  "_id": "sgshell000000000",
+  "img": "icons/commodities/biological/shell-turtle-grey.webp",
+  "system": {
+    "description": "<p>Vast protective shell.</p>",
+    "difficulty": 14,
+    "atkModifier": 0,
+    "segmentType": "shell",
+    "position": "",
+    "adjacentSegments": [],
+    "fatal": false,
+    "chainGroup": "",
+    "destroyed": false,
+    "broken": false,
+    "brokenTokens": 0,
+    "actions": {}
+  },
+  "folder": null,
+  "_key": "!items!sgshell000000000"
+}

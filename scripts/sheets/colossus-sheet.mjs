@@ -145,7 +145,12 @@ export function setupColossusSheet() {
                     newHP = Math.max(0, Math.min(newHP, max));
 
                     if (newHP !== value) {
-                        await segment.update({ "system.resource.value": newHP });
+                        const updateData = { "system.resource.value": newHP };
+                        // Automatically set/unset destroyed based on HP
+                        if (newHP === 0) updateData["system.destroyed"] = true;
+                        else if (value === 0 && newHP > 0) updateData["system.destroyed"] = false;
+                        
+                        await segment.update(updateData);
                     }
                 },
                 toggleSegmentDestroyed: async function (event, target) {
@@ -157,7 +162,28 @@ export function setupColossusSheet() {
 
                     // Toggle the destroyed boolean
                     const isDestroyed = segment.system.destroyed;
-                    await segment.update({ "system.destroyed": !isDestroyed });
+                    const updateData = { "system.destroyed": !isDestroyed };
+                    
+                    // If restoring, ensure HP is at least 1
+                    if (isDestroyed && segment.system.resource.value === 0) {
+                        updateData["system.resource.value"] = 1;
+                    }
+
+                    await segment.update(updateData);
+                },
+                toggleSegmentBroken: async function (event, target) {
+                    const segmentId = target.dataset.itemId;
+                    if (!segmentId) return;
+                    const segment = this.document.items.get(segmentId);
+                    if (!segment) return;
+                    await segment.update({ "system.broken": !segment.system.broken });
+                },
+                toggleSegmentCollapsed: async function (event, target) {
+                    const segmentId = target.dataset.itemId;
+                    if (!segmentId) return;
+                    const segment = this.document.items.get(segmentId);
+                    if (!segment) return;
+                    await segment.update({ "system.collapsed": !segment.system.collapsed });
                 },
                 /**
                  * Roll a segment attack directly using actor.diceRoll() rather than action.use().
@@ -169,10 +195,18 @@ export function setupColossusSheet() {
                     const { segmentUuid, actionId } = target.dataset;
                     if (!segmentUuid || !actionId) return;
 
-                    // The 'actionId' now corresponds to the Feature Item's ID on the main Colossus Actor
+                    const segment = await fromUuid(segmentUuid);
                     const featureItem = this.actor.items.get(actionId);
-                    if (!featureItem) {
-                        ui.notifications.warn("fb-cod | Feature missing from Colossus actor.");
+
+                    if (!segment || !featureItem) {
+                        ui.notifications.warn("fb-cod | Missing segment or feature.");
+                        return;
+                    }
+
+                    // Enforce mechanical restrictions
+                    if (!segment.system.canUseFeature(featureItem.system.featureForm)) {
+                        const state = segment.system.destroyed ? "Destroyed" : "Broken";
+                        ui.notifications.warn(`fb-cod | Cannot use ${featureItem.name}: Segment is ${state}.`);
                         return;
                     }
 
@@ -186,8 +220,19 @@ export function setupColossusSheet() {
                     const { segmentUuid, actionId } = target.dataset;
                     if (!segmentUuid || !actionId) return;
 
+                    const segment = await fromUuid(segmentUuid);
                     const featureItem = this.actor.items.get(actionId);
-                    if (featureItem?.toChat) return featureItem.toChat();
+
+                    if (!segment || !featureItem) return;
+
+                    // Enforce mechanical restrictions
+                    if (!segment.system.canUseFeature(featureItem.system.featureForm)) {
+                        const state = segment.system.destroyed ? "Destroyed" : "Broken";
+                        ui.notifications.warn(`fb-cod | Cannot display ${featureItem.name}: Segment is ${state}.`);
+                        return;
+                    }
+
+                    if (featureItem.toChat) return featureItem.toChat();
                 },
                 toggleCondition: async function (event, target) {
                     const condition = target.dataset.condition;
@@ -322,6 +367,8 @@ export function setupColossusSheet() {
             }
 
             // Group segments
+            context.isDefeated = sortedSegments.length > 0 && sortedSegments.every(s => s.system.destroyed);
+            
             for (const segment of sortedSegments) {
                 const sys = segment.system;
                 if (!sys) continue;
@@ -333,12 +380,15 @@ export function setupColossusSheet() {
                         segments: [],
                         total: 0,
                         destroyed: 0,
-                        isBroken: false
+                        isChainDefeated: false
                     };
                 }
 
                 context.segmentGroups[groupName].segments.push(segment);
                 context.segmentGroups[groupName].total++;
+
+                // Pre-calculate tags for rendering
+                segment.computedTags = segment.system._getTags();
 
                 if (sys.destroyed) {
                     context.segmentGroups[groupName].destroyed++;
@@ -346,17 +396,14 @@ export function setupColossusSheet() {
                 }
             }
 
-            // Calculate Chain Broken status
+            // Calculate Chain Defeated status
             for (const group of Object.values(context.segmentGroups)) {
                 if (group.total > 0 && group.total === group.destroyed) {
-                    group.isBroken = true;
+                    group.isChainDefeated = true;
                     if (group.name !== "Core Segments") {
                         context.isDefeated = true; // Chain fully destroyed kills colossus
                     }
                 }
-
-                // Assign the computed chain broken status to individual segments for styling if desired
-                group.segments.forEach(s => s.computedBroken = group.isBroken);
             }
 
             context.hasSegments = sortedSegments.length > 0;
