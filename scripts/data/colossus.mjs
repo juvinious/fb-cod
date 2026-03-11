@@ -64,6 +64,16 @@ export function setupColossusModel() {
         }
 
         /** @inheritDoc */
+        async _preCreate(data, options, user) {
+            const allowed = await super._preCreate(data, options, user);
+            if (allowed === false) return false;
+
+            // Ensure our specific default size
+            const update = { system: { size: 'gargantuan' } };
+            this.parent.updateSource(update);
+        }
+
+        /** @inheritDoc */
         isItemValid(source) {
             return source.type === 'feature' ||
                 source.type === 'fb-cod.colossal-segment' ||

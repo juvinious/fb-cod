@@ -17,7 +17,27 @@ export function setupColossalSegmentSheet() {
         /** @inheritdoc */
         static DEFAULT_OPTIONS = foundry.utils.mergeObject(super.DEFAULT_OPTIONS, {
             classes: ['colossal-segment'],
-            position: { width: 650 }
+            position: { width: 650 },
+            actions: {
+                createDoc: async function (event, target) {
+                    const segmentName = this.document.name;
+                    const { type } = target.dataset;
+
+                    if (!this.document.parent) return ui.notifications.warn("fb-cod | Cannot add feature to a segment that is not on an actor.");
+
+                    // Call the original createDoc from DHBaseActorSheet (via FeatureSheet.DEFAULT_OPTIONS)
+                    const doc = await FeatureSheet.DEFAULT_OPTIONS.actions.createDoc.call(this, event, target);
+
+                    // Link it to this segment
+                    if (doc && type === 'feature') {
+                        await doc.update({
+                            "system.identifier": segmentName,
+                            "system.originItemType": "fb-cod.colossal-segment"
+                        });
+                    }
+                    return doc;
+                }
+            }
         }, { inplace: false });
 
         /**
@@ -34,6 +54,34 @@ export function setupColossalSegmentSheet() {
             // Override settings with our segment-specific fields
             settings: {
                 template: 'modules/fb-cod/templates/items/segment/settings.hbs'
+            },
+            // Segment attacks template
+            attacks: {
+                template: 'modules/fb-cod/templates/items/segment/attacks.hbs',
+                scrollable: ['.attacks']
+            },
+            // Override actions with our segment-features template
+            actions: {
+                template: 'modules/fb-cod/templates/items/segment/features.hbs',
+                scrollable: ['.actions']
+            }
+        };
+
+        /**
+         * Re-order tabs so Features (Actions) is first and Description is last.
+         * @inheritdoc
+         */
+        static TABS = {
+            primary: {
+                tabs: [
+                    { id: 'settings', label: 'DAGGERHEART.GENERAL.Tabs.settings' },
+                    { id: 'attacks', label: 'DAGGERHEART.GENERAL.Tabs.attack' },
+                    { id: 'actions', label: 'DAGGERHEART.GENERAL.Tabs.features' },
+                    { id: 'effects', label: 'DAGGERHEART.GENERAL.Tabs.effects' },
+                    { id: 'description', label: 'DAGGERHEART.GENERAL.Tabs.description' }
+                ],
+                initial: 'settings',
+                labelPrefix: ''
             }
         };
 
@@ -43,6 +91,92 @@ export function setupColossalSegmentSheet() {
 
             // Provide choices for the segment type dropdown
             context.segmentTypeChoices = this.document.system.schema.getField('segmentType').choices;
+
+            // Associate features from the actor by identifier
+            if (this.document.parent) {
+                const allSegmentItems = this.document.parent.items.filter(i =>
+                    i.type === 'feature' && i.system.identifier === this.document.name
+                );
+
+                // Helper to create a proxy view for the inventory-items partial
+                const buildActionView = (feature) => {
+                    const customProperties = {
+                        actionType: feature.system.featureForm,
+                        _segmentName: this.document.name,
+                        _segmentUuid: this.document.uuid,
+                        _getTags: () => {
+                            const tags = [];
+                            if (feature.system?.actions) {
+                                const actionsArr = feature.system.actions.values ? Array.from(feature.system.actions.values()) : [];
+                                for (const a of actionsArr) {
+                                    if (a._getTags) tags.push(...a._getTags());
+                                }
+                            }
+                            return tags;
+                        },
+                        _getLabels: () => {
+                            const labels = [];
+
+                            // 1. Fetch native actions (e.g. Attack Range & Damage)
+                            if (feature.system?.actions) {
+                                const actionsArr = feature.system.actions.values ? Array.from(feature.system.actions.values()) : [];
+                                for (const a of actionsArr) {
+                                    if (a._getLabels) labels.push(...a._getLabels());
+                                }
+                            }
+
+                            // 2. Fallbacks
+                            if (labels.length === 0 && feature.system.featureForm) {
+                                const formPath = feature.system.featureForm.toLowerCase();
+                                labels.push(game.i18n.localize(`DAGGERHEART.CONFIG.FeatureForm.${formPath}`));
+                            }
+
+                            // Add action cost if present
+                            if (feature.system.actionCost) {
+                                labels.push(`${feature.system.actionCost} Action(s)`);
+                            }
+                            return labels;
+                        }
+                    };
+
+                    return new Proxy(feature, {
+                        get(target, prop) {
+                            if (prop in customProperties) {
+                                return customProperties[prop];
+                            }
+                            const value = target[prop];
+                            return typeof value === 'function' ? value.bind(target) : value;
+                        }
+                    });
+                };
+
+                // Separate attacks from other features (reactions, passives, normal actions)
+                context.segmentAttacks = allSegmentItems.filter(i => {
+                    const actionsArr = i.system?.actions?.values ? Array.from(i.system.actions.values()) : [];
+                    return i.system.featureForm === 'attack' || actionsArr.some(a => a.type === 'attack');
+                }).map(buildActionView);
+
+                context.segmentFeatures = allSegmentItems.filter(i => {
+                    const actionsArr = i.system?.actions?.values ? Array.from(i.system.actions.values()) : [];
+                    const isAttack = i.system.featureForm === 'attack' || actionsArr.some(a => a.type === 'attack');
+                    return !isAttack;
+                }).map(buildActionView);
+
+                // Keep associatedFeatures for backward compatibility in templates if needed
+                context.associatedFeatures = allSegmentItems;
+            } else {
+                context.segmentAttacks = [];
+                context.segmentFeatures = [];
+                context.associatedFeatures = [];
+            }
+
+            // Wrap context.document to masquerade as an 'adversary' so Handlebars partials render featureForm tags
+            context.document = new Proxy(this.document, {
+                get(target, prop, receiver) {
+                    if (prop === 'type') return 'adversary';
+                    return Reflect.get(target, prop, receiver);
+                }
+            });
 
             return context;
         }

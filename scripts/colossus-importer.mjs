@@ -190,16 +190,27 @@ export async function importColossus(parsed) {
     const featureItems = features.map(f => ({
         name: f.name,
         type: 'feature',
-        system: { description: f.description, featureForm: f.actionType }
+        system: {
+            description: f.description,
+            featureForm: f.actionType,
+            originItemType: 'fb-cod.colossus'
+        }
     }));
     if (featureItems.length) await actor.createEmbeddedDocuments('Item', featureItems);
 
-    // ── Segment items ─────────────────────────────────────────────────────────
-    const segmentItems = segments.flatMap(seg => buildSegmentItems(seg));
-    if (segmentItems.length) await actor.createEmbeddedDocuments('Item', segmentItems);
+    // ── Segment items & Segment-level features ────────────────────────────────
+    const allSegmentItems = [];
+    const allSegmentFeatures = [];
+    for (const seg of segments) {
+        const { segmentItems, segmentFeatures } = buildSegmentItems(seg);
+        allSegmentItems.push(...segmentItems);
+        allSegmentFeatures.push(...segmentFeatures);
+    }
+    if (allSegmentItems.length) await actor.createEmbeddedDocuments('Item', allSegmentItems);
+    if (allSegmentFeatures.length) await actor.createEmbeddedDocuments('Item', allSegmentFeatures);
 
     ui.notifications.info(
-        `fb-cod | "${actorData.name}" imported with ${segmentItems.length} segment(s).`
+        `fb-cod | "${actorData.name}" imported with ${allSegmentItems.length} segment(s).`
     );
     actor.sheet.render({ force: true });
     return actor;
@@ -216,7 +227,8 @@ export async function importColossus(parsed) {
  * @returns {{name:string, actionType:string, description:string}|null}
  */
 function parseFeatureLine(line) {
-    const m = line.match(/^(.+?)\s+-\s+(Passive|Action|Reaction):\s*(.+)/i);
+    // Greedily match the name allowing internal hyphens, up to the last " - Type:"
+    const m = line.match(/^(.+)\s+-\s+(Passive|Action|Reaction):\s*(.+)/i);
     if (!m) return null;
     return { name: m[1].trim(), actionType: m[2].toLowerCase(), description: m[3].trim() };
 }
@@ -257,8 +269,9 @@ function parseSegmentBlock(blocks, prefix) {
     let inFeatures = false;
     let currentFeature = null;
 
-    for (const line of lines) {
+    for (let line of lines) {
         if (!line) continue;
+        line = line.trim();
 
         if (/^Adjacent Segments?:/i.test(line)) {
             adjacentSegments = line.replace(/^Adjacent Segments?:\s*/i, '').trim();
@@ -271,17 +284,32 @@ function parseSegmentBlock(blocks, prefix) {
                 const hpStr = m[2].trim().toLowerCase();
                 hp = hpStr === 'none' ? 0 : (parseInt(hpStr) || 5);
             }
-        } else if (/^ATK:/i.test(line)) {
-            // Format: "ATK: +2 | PeckName: Range | 1d10+1 phy"
-            const m = line.match(/ATK:\s*([+-]?\d+)\s*\|\s*([^|]+)\s*\|\s*(.+)/i);
+        } else if (/^ATK:?/i.test(line)) {
+            // Format: "ATK +2 | Peck Name: Range | 1d10+1 phy" or "ATK: +2 | Peck Name (Range) | 1d10+1 phy"
+            const m = line.match(/^ATK:?\s*([+-]?\d+)\s*\|\s*([^|]+)\s*\|\s*(.+)/i);
             if (m) {
                 atkModifier = parseInt(m[1]);
                 const middlePart = m[2].trim();
                 const dmgStr = m[3].trim();
 
-                const colonSplit = middlePart.match(/^([^:]+):\s*(.+)$/);
-                const atkName = colonSplit ? colonSplit[1].trim() : middlePart.split(/\s+/)[0];
-                const rangeStr = colonSplit ? colonSplit[2].trim() : middlePart.replace(atkName, '').trim();
+                let atkName = middlePart;
+                let rangeStr = 'Melee';
+
+                // Handle "Peck: Melee" vs "Peck (Melee)"
+                const colonMatch = middlePart.match(/^([^:]+):\s*(.+)$/);
+                const parenMatch = middlePart.match(/^([^(]+)\(([^)]+)\)$/);
+
+                if (colonMatch) {
+                    atkName = colonMatch[1].trim();
+                    rangeStr = colonMatch[2].trim();
+                } else if (parenMatch) {
+                    atkName = parenMatch[1].trim();
+                    rangeStr = parenMatch[2].trim();
+                } else {
+                    // Fallback splitting first word if missing both
+                    atkName = middlePart.split(/\s+/)[0];
+                    rangeStr = middlePart.replace(atkName, '').trim() || 'Melee';
+                }
 
                 attacks.push({ name: atkName, range: mapRange(rangeStr), damage: dmgStr });
             }
@@ -372,56 +400,114 @@ function extractFormula(dmgStr) {
 }
 
 /**
- * Build an attack action source object for ActionsField (keyed by _id).
+ * Build an attack feature source object.
  * @param {object} atk           Parsed attack ({name, range, damage})
  * @param {number} atkModifier   ATK bonus
+ * @param {string} segmentName   Name of the linked segment
  * @returns {object}
  */
-function buildAttackActionSource(atk, atkModifier) {
-    const id = foundry.utils.randomID();
-    return [id, {
-        _id: id,
-        type: 'attack',
-        systemPath: 'actions',
+function buildAttackFeatureSource(atk, atkModifier, segmentName) {
+    const actionId = foundry.utils.randomID();
+    const isMagic = (atk.damage || '').toLowerCase().includes('magical') || (atk.damage || '').toLowerCase().includes('mag');
+    const icon = isMagic ? "icons/magic/symbols/ring-circle-smoke-blue.webp" : "icons/skills/melee/strike-sword-blood-red.webp";
+
+    return {
         name: atk.name,
-        description: '',
-        actionType: 'action',
-        chatDisplay: true,
-        range: atk.range,
-        roll: {
-            type: 'attack',
-            trait: null,
-            difficulty: null,
-            bonus: atkModifier ?? 0,
-            advState: 'neutral',
-            useDefault: false,
-            diceRolling: { multiplier: 'prof', flatMultiplier: 1, dice: 'd6', compare: null, treshold: null }
-        },
-        damage: {
-            direct: false,
-            includeBase: false,
-            parts: [{
-                applyTo: 'hitPoints',
-                resultBased: false,
-                base: false,
-                type: mapDamageTypes(atk.damage),
-                value: {
-                    multiplier: 'flat',
-                    flatMultiplier: 1,
-                    dice: 'd6',
-                    bonus: null,
-                    custom: { enabled: true, formula: extractFormula(atk.damage) }
-                },
-                valueAlt: {
-                    multiplier: 'flat',
-                    flatMultiplier: 1,
-                    dice: 'd6',
-                    bonus: null,
-                    custom: { enabled: false, formula: '' }
+        type: 'feature',
+        img: icon,
+        system: {
+            identifier: segmentName,
+            originItemType: 'fb-cod.colossal-segment',
+            featureForm: 'action',
+            actions: {
+                [actionId]: {
+                    _id: actionId,
+                    type: 'attack',
+                    systemPath: 'actions',
+                    name: atk.name,
+                    img: icon,
+                    actionType: 'action',
+                    chatDisplay: true,
+                    range: atk.range,
+                    cost: [],
+                    uses: { value: null, max: '', recovery: null },
+                    target: { type: 'any', amount: null },
+                    roll: {
+                        type: 'attack',
+                        trait: null,
+                        difficulty: null,
+                        bonus: atkModifier ?? 0,
+                        advState: 'neutral',
+                        useDefault: false,
+                        diceRolling: { multiplier: 'prof', flatMultiplier: 1, dice: 'd6', compare: null, treshold: null }
+                    },
+                    damage: {
+                        parts: [{
+                            applyTo: 'hitPoints',
+                            resultBased: false,
+                            base: false,
+                            type: mapDamageTypes(atk.damage),
+                            value: {
+                                multiplier: 'flat',
+                                flatMultiplier: 1,
+                                dice: 'd6',
+                                bonus: null,
+                                custom: { enabled: true, formula: extractFormula(atk.damage) }
+                            }
+                        }],
+                        includeBase: false
+                    }
                 }
-            }]
+            }
         }
-    }];
+    };
+}
+
+/**
+ * Build a generic feature source object.
+ * @param {object} feat
+ * @param {string} featureForm
+ * @param {string} segmentName
+ * @returns {object}
+ */
+function buildFeatureSource(feat, featureForm, segmentName) {
+    const actionId = foundry.utils.randomID();
+
+    // Assign generic icons based on featureForm
+    let icon = "icons/skills/melee/strike-sword-blood-red.webp";
+    let internalActionType = 'damage'; // default to damage if not passive
+    if (featureForm === 'passive') {
+        icon = "icons/magic/defensive/shield-barrier-glowing-blue.webp";
+        internalActionType = 'effect';
+    } else if (featureForm === 'reaction') {
+        icon = "icons/skills/movement/feet-winged-boots-glowing-yellow.webp";
+    }
+
+    const actionSource = {
+        _id: actionId,
+        type: internalActionType,
+        systemPath: 'actions',
+        name: feat.name,
+        img: icon,
+        actionType: featureForm === 'passive' ? '' : featureForm,
+        description: `<p>${feat.description}</p>`,
+        chatDisplay: true,
+        cost: [],
+        uses: { value: null, max: '', recovery: null },
+        target: { type: 'any', amount: null }
+    };
+
+    return {
+        name: feat.name,
+        type: 'feature',
+        img: icon,
+        system: {
+            identifier: segmentName,
+            originItemType: 'fb-cod.colossal-segment',
+            featureForm: featureForm,
+            actions: { [actionId]: actionSource }
+        }
+    };
 }
 
 /**
@@ -433,11 +519,11 @@ function buildFeatureActionSource(feat) {
     const id = foundry.utils.randomID();
     return [id, {
         _id: id,
-        type: 'passive',
+        type: 'effect', // Map to generic 'effect' type
         systemPath: 'actions',
         name: feat.name,
         description: feat.description,
-        actionType: feat.actionType,
+        actionType: feat.actionType, // 'action', 'reaction', or 'passive'
         chatDisplay: true
     }];
 }
@@ -466,7 +552,8 @@ function buildSegmentItems(seg) {
         claw: ['claw-left', 'claw-right']
     };
 
-    const items = [];
+    const segmentItems = [];
+    const segmentFeatures = [];
 
     for (let i = 0; i < seg.count; i++) {
         let segName = seg.name;
@@ -490,17 +577,28 @@ function buildSegmentItems(seg) {
         }
 
         // Build the actions plain object (keyed by _id) for ActionsField
-        const actionsObj = {};
+        // Build the actions (Attacks stay on the segment)
+        // Attacks and Features both become top-level Actor Items linked to this segment
         for (const atk of seg.attacks) {
-            const [id, src] = buildAttackActionSource(atk, seg.atkModifier);
-            actionsObj[id] = src;
-        }
-        for (const feat of seg.features) {
-            const [id, src] = buildFeatureActionSource(feat);
-            actionsObj[id] = src;
+            segmentFeatures.push(buildAttackFeatureSource(atk, seg.atkModifier, segName));
         }
 
-        items.push({
+        for (const feat of seg.features) {
+            const [actionId, actionSource] = buildFeatureActionSource(feat);
+            segmentFeatures.push({
+                name: feat.name,
+                type: 'feature',
+                system: {
+                    description: feat.description,
+                    featureForm: feat.actionType, // 'action', 'reaction', or 'passive'
+                    identifier: segName, // Link to segment
+                    originItemType: 'fb-cod.colossal-segment',
+                    actions: { [actionId]: actionSource }
+                }
+            });
+        }
+
+        segmentItems.push({
             name: segName,
             type: 'fb-cod.colossal-segment',
             system: {
@@ -515,11 +613,10 @@ function buildSegmentItems(seg) {
                     name: 'HP',
                     value: seg.hp,
                     max: seg.hp
-                },
-                actions: actionsObj
+                }
             }
         });
     }
 
-    return items;
+    return { segmentItems, segmentFeatures };
 }

@@ -1,0 +1,30 @@
+<section class='tab {{tabs.features.cssClass}} {{tabs.features.id}}' data-tab='{{tabs.features.id}}'
+    data-group='{{tabs.features.group}}'>
+    <div class="feature-section">
+        {{!-- Core Features --}}
+        <div class="segment-feature-group" data-segment-name="">
+            {{> 'daggerheart.inventory-items'
+            title="Core Features"
+            type='feature'
+            collection=@root.features
+            hideContextMenu=true
+            canCreate=true
+            showActions=true
+            }}
+        </div>
+
+        {{!-- Segment Features --}}
+        {{#each segmentFeatureGroups as |group|}}
+        <div class="segment-feature-group" data-segment-name="{{group.segmentName}}" style="margin-top: 15px;">
+            {{> 'daggerheart.inventory-items'
+            title=group.label
+            type='feature'
+            collection=group.features
+            hideContextMenu=true
+            canCreate=true
+            showActions=true
+            }}
+        </div>
+        {{/each}}
+    </div>
+</section>

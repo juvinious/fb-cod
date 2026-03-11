@@ -107,6 +107,63 @@
             </ul>
         </div>
 
+        {{!-- === Segment Reactions Section === --}}
+        <div class="attack-section">
+            <div class="title">
+                <side-line-div class="invert"></side-line-div>
+                <h3>{{localize "DAGGERHEART.CONFIG.FeatureForm.reaction"}}</h3>
+                <side-line-div></side-line-div>
+            </div>
+            <ul class="items-sidebar-list">
+                {{#each segmentReactions as |action|}}
+                {{!-- Segment name label --}}
+                <li class="segment-atk-label" style="font-size:0.75em; opacity:0.6; padding:2px 8px 0; margin-top:4px;">
+                    {{action._segmentName}}
+                </li>
+                {{!--
+                Custom attack card: portrait click uses rollSegmentAttack with data-segment-uuid + data-action-id
+                so we look up the action directly (bypassing fromUuid→Item→ActionSelectionDialog confusion).
+                --}}
+                <li class="inventory-item inventory-item-compact" data-action-id="{{action.id}}"
+                    data-segment-uuid="{{action._segmentUuid}}">
+                    <div class="img-portait" data-action="rollSegmentAttack" data-action-id="{{action.id}}"
+                        data-segment-uuid="{{action._segmentUuid}}" data-tooltip="Roll {{action.name}}">
+                        <img src="{{action.img}}" class="item-img" />
+                        <img class="roll-img d20" src="systems/daggerheart/assets/icons/dice/default/d20.svg" alt="d20">
+                    </div>
+                    {{!-- Use #with to set action as context, then call this._getLabels (same as inventory-item-compact)
+                    --}}
+                    {{#with action}}
+                    <span class="item-name">{{this.name}}</span>
+                    <div class="item-labels">
+                        <div class="label">
+                            {{#each this._getLabels as |label|}}
+                            {{#if label.value}}{{label.value}}{{else}}{{label}}{{/if}}
+                            {{#each label.icons as |icon|}}<i class="fa-solid {{icon}}"></i>{{/each}}
+                            {{#if (not @last)}}<span>-</span>{{/if}}
+                            {{/each}}
+                        </div>
+                    </div>
+                    {{/with}}
+
+                    <div class="controls">
+                        <a data-action="toSegmentChat" data-action-id="{{action.id}}"
+                            data-segment-uuid="{{action._segmentUuid}}"
+                            data-tooltip="DAGGERHEART.UI.Tooltip.sendToChat"><i
+                                class="fa-regular fa-fw fa-message"></i></a>
+                        <a data-action="editDoc" data-item-uuid="{{action._segmentUuid}}" data-tooltip="Edit Segment"><i
+                                class="fa-solid fa-fw fa-ellipsis-vertical"></i></a>
+                    </div>
+                </li>
+                {{else}}
+                <li style="text-align:center; opacity:0.5; padding:8px; font-size:0.85em;">
+                    No segment reactions defined yet.
+                </li>
+                {{/each}}
+
+            </ul>
+        </div>
+
         {{!-- === Experiences Section === --}}
         <div class="experience-section">
             <div class="title">

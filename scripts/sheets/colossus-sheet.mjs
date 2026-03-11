@@ -45,6 +45,34 @@ export function setupColossusSheet() {
                     };
                     this.actor.diceRoll(config);
                 },
+                createDoc: async function (event, target) {
+                    let { segmentName, type } = target.dataset;
+
+                    if (!segmentName) {
+                        const segmentGroup = target.closest('.segment-feature-group');
+                        if (segmentGroup && segmentGroup.dataset.segmentName) {
+                            segmentName = segmentGroup.dataset.segmentName;
+                        } else {
+                            const segmentItem = target.closest('.segment-item');
+                            if (segmentItem) {
+                                const segment = this.document.items.get(segmentItem.dataset.itemId);
+                                if (segment) segmentName = segment.name;
+                            }
+                        }
+                    }
+
+                    // Call the original createDoc from DHBaseActorSheet (via DHBaseActorSheet.DEFAULT_OPTIONS)
+                    const doc = await DHBaseActorSheet.DEFAULT_OPTIONS.actions.createDoc.call(this, event, target);
+
+                    // If it was a feature created from a segment's section, link it
+                    if (segmentName && doc && type === 'feature') {
+                        await doc.update({
+                            "system.identifier": segmentName,
+                            "system.originItemType": "fb-cod.colossal-segment"
+                        });
+                    }
+                    return doc;
+                },
                 addSegment: async function (event, target) {
                     const SegmentModel = CONFIG.Item.dataModels["fb-cod.colossal-segment"];
                     const choices = SegmentModel.schema.getField("segmentType").choices;
@@ -131,17 +159,6 @@ export function setupColossusSheet() {
                     const isDestroyed = segment.system.destroyed;
                     await segment.update({ "system.destroyed": !isDestroyed });
                 },
-                toggleSegmentBroken: async function (event, target) {
-                    const segmentId = target.dataset.itemId;
-                    if (!segmentId) return;
-
-                    const segment = this.document.items.get(segmentId);
-                    if (!segment) return;
-
-                    // Toggle the broken boolean
-                    const isBroken = segment.system.broken;
-                    await segment.update({ "system.broken": !isBroken });
-                },
                 /**
                  * Roll a segment attack directly using actor.diceRoll() rather than action.use().
                  * This bypasses the automatic toChat() call that fires at the end of use(),
@@ -151,41 +168,26 @@ export function setupColossusSheet() {
                 rollSegmentAttack: async function (event, target) {
                     const { segmentUuid, actionId } = target.dataset;
                     if (!segmentUuid || !actionId) return;
-                    const segment = await fromUuid(segmentUuid);
-                    if (!segment) return;
-                    const action = segment.system?.actions?.get(actionId);
-                    if (!action) return;
 
-                    // Prepare the config from the action (sets hasRoll, roll data, etc.)
-                    const config = action.prepareConfig(event);
-                    if (!config) return;
-
-                    // If the action has no roll configured, inject a sensible attack roll default
-                    if (!config.hasRoll) {
-                        config.roll = {
-                            type: 'attack',
-                            label: action.name,
-                            baseModifiers: [{ label: 'ATK', value: segment.system?.atkModifier ?? 0 }],
-                            difficulty: segment.system?.difficulty ?? 12,
-                            advantage: 0
-                        };
-                        config.hasRoll = true;
+                    // The 'actionId' now corresponds to the Feature Item's ID on the main Colossus Actor
+                    const featureItem = this.actor.items.get(actionId);
+                    if (!featureItem) {
+                        ui.notifications.warn("fb-cod | Feature missing from Colossus actor.");
+                        return;
                     }
 
-                    // Call diceRoll directly — this opens the roll dialog and creates the roll chat card.
-                    // We never call action.use(), so action.toChat() is never triggered separately.
-                    await this.actor.diceRoll(config);
+                    // Native Daggerheart trigger
+                    return featureItem.use(event);
                 },
                 /**
-                 * Send this specific attack action to chat without rolling.
+                 * Send this specific attack/reaction to chat without rolling.
                  */
                 toSegmentChat: async function (event, target) {
                     const { segmentUuid, actionId } = target.dataset;
                     if (!segmentUuid || !actionId) return;
-                    const segment = await fromUuid(segmentUuid);
-                    if (!segment) return;
-                    const action = segment.system?.actions?.get(actionId);
-                    if (action?.toChat) return action.toChat();
+
+                    const featureItem = this.actor.items.get(actionId);
+                    if (featureItem?.toChat) return featureItem.toChat();
                 },
                 toggleCondition: async function (event, target) {
                     const condition = target.dataset.condition;
@@ -218,10 +220,11 @@ export function setupColossusSheet() {
                 template: 'systems/daggerheart/templates/sheets/actors/adversary/header.hbs'
             },
             segments: {
-                template: "modules/fb-cod/templates/actor/parts/segments.hbs"
+                template: "modules/fb-cod/templates/actor/parts/segments.hbs",
+                scrollable: ['.segments-list-container']
             },
             features: {
-                template: 'systems/daggerheart/templates/sheets/actors/adversary/features.hbs',
+                template: 'modules/fb-cod/templates/actor/parts/colossus-features.hbs',
                 scrollable: ['.feature-section']
             },
             effects: {
@@ -263,15 +266,29 @@ export function setupColossusSheet() {
             context.resources.stress.emptyPips = context.resources.stress.max < maxResource ? maxResource - context.resources.stress.max : 0;
 
             const featureForms = ['passive', 'action', 'reaction'];
-            context.features = this.document.system.features.sort((a, b) =>
+            const allFeatures = this.document.system.features.sort((a, b) =>
                 a.system.featureForm !== b.system.featureForm
                     ? featureForms.indexOf(a.system.featureForm) - featureForms.indexOf(b.system.featureForm)
                     : a.sort - b.sort
             );
 
+            // Filter out segment features from the main actor's list
+            context.features = allFeatures.filter(f => f.system.originItemType !== 'fb-cod.colossal-segment');
+
+            // Wrap context.document in a Proxy so Handlebars inventory-items partial
+            // recognizes it as 'adversary' and renders the Action/Reaction/Passive tags.
+            context.document = new Proxy(this.document, {
+                get(target, prop, receiver) {
+                    if (prop === 'type') return 'adversary';
+                    return Reflect.get(target, prop, receiver);
+                }
+            });
+
             // Prepare Segments
             console.log("fb-cod | Preparing context, item types present:", [...new Set(this.document.items.map(i => i.type))]);
-            context.segments = this.document.system.segments.sort((a, b) => {
+
+            // First sort segments by anatomical order
+            const sortedSegments = this.document.system.segments.sort((a, b) => {
                 const order = {
                     'head': 1, 'neck': 2, 'torso': 3, 'core': 3,
                     'arm-left': 4, 'arm-right': 5,
@@ -282,51 +299,151 @@ export function setupColossusSheet() {
                 };
                 return (order[a.system.segmentType] || 99) - (order[b.system.segmentType] || 99);
             });
-            console.log(`fb-cod | Context segments count: ${context.segments.length}`);
+            console.log(`fb-cod | Context segments count: ${sortedSegments.length}`);
 
-            // Aggregate all attack-type actions from each segment into the sidebar attack list.
-            // We store the actual action model instance so inventory-item-compact can call _getLabels.
-            context.segmentAttacks = [];
-            for (const segment of context.segments) {
-                if (!segment.system?.actions) continue;
-                for (const action of segment.system.actions) {
-                    if (action.type !== 'attack') continue;
-                    // Attach segment metadata onto the action for use in the template
-                    action._segmentName = segment.name;
-                    action._segmentUuid = segment.uuid;
-                    context.segmentAttacks.push(action);
+            context.isDefeated = false;
+            context.segmentGroups = {}; // key: groupName, value: { name, segments: [], isBroken: boolean }
+
+            // Build segment Feature Groups for the main sheet Features tab
+            context.segmentFeatureGroups = [];
+            for (const segment of sortedSegments) {
+                const segmentFeatures = allFeatures.filter(f =>
+                    f.system?.originItemType === 'fb-cod.colossal-segment' &&
+                    f.system?.identifier === segment.name
+                );
+
+                if (segmentFeatures.length > 0) {
+                    context.segmentFeatureGroups.push({
+                        segmentName: segment.name,
+                        label: `${segment.name} Features`,
+                        features: segmentFeatures
+                    });
                 }
             }
 
-            // --- Calculate Colossus Defeated State ---
-            context.isDefeated = false;
-            const chainGroups = {}; // key: groupName, value: { total: int, destroyed: int }
-
-            for (const segment of context.segments) {
+            // Group segments
+            for (const segment of sortedSegments) {
                 const sys = segment.system;
                 if (!sys) continue;
 
-                // 1. Fatal checked: if any fatal segment is destroyed, the colossus falls.
-                if (sys.fatal && sys.destroyed) {
-                    context.isDefeated = true;
-                    break;
+                const groupName = sys.chainGroup ? `Chain ${sys.chainGroup.toUpperCase()}` : "Core Segments";
+                if (!context.segmentGroups[groupName]) {
+                    context.segmentGroups[groupName] = {
+                        name: groupName,
+                        segments: [],
+                        total: 0,
+                        destroyed: 0,
+                        isBroken: false
+                    };
                 }
 
-                // 2. Tally chain groups (e.g., Chain A)
-                if (sys.chainGroup) {
-                    const group = sys.chainGroup.toUpperCase();
-                    if (!chainGroups[group]) chainGroups[group] = { total: 0, destroyed: 0 };
-                    chainGroups[group].total++;
-                    if (sys.destroyed) chainGroups[group].destroyed++;
+                context.segmentGroups[groupName].segments.push(segment);
+                context.segmentGroups[groupName].total++;
+
+                if (sys.destroyed) {
+                    context.segmentGroups[groupName].destroyed++;
+                    if (sys.fatal) context.isDefeated = true; // Any fatal segment destroyed kills colossus
                 }
             }
 
-            // 3. Chain checked: if a chain group has all its segments destroyed, the colossus falls.
-            if (!context.isDefeated) {
-                for (const group of Object.values(chainGroups)) {
-                    if (group.total > 0 && group.total === group.destroyed) {
-                        context.isDefeated = true;
-                        break;
+            // Calculate Chain Broken status
+            for (const group of Object.values(context.segmentGroups)) {
+                if (group.total > 0 && group.total === group.destroyed) {
+                    group.isBroken = true;
+                    if (group.name !== "Core Segments") {
+                        context.isDefeated = true; // Chain fully destroyed kills colossus
+                    }
+                }
+
+                // Assign the computed chain broken status to individual segments for styling if desired
+                group.segments.forEach(s => s.computedBroken = group.isBroken);
+            }
+
+            context.hasSegments = sortedSegments.length > 0;
+
+            // Gather all nested actions for the sidebar
+            context.segmentAttacks = [];
+            context.segmentReactions = [];
+
+            for (const segment of sortedSegments) {
+                // Features are not embedded inside the Segment document, they are separate items on the main Actor.
+                // We must find any feature whose identifier matches this segment's name.
+                const allActorFeatures = this.document.items.filter(i => i.type === 'feature');
+                const segmentFeatures = allActorFeatures.filter(f =>
+                    f.system?.originItemType === 'fb-cod.colossal-segment' &&
+                    f.system?.identifier === segment.name
+                );
+
+                for (const feature of segmentFeatures) {
+                    if (!feature.system) continue;
+
+                    // The feature itself is the action in Daggerheart.
+                    // We map the feature document so it can be rolled directly from the sidebar.
+                    const customProperties = {
+                        actionType: feature.system.featureForm,
+                        _segmentName: segment.name,
+                        _segmentUuid: segment.uuid,
+                        _getTags: () => {
+                            const tags = [];
+                            if (feature.system?.actions) {
+                                const actionsArr = feature.system.actions.values ? Array.from(feature.system.actions.values()) : [];
+                                for (const a of actionsArr) {
+                                    if (a._getTags) tags.push(...a._getTags());
+                                }
+                            }
+                            return tags;
+                        },
+                        _getLabels: () => {
+                            // Extract relevant UI badges to show (e.g. passive, reaction)
+                            const labels = [];
+
+                            // 1. Fetch native actions (e.g. Attack Range & Damage)
+                            if (feature.system?.actions) {
+                                const actionsArr = feature.system.actions.values ? Array.from(feature.system.actions.values()) : [];
+                                for (const a of actionsArr) {
+                                    if (a._getLabels) labels.push(...a._getLabels());
+                                }
+                            }
+
+                            // 2. Fallbacks
+                            if (labels.length === 0 && feature.system.featureForm) {
+                                const formPath = feature.system.featureForm.toLowerCase();
+                                labels.push(game.i18n.localize(`DAGGERHEART.CONFIG.FeatureForm.${formPath}`));
+                            }
+
+                            // Add action cost if present
+                            if (feature.system.actionCost) {
+                                labels.push(`${feature.system.actionCost} Action(s)`);
+                            }
+                            return labels;
+                        }
+                    };
+
+                    const actionView = new Proxy(feature, {
+                        get(target, prop) {
+                            if (prop in customProperties) {
+                                return customProperties[prop];
+                            }
+                            // Fallback to original property
+                            const value = target[prop];
+                            return typeof value === 'function' ? value.bind(target) : value;
+                        }
+                    });
+
+                    const form = feature.system.featureForm?.toLowerCase() || '';
+
+                    // Action forms might be attacks if they have an attack roll, or just explicit 'action'/'attack'
+                    // For now, any 'action', 'attack', or combat-capable feature goes to Attacks.
+                    const actionsArr = feature.system?.actions?.values ? Array.from(feature.system.actions.values()) : [];
+                    const isAttack = form === 'attack' || actionsArr.some(a => a.type === 'attack');
+
+                    if (isAttack) {
+                        context.segmentAttacks.push(actionView);
+                    } else if (form === 'reaction') {
+                        context.segmentReactions.push(actionView);
+                    } else if (form === 'action') {
+                        // Regular non-attack actions could go to an explicit list if needed,
+                        // but for now, we'll keep the sidebar focused on Attacks & Reactions.
                     }
                 }
             }
