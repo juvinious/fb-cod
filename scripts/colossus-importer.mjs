@@ -179,9 +179,8 @@ export async function importColossus(parsed) {
         expObj[foundry.utils.randomID()] = { name: exp.name, value: exp.value, description: '' };
     }
 
-    // Build notes string from motives + size (nice to have as reference)
-    const notes = [motives ? `Motives & Tactics: ${motives}` : '', size ? `Size: ${size}` : '']
-        .filter(Boolean).join('\n');
+    // Build notes string from remaining supplementary information
+    const notes = ""; // We can add other info here if needed in the future
 
     // ── Create actor ──────────────────────────────────────────────────────────
     const actorData = {
@@ -193,6 +192,8 @@ export async function importColossus(parsed) {
             tier,
             experiences: expObj,
             damageThresholds: { major: thresholds.major, severe: thresholds.severe },
+            motivesAndTactics: motives,
+            size: mapActorSize(size),
             resources: {
                 hitPoints: { value: 0, max: 0 },
                 stress: { value: 0, max: stress }
@@ -451,6 +452,25 @@ function inferSegmentType(name) {
     if (l.includes('antenna') || l.includes('antennae')) return 'antennae';
     if (l.includes('tail')) return 'tail';
     return 'other';
+}
+
+/**
+ * Map descriptive size text to a valid Daggerheart technical key.
+ * @param {string} sizeStr  e.g. "95 ft. tall, 60 ft. wide", "Gargantuan"
+ * @returns {string} One of: tiny, small, medium, large, huge, gargantuan
+ */
+function mapActorSize(sizeStr) {
+    if (!sizeStr) return 'gargantuan';
+    const l = sizeStr.toLowerCase();
+    if (l.includes('gargantuan')) return 'gargantuan';
+    if (l.includes('huge')) return 'huge';
+    if (l.includes('large')) return 'large';
+    if (l.includes('medium')) return 'medium';
+    if (l.includes('small')) return 'small';
+    if (l.includes('tiny')) return 'tiny';
+    
+    // Default for Colossus if no keyword found
+    return 'gargantuan';
 }
 
 /**

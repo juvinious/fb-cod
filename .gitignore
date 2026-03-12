@@ -4,3 +4,13 @@ node_modules/
 temp/
 *.zip
 *.tar.gz
+
+# Foundry VTT LevelDB Packs
+packs/**/LOCK
+packs/**/*.log
+packs/**/MANIFEST-*
+packs/**/LOG
+packs/**/LOG.old
+packs/**/CURRENT
+packs/**/*.dbtmp
+packs/**/*.ldb
