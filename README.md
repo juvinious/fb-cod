@@ -4,11 +4,18 @@ A Foundry VTT supplementary module for the **[Daggerheart](https://foundryborne.
 
 ## Features
 
-- **Colossus Actor Type:** Adds a new `Colossus` adversary actor type to the Daggerheart system.
-- **Dynamic Segments:** Manage colossus segments directly on the sheet. Give each segment (Head, Left Arm, Torso, etc.) its own stats, difficulty, hit points, and unique features.
-- **Damage Thresholds & Stress:** Track major and  severe damage thresholds globally.
-- **Segment Status Tracking:** Track individual destroyed and broken segment conditions, with visual flair, instantly from the colossus sheet.
-- **Built-in Importer:** Quickly import massive stat blocks like the Colossus of the Drylands with a built-in text parser! Simply copy the raw formatted text, click the "Import Colossus" button in your Actors Directory sidebar, and the module handles all the data mapping for you.
+- **Colossus Actor Type:** Adds a new `Colossus` adversary actor type designed specifically for multi-segment colossi in Daggerheart.
+    - **Dynamic Segments:** Manage complex colossi with multi-segmented body parts (Head, Limbs, Core, etc.), each with its own health, Difficulty/Armor, and unique abilities.
+    - **Integrated Header Controls:** Quickly manage **HP**, **Attack Modifiers**, and status conditions like **Broken**, **Collapsed**, or **Destroyed** directly from the segment header.
+    - **Chain Defeat Logic:** Organize segments into **Chain Groups (A-L)**. Configure defeat conditions where destroying an entire chain or a "Fatal" segment brings down the Colossus.
+- **Built-in Importer:** Features a robust text parser that can instantly convert raw stat-blocks from the Colossus of the Drylands core rulebook into fully configured Colossi. Supports complex segment naming, Fatal tags, and Chain Groups.
+
+## Compendiums
+
+The module includes several ready-to-use compendiums:
+- **Colossal Adversaries:** Pre-configured multi-segment colossi.
+- **Colossal Segments:** A collection of segment footprints for manual builds.
+- **Colossal Weapons & Loot:** Specialized equipment for Colossal-scale encounters.
 
 ## Installation
 
