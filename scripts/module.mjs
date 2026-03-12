@@ -7,26 +7,9 @@ import { openColossusImportDialog } from './colossus-import-dialog.mjs';
 
 
 Hooks.once('init', () => {
-    console.log("fb-cod | Initializing");
+    console.log("fb-cod | Initializing fb-cod module");
 
-    // 1. Register Data Models
-    const ColossusModel = setupColossusModel();
-    if (ColossusModel) {
-        CONFIG.Actor.dataModels["fb-cod.colossus"] = ColossusModel;
-        // Backwards compatibility for world data using old namespaces
-        CONFIG.Actor.dataModels["foundryborne-giants.colossus"] = ColossusModel;
-        console.log("fb-cod | Registered Colossus Data Model");
-    }
-
-    const ColossalSegmentModel = setupColossalSegmentModel();
-    if (ColossalSegmentModel) {
-        CONFIG.Item.dataModels["fb-cod.colossal-segment"] = ColossalSegmentModel;
-        // Backwards compatibility for world data using old namespaces
-        CONFIG.Item.dataModels["foundryborne-giants.colossal-segment"] = ColossalSegmentModel;
-        console.log("fb-cod | Registered Colossal Segment Data Model");
-    }
-
-    // 2. Register Custom Feature Types for originItemType validation
+    // 1. First, register all Daggerheart-specific configs so models have them available for schema definitions
     if (CONFIG.DH?.ITEM) {
         CONFIG.DH.ITEM.featureTypes["fb-cod.colossus"] = {
             id: "fb-cod.colossus",
@@ -46,6 +29,19 @@ Hooks.once('init', () => {
             label: "Colossal Segment (Legacy)"
         };
         console.log("fb-cod | Registered custom feature types in CONFIG.DH");
+    }
+
+    // 2. Register Actor and Item Data Models
+    const ColossusModel = setupColossusModel();
+    if (ColossusModel) {
+        CONFIG.Actor.dataModels["fb-cod.colossus"] = ColossusModel;
+        CONFIG.Actor.dataModels["foundryborne-giants.colossus"] = ColossusModel;
+    }
+
+    const ColossalSegmentModel = setupColossalSegmentModel();
+    if (ColossalSegmentModel) {
+        CONFIG.Item.dataModels["fb-cod.colossal-segment"] = ColossalSegmentModel;
+        CONFIG.Item.dataModels["foundryborne-giants.colossal-segment"] = ColossalSegmentModel;
     }
 
     // 3. Inject into Homebrew Adversary Types

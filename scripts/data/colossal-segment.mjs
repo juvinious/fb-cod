@@ -6,49 +6,70 @@
 export function setupColossalSegmentModel() {
     console.log("fb-cod | setupColossalSegmentModel called");
 
-    // Get DHFeature from system API or CONFIG
+    // Use DHFeature as a reference for fields, but extend BaseDataItem for stability
     const FeatureModel = game.system.api?.models?.items?.DHFeature || CONFIG.Item.dataModels.feature;
+    const BaseDataItem = game.system.api?.models?.items?.BaseDataItem || Object.getPrototypeOf(FeatureModel);
 
-    if (!FeatureModel) {
-        console.error("fb-cod | Could not find Feature base model! CONFIG.Item.dataModels keys:", Object.keys(CONFIG.Item.dataModels));
-        // Fallback to basic TypeDataModel if system isn't ready
-        return class ColossalSegmentDataModel extends foundry.abstract.TypeDataModel {
-            static get metadata() { return { label: "Colossal Segment", type: "fb-cod.colossal-segment" }; }
-            static defineSchema() { return {}; }
-        };
+    console.log("fb-cod | BaseDataItem found:", !!BaseDataItem);
+
+    if (!BaseDataItem) {
+        console.error("fb-cod | Could not find BaseDataItem! CONFIG.Item.dataModels keys:", Object.keys(CONFIG.Item.dataModels));
+        return null;
     }
 
-    return class ColossalSegmentDataModel extends FeatureModel {
-        /**@inheritdoc */
-        static DEFAULT_ICON = 'icons/creatures/magical/construct-iron-stomping-yellow.webp';
-
-        /** @type {ActorDataModelMetadata} */
+    return class ColossalSegmentDataModel extends BaseDataItem {
+        /** @type {ItemDataModelMetadata} */
         static get metadata() {
             return foundry.utils.mergeObject(super.metadata, {
                 label: 'Colossal Segment',
                 type: 'fb-cod.colossal-segment',
                 hasDescription: true,
-                hasResource: true,
-                hasActions: true
+                hasResource: false, // Reverting to custom hitPoints
+                hasActions: true    // This triggers BaseDataItem to add ActionsField
             });
         }
 
-        /** @type {ActorDataModelMetadata} */
+        /** @type {ItemDataModelMetadata} */
         get metadata() {
             return this.constructor.metadata;
         }
 
-        /** @inheritDoc */
         static defineSchema() {
             const fields = foundry.data.fields;
             const schema = super.defineSchema();
 
-            // --- Core Segment Stats ---
+            // 1. Recapture DHFeature fields explicitly for stability
+            schema.originItemType = new fields.StringField({
+                choices: CONFIG.DH.ITEM.featureTypes,
+                nullable: true,
+                initial: null
+            });
+            schema.multiclassOrigin = new fields.BooleanField({ initial: false });
+            schema.identifier = new fields.StringField();
+            schema.featureForm = new fields.StringField({
+                required: true,
+                initial: 'passive',
+                choices: CONFIG.DH.ITEM.featureForm,
+                label: 'DAGGERHEART.CONFIG.FeatureForm.label'
+            });
+
+            // 2. Add Colossal Segment specific fields
             /** The difficulty that attackers must meet or beat to hit this segment. */
             schema.difficulty = new fields.NumberField({ required: true, integer: true, initial: 12 });
 
-            /** The ATK bonus added to this segment's standard attack roll (e.g. +2). */
-            schema.atkModifier = new fields.NumberField({ required: false, integer: true, initial: 0, nullable: true });
+            /** Explicit HP and Attack fields as requested by user */
+            schema.hitPoints = new fields.SchemaField({
+                value: new fields.NumberField({ integer: true, initial: 10 }),
+                max: new fields.NumberField({ integer: true, initial: 10 })
+            });
+
+            schema.attack = new fields.SchemaField({
+                modifier: new fields.NumberField({ integer: true, initial: 0 })
+            });
+
+
+            /** Nullify the system's resource field as requested */
+            schema.resource = new fields.ObjectField({ initial: {} });
 
             /** The type/location of this segment on the colossus body. */
             schema.segmentType = new fields.StringField({
@@ -89,7 +110,27 @@ export function setupColossalSegmentModel() {
              * Chain group identifier (e.g. 'A', 'B'). When all segments in the
              * same group are Destroyed, the colossus is defeated.
              */
-            schema.chainGroup = new fields.StringField({ required: false, initial: '', nullable: true });
+            schema.chainGroup = new fields.StringField({
+                required: false,
+                initial: '',
+                blank: true,
+                nullable: true,
+                choices: {
+                    '': 'Not Chained',
+                    'A': 'Chain A',
+                    'B': 'Chain B',
+                    'C': 'Chain C',
+                    'D': 'Chain D',
+                    'E': 'Chain E',
+                    'F': 'Chain F',
+                    'G': 'Chain G',
+                    'H': 'Chain H',
+                    'I': 'Chain I',
+                    'J': 'Chain J',
+                    'K': 'Chain K',
+                    'L': 'Chain L'
+                }
+            });
 
             // --- Status Flags ---
             /** Whether this segment has been Destroyed (HP reduced to 0). */
@@ -173,7 +214,7 @@ export function setupColossalSegmentModel() {
          * Prepare total HP for easier display.
          */
         get hp() {
-            return this.resource;
+            return this.hitPoints;
         }
     };
 }

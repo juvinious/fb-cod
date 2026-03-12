@@ -241,7 +241,7 @@ export async function importColossus(parsed) {
 
         for (const segDoc of createdSegments) {
             nameToId.set(segDoc.name.toLowerCase(), segDoc.id);
-            
+
             const typeKey = segDoc.system.segmentType;
             if (typeKey) {
                 if (!typeToIds.has(typeKey)) typeToIds.set(typeKey, []);
@@ -257,7 +257,7 @@ export async function importColossus(parsed) {
             const resolvedIds = [];
             for (const name of pendingNames) {
                 const lowerName = name.toLowerCase();
-                
+
                 // 1. Try exact name match (e.g. "Left Arm")
                 if (nameToId.has(lowerName)) {
                     resolvedIds.push(nameToId.get(lowerName));
@@ -413,7 +413,8 @@ function parseSegmentBlock(blocks, prefix) {
     let chainGroup = '';
     let fatal = false;
     for (const f of features) {
-        const chainM = f.name.match(/^Chain\s*\(([A-Z])\)$/i);
+        // Match "Chain (A)", "Chain A", "Chain Group (A)", or "Chain Group A"
+        const chainM = f.name.match(/^(?:Chain|Chain Group)\s*\(?([A-L])\)?$/i);
         if (chainM) chainGroup = chainM[1].toUpperCase();
         if (/^Fatal$/i.test(f.name)) fatal = true;
     }
@@ -696,7 +697,9 @@ function buildSegmentItems(seg, footprints = {}) {
             img: footprintData?.img || 'systems/daggerheart/assets/icons/documents/actors/dragon-head.svg',
             system: foundry.utils.mergeObject(footprintData?.system || {}, {
                 difficulty: seg.difficulty || footprintData?.system?.difficulty || 12,
-                atkModifier: seg.atkModifier || footprintData?.system?.atkModifier || 0,
+                attack: {
+                    modifier: seg.atkModifier || footprintData?.system?.attack?.modifier || 0
+                },
                 adjacentSegments: (seg.adjacentSegments && seg.adjacentSegments.length > 0)
                     ? seg.adjacentSegments
                     : (footprintData?.system?.adjacentSegments || []),
@@ -704,12 +707,11 @@ function buildSegmentItems(seg, footprints = {}) {
                 position,
                 fatal: seg.fatal || footprintData?.system?.fatal || false,
                 chainGroup: seg.chainGroup || footprintData?.system?.chainGroup || "",
-                resource: {
-                    type: 'simple',
-                    name: 'HP',
-                    value: seg.hp ?? footprintData?.system?.difficulty ?? 5,
-                    max: seg.hp ?? footprintData?.system?.difficulty ?? 5
-                }
+                hitPoints: {
+                    value: seg.hp ?? footprintData?.system?.hitPoints?.value ?? 5,
+                    max: seg.hp ?? footprintData?.system?.hitPoints?.max ?? 5
+                },
+                resource: {} // Nullify resource
             })
         };
 

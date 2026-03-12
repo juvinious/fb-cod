@@ -89,8 +89,9 @@ export function setupColossalSegmentSheet() {
         async _prepareContext(options) {
             const context = await super._prepareContext(options);
 
-            // Provide choices for the segment type dropdown
+            // Provide choices for the dropdowns
             context.segmentTypeChoices = this.document.system.schema.getField('segmentType').choices;
+            context.chainGroupChoices = this.document.system.schema.getField('chainGroup').choices;
 
             // Associate features from the actor by identifier
             if (this.document.parent) {

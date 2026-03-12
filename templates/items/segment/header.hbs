@@ -1,11 +1,12 @@
 <header class='item-sheet-header'>
     <img class='profile' src='{{source.img}}' data-action='editImage' data-edit='img' />
     <div class='item-info'>
-        <line-div></line-div>
-        <h1 class='item-name'>
-            <input type='text' name='name' value='{{source.name}}' />
-        </h1>
-        <div class='item-description'>
+        <div class="header-top">
+            <h1 class='item-name'>
+                <input type='text' name='name' value='{{source.name}}' placeholder="Segment Name" />
+            </h1>
+        </div>
+        <div class='header-top-sub'>
             {{!-- Show the segment type as the subtitle instead of "Passive Feature" --}}
             <h3>Colossal Segment
                 {{#if source.system.segmentType}}
@@ -27,6 +28,41 @@
                 </span>
                 {{/if}}
             </h3>
+        </div>
+        <div class="header-middle">
+            <div class="header-stats">
+                <div class="stat-group">
+                    <label>HP</label>
+                    <input type="number" name="system.hitPoints.value" value="{{source.system.hitPoints.value}}" />
+                    <span>/</span>
+                    <input type="number" name="system.hitPoints.max" value="{{source.system.hitPoints.max}}" />
+                </div>
+                <div class="stat-group">
+                    <label>ATTACK</label>
+                    <input type="number" name="system.attack.modifier" value="{{source.system.attack.modifier}}" />
+                </div>
+            </div>
+        </div>
+
+        <div class="header-bottom">
+            <div class="header-status">
+                <div class="stat-group">
+                    <label>BROKEN</label>
+                    <input type="checkbox" name="system.broken" {{checked source.system.broken}} />
+                </div>
+            </div>
+            <div class="header-status">
+                <div class="stat-group">
+                    <label>COLLAPSED</label>
+                    <input type="checkbox" name="system.collapsed" {{checked source.system.collapsed}} />
+                </div>
+            </div>
+            <div class="header-status">
+                <div class="stat-group">
+                    <label>DESTROYED</label>
+                    <input type="checkbox" name="system.destroyed" {{checked source.system.destroyed}} />
+                </div>
+            </div>
         </div>
     </div>
 </header>

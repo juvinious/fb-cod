@@ -11,7 +11,7 @@ export function setupColossusSheet() {
         /** @override */
         static DEFAULT_OPTIONS = foundry.utils.mergeObject(super.DEFAULT_OPTIONS, {
             classes: ["colossus", "dh-style", "adversary"],
-            position: { width: 660, height: 766 },
+            position: { width: 1000, height: 766 },
             window: {
                 resizable: true,
                 controls: [
@@ -138,18 +138,18 @@ export function setupColossusSheet() {
                     const segment = this.document.items.get(segmentId);
                     if (!segment) return;
 
-                    const { value, max } = segment.system.resource;
+                    const { value, max } = segment.system.hitPoints;
                     let newHP = value + adjustment;
 
                     // Clamp HP between 0 and Max
                     newHP = Math.max(0, Math.min(newHP, max));
 
                     if (newHP !== value) {
-                        const updateData = { "system.resource.value": newHP };
+                        const updateData = { "system.hitPoints.value": newHP };
                         // Automatically set/unset destroyed based on HP
                         if (newHP === 0) updateData["system.destroyed"] = true;
                         else if (value === 0 && newHP > 0) updateData["system.destroyed"] = false;
-                        
+
                         await segment.update(updateData);
                     }
                 },
@@ -163,10 +163,10 @@ export function setupColossusSheet() {
                     // Toggle the destroyed boolean
                     const isDestroyed = segment.system.destroyed;
                     const updateData = { "system.destroyed": !isDestroyed };
-                    
+
                     // If restoring, ensure HP is at least 1
-                    if (isDestroyed && segment.system.resource.value === 0) {
-                        updateData["system.resource.value"] = 1;
+                    if (isDestroyed && segment.system.hitPoints.value === 0) {
+                        updateData["system.hitPoints.value"] = 1;
                     }
 
                     await segment.update(updateData);
@@ -368,7 +368,7 @@ export function setupColossusSheet() {
 
             // Group segments
             context.isDefeated = sortedSegments.length > 0 && sortedSegments.every(s => s.system.destroyed);
-            
+
             for (const segment of sortedSegments) {
                 const sys = segment.system;
                 if (!sys) continue;

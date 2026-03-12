@@ -11,9 +11,6 @@
         <span>Difficulty</span>
         {{formInput document.system.schema.fields.difficulty value=document.system.difficulty}}
 
-        <span>ATK Modifier</span>
-        {{formInput document.system.schema.fields.atkModifier value=document.system.atkModifier}}
-
         <span>Adjacent Segments</span>
         <div class="adjacent-segments-list">
             {{#each neighborCandidates}}
@@ -38,12 +35,13 @@
 
         <div class="form-group">
             <span>Chain Group</span>
-            {{formInput document.system.schema.fields.chainGroup value=document.system.chainGroup placeholder="e.g. A,
-            B"}}
+            {{formInput document.system.schema.fields.chainGroup value=document.system.chainGroup
+            choices=chainGroupChoices localize=false}}
         </div>
     </fieldset>
 
     {{!-- === Current Status === --}}
+    {{!--
     <fieldset>
         <legend>Status</legend>
 
@@ -61,9 +59,6 @@
             {{formInput document.system.schema.fields.destroyed value=document.system.destroyed}}
             <span>Destroyed</span>
         </div>
-    </fieldset>
-
-    {{!-- === HP Resource === --}}
-    {{> "systems/daggerheart/templates/sheets/global/partials/resource-section/resource-section.hbs" }}
+    </fieldset>--}}
 
 </section>
