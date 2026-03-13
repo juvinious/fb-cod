@@ -1,6 +1,6 @@
 {
     "name": "fb-cod",
-    "version": "1.0.0",
+    "version": "1.3.0",
     "scripts": {
         "build:packs": "node scripts/compile-packs.mjs",
         "extract:packs": "node scripts/compile-packs.mjs --unpack"
