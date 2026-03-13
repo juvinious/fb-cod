@@ -1,0 +1,26 @@
+<form class="fb-cod-generator-form">
+    <div class="form-group">
+        <label>Randomize Archetype</label>
+        <input type="checkbox" name="randomizeArchetype">
+    </div>
+    <div class="form-group">
+        <label>Archetype</label>
+        <select name="archetype">
+            {{#each archetypes}}
+            <option value="{{this.id}}">{{this.label}}</option>
+            {{/each}}
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Power Tier</label>
+        <select name="tier">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+    </div>
+    <p class="notes">
+        Procedurally generates a unique Colossus with name, motives, and linked segments.
+    </p>
+</form>

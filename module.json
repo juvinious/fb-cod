@@ -21,6 +21,20 @@
             }
         ]
     },
+    "packFolders": [
+        {
+            "name": "Daggerheart COD",
+            "sorting": "m",
+            "color": "#08718c",
+            "packs": [
+                "colossal-adversaries",
+                "colossal-weapons",
+                "colossal-loot",
+                "colossal-segments",
+                "colossal-generator-tables"
+            ]
+        }
+    ],
     "esmodules": [
         "scripts/module.mjs"
     ],
@@ -85,6 +99,15 @@
             "system": "daggerheart",
             "path": "packs/colossal-segments",
             "type": "Item",
+            "private": false,
+            "flags": {}
+        },
+        {
+            "name": "colossal-generator-tables",
+            "label": "Colossal Generator Tables",
+            "system": "daggerheart",
+            "path": "packs/colossal-generator-tables",
+            "type": "RollTable",
             "private": false,
             "flags": {}
         }

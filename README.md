@@ -8,6 +8,10 @@ A Foundry VTT supplementary module for the **[Daggerheart](https://foundryborne.
     - **Dynamic Segments:** Manage complex colossi with multi-segmented body parts (Head, Limbs, Core, etc.), each with its own health, Difficulty/Armor, and unique abilities.
     - **Integrated Header Controls:** Quickly manage **HP**, **Attack Modifiers**, and status conditions like **Broken**, **Collapsed**, or **Destroyed** directly from the segment header.
     - **Chain Defeat Logic:** Organize segments into **Chain Groups (A-L)**. Configure defeat conditions where destroying an entire chain or a "Fatal" segment brings down the Colossus.
+- **Procedural Colossus Generator:** Instantly create unique, theme-accurate colossi through a guided UI.
+    - **Thematic Logic:** Generates contextual abilities and segments based on 10+ core themes (Mechanical, Void, Aquatic, Fire, etc.).
+    - **Tier-Based Scaling:** Automatically scales the number and power of attacks/features based on Tier (1-4).
+    - **Customization:** Select specific archetypes (e.g., Quadruped, Avian, Serpentine) or use the **Randomize Archetype** feature for a complete surprise.
 - **Built-in Importer:** Features a robust text parser that can instantly convert raw stat-blocks from the Colossus of the Drylands core rulebook into fully configured Colossi. Supports complex segment naming, Fatal tags, and Chain Groups.
 
 ## Compendiums

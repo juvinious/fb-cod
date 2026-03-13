@@ -1,0 +1,33 @@
+{
+  "name": "Colossus Name Suffixes",
+  "_id": "suffixes00000000",
+  "img": "icons/svg/d10-grey.svg",
+  "description": "Random suffixes for Colossus names.",
+  "results": [
+    { "type": "text", "weight": 1, "range": [1, 1], "_id": "suf000000000001", "name": "of the Waste", "description": "of the Waste", "img": "icons/svg/d10-grey.svg", "drawn": false, "flags": { "fb-cod": { "tags": ["earth"] } }, "documentUuid": null, "_key": "!tables.results!suffixes00000000.suf000000000001" },
+    { "type": "text", "weight": 1, "range": [2, 2], "_id": "suf000000000002", "name": "from the Deep", "description": "from the Deep", "img": "icons/svg/d10-grey.svg", "drawn": false, "flags": { "fb-cod": { "tags": ["aquatic", "void"] } }, "documentUuid": null, "_key": "!tables.results!suffixes00000000.suf000000000002" },
+    { "type": "text", "weight": 1, "range": [3, 3], "_id": "suf000000000003", "name": "the Ever-Hungry", "description": "the Ever-Hungry", "img": "icons/svg/d10-grey.svg", "drawn": false, "flags": { "fb-cod": { "tags": ["beast"] } }, "documentUuid": null, "_key": "!tables.results!suffixes00000000.suf000000000003" },
+    { "type": "text", "weight": 1, "range": [4, 4], "_id": "suf000000000004", "name": "the Unbroken", "description": "the Unbroken", "img": "icons/svg/d10-grey.svg", "drawn": false, "flags": { "fb-cod": { "tags": [] } }, "documentUuid": null, "_key": "!tables.results!suffixes00000000.suf000000000004" },
+    { "type": "text", "weight": 1, "range": [5, 5], "_id": "suf000000000005", "name": "the Eternal", "description": "the Eternal", "img": "icons/svg/d10-grey.svg", "drawn": false, "flags": { "fb-cod": { "tags": ["void", "undead"] } }, "documentUuid": null, "_key": "!tables.results!suffixes00000000.suf000000000005" },
+    { "type": "text", "weight": 1, "range": [6, 6], "_id": "suf000000000006", "name": "of the First Age", "description": "of the First Age", "img": "icons/svg/d10-grey.svg", "drawn": false, "flags": { "fb-cod": { "tags": ["earth", "mechanical"] } }, "documentUuid": null, "_key": "!tables.results!suffixes00000000.suf000000000006" },
+    { "type": "text", "weight": 1, "range": [7, 7], "_id": "suf000000000007", "name": "the Silent", "description": "the Silent", "img": "icons/svg/d10-grey.svg", "drawn": false, "flags": { "fb-cod": { "tags": ["void"] } }, "documentUuid": null, "_key": "!tables.results!suffixes00000000.suf000000000007" },
+    { "type": "text", "weight": 1, "range": [8, 8], "_id": "suf000000000008", "name": "the World-Shaker", "description": "the World-Shaker", "img": "icons/svg/d10-grey.svg", "drawn": false, "flags": { "fb-cod": { "tags": ["earth"] } }, "documentUuid": null, "_key": "!tables.results!suffixes00000000.suf000000000008" },
+    { "type": "text", "weight": 1, "range": [9, 9], "_id": "suf000000000009", "name": "the Sky-Render", "description": "the Sky-Render", "img": "icons/svg/d10-grey.svg", "drawn": false, "flags": { "fb-cod": { "tags": ["beast", "wind"] } }, "documentUuid": null, "_key": "!tables.results!suffixes00000000.suf000000000009" },
+    { "type": "text", "weight": 1, "range": [10, 10], "_id": "suf000000000010", "name": "of Dust", "description": "of Dust", "img": "icons/svg/d10-grey.svg", "drawn": false, "flags": { "fb-cod": { "tags": ["earth", "undead"] } }, "documentUuid": null, "_key": "!tables.results!suffixes00000000.suf000000000010" },
+    { "type": "text", "weight": 1, "range": [11, 11], "_id": "suf000000000011", "name": "of the Abyss", "description": "of the Abyss", "img": "icons/svg/d10-grey.svg", "drawn": false, "flags": { "fb-cod": { "tags": ["aquatic", "void"] } }, "documentUuid": null, "_key": "!tables.results!suffixes00000000.suf000000000011" },
+    { "type": "text", "weight": 1, "range": [12, 12], "_id": "suf000000000012", "name": "the Tsunami", "description": "the Tsunami", "img": "icons/svg/d10-grey.svg", "drawn": false, "flags": { "fb-cod": { "tags": ["aquatic"] } }, "documentUuid": null, "_key": "!tables.results!suffixes00000000.suf000000000012" },
+    { "type": "text", "weight": 1, "range": [13, 13], "_id": "suf000000000013", "name": "of Rust", "description": "of Rust", "img": "icons/svg/d10-grey.svg", "drawn": false, "flags": { "fb-cod": { "tags": ["mechanical", "undead"] } }, "documentUuid": null, "_key": "!tables.results!suffixes00000000.suf000000000013" },
+    { "type": "text", "weight": 1, "range": [14, 14], "_id": "suf000000000014", "name": "the Soul-Eater", "description": "the Soul-Eater", "img": "icons/svg/d10-grey.svg", "drawn": false, "flags": { "fb-cod": { "tags": ["undead", "void"] } }, "documentUuid": null, "_key": "!tables.results!suffixes00000000.suf000000000014" },
+    { "type": "text", "weight": 1, "range": [15, 15], "_id": "suf000000000015", "name": "of the Ancient Seas", "description": "of the Ancient Seas", "img": "icons/svg/d10-grey.svg", "drawn": false, "flags": { "fb-cod": { "tags": ["aquatic", "earth"] } }, "documentUuid": null, "_key": "!tables.results!suffixes00000000.suf000000000015" },
+    { "type": "text", "weight": 1, "range": [16, 16], "_id": "suf000000000016", "name": "the Inferno", "description": "the Inferno", "img": "icons/svg/d10-grey.svg", "drawn": false, "flags": { "fb-cod": { "tags": ["fire"] } }, "documentUuid": null, "_key": "!tables.results!suffixes00000000.suf000000000016" },
+    { "type": "text", "weight": 1, "range": [17, 17], "_id": "suf000000000017", "name": "of the High Winds", "description": "of the High Winds", "img": "icons/svg/d10-grey.svg", "drawn": false, "flags": { "fb-cod": { "tags": ["wind"] } }, "documentUuid": null, "_key": "!tables.results!suffixes00000000.suf000000000017" },
+    { "type": "text", "weight": 1, "range": [18, 18], "_id": "suf000000000018", "name": "of the Furnace", "description": "of the Furnace", "img": "icons/svg/d10-grey.svg", "drawn": false, "flags": { "fb-cod": { "tags": ["fire", "mechanical"] } }, "documentUuid": null, "_key": "!tables.results!suffixes00000000.suf000000000018" },
+    { "type": "text", "weight": 1, "range": [19, 19], "_id": "suf000000000019", "name": "of the Hearth", "description": "of the Hearth", "img": "icons/svg/d10-grey.svg", "drawn": false, "flags": { "fb-cod": { "tags": ["fire"] } }, "documentUuid": null, "_key": "!tables.results!suffixes00000000.suf000000000019" },
+    { "type": "text", "weight": 1, "range": [20, 20], "_id": "suf000000000020", "name": "the Tempest", "description": "the Tempest", "img": "icons/svg/d10-grey.svg", "drawn": false, "flags": { "fb-cod": { "tags": ["wind", "aquatic"] } }, "documentUuid": null, "_key": "!tables.results!suffixes00000000.suf000000000020" }
+  ],
+  "formula": "1d20",
+  "replacement": true,
+  "displayRoll": true,
+  "folder": null,
+  "_key": "!tables!suffixes00000000"
+}

@@ -311,14 +311,19 @@ export function setupColossusSheet() {
             context.resources.stress.emptyPips = context.resources.stress.max < maxResource ? maxResource - context.resources.stress.max : 0;
 
             const featureForms = ['passive', 'action', 'reaction'];
-            const allFeatures = this.document.system.features.sort((a, b) =>
-                a.system.featureForm !== b.system.featureForm
-                    ? featureForms.indexOf(a.system.featureForm) - featureForms.indexOf(b.system.featureForm)
-                    : a.sort - b.sort
-            );
+            const allFeatures = this.document.items.filter(i => i.type === 'feature').sort((a, b) => {
+                const aForm = a.system?.featureForm || 'passive';
+                const bForm = b.system?.featureForm || 'passive';
+                if (aForm !== bForm) return featureForms.indexOf(aForm) - featureForms.indexOf(bForm);
+                return (a.sort || 0) - (b.sort || 0);
+            });
 
             // Filter out segment features from the main actor's list
-            context.features = allFeatures.filter(f => f.system.originItemType !== 'fb-cod.colossal-segment');
+            context.features = allFeatures.filter(f => {
+                const sys = f.system;
+                return !(sys?.originItemType === 'fb-cod.colossal-segment' && !!sys?.identifier);
+            });
+            console.log("fb-cod | Total features found:", allFeatures.length, "Core features count:", context.features.length);
 
             // Wrap context.document in a Proxy so Handlebars inventory-items partial
             // recognizes it as 'adversary' and renders the Action/Reaction/Passive tags.

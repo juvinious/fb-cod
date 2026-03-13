@@ -1,0 +1,33 @@
+{
+  "name": "Colossus Experiences",
+  "_id": "experiences00000",
+  "img": "icons/svg/d20-grey.svg",
+  "description": "Random experiences for Colossal adversaries.",
+  "results": [
+    { "_id": "exp001", "type": "text", "weight": 1, "range": [1, 1], "name": "Ancient Guardian", "description": "Ancient Guardian", "img": "icons/svg/d20-grey.svg", "drawn": false, "flags": { "fb-cod": { "tags": ["beast", "earth"] } }, "documentUuid": null, "_key": "!tables.results!experiences00000.exp001" },
+    { "_id": "exp002", "type": "text", "weight": 1, "range": [2, 2], "name": "Deep Canyon Stalker", "description": "Deep Canyon Stalker", "img": "icons/svg/d20-grey.svg", "drawn": false, "flags": { "fb-cod": { "tags": ["earth"] } }, "documentUuid": null, "_key": "!tables.results!experiences00000.exp002" },
+    { "_id": "exp003", "type": "text", "weight": 1, "range": [3, 3], "name": "Void Terror", "description": "Void Terror", "img": "icons/svg/d20-grey.svg", "drawn": false, "flags": { "fb-cod": { "tags": ["void"] } }, "documentUuid": null, "_key": "!tables.results!experiences00000.exp003" },
+    { "_id": "exp004", "type": "text", "weight": 1, "range": [4, 4], "name": "Relic Hunter", "description": "Relic Hunter", "img": "icons/svg/d20-grey.svg", "drawn": false, "flags": { "fb-cod": { "tags": ["mechanical", "earth"] } }, "documentUuid": null, "_key": "!tables.results!experiences00000.exp004" },
+    { "_id": "exp005", "type": "text", "weight": 1, "range": [5, 5], "name": "Fearsome Presence", "description": "Fearsome Presence", "img": "icons/svg/d20-grey.svg", "drawn": false, "flags": { "fb-cod": { "tags": [] } }, "documentUuid": null, "_key": "!tables.results!experiences00000.exp005" },
+    { "_id": "exp006", "type": "text", "weight": 1, "range": [6, 6], "name": "Unstoppable Force", "description": "Unstoppable Force", "img": "icons/svg/d20-grey.svg", "drawn": false, "flags": { "fb-cod": { "tags": [] } }, "documentUuid": null, "_key": "!tables.results!experiences00000.exp006" },
+    { "_id": "exp007", "type": "text", "weight": 1, "range": [7, 7], "name": "World Shaker", "description": "World Shaker", "img": "icons/svg/d20-grey.svg", "drawn": false, "flags": { "fb-cod": { "tags": ["earth"] } }, "documentUuid": null, "_key": "!tables.results!experiences00000.exp007" },
+    { "_id": "exp008", "type": "text", "weight": 1, "range": [8, 8], "name": "Eternal Sentinel", "description": "Eternal Sentinel", "img": "icons/svg/d20-grey.svg", "drawn": false, "flags": { "fb-cod": { "tags": ["mechanical", "void"] } }, "documentUuid": null, "_key": "!tables.results!experiences00000.exp008" },
+    { "_id": "exp009", "type": "text", "weight": 1, "range": [9, 9], "name": "Primal Predator", "description": "Primal Predator", "img": "icons/svg/d20-grey.svg", "drawn": false, "flags": { "fb-cod": { "tags": ["beast"] } }, "documentUuid": null, "_key": "!tables.results!experiences00000.exp009" },
+    { "_id": "exp010", "type": "text", "weight": 1, "range": [10, 10], "name": "Storm Herald", "description": "Storm Herald", "img": "icons/svg/d20-grey.svg", "drawn": false, "flags": { "fb-cod": { "tags": ["wind", "void"] } }, "documentUuid": null, "_key": "!tables.results!experiences00000.exp010" },
+    { "_id": "exp011", "type": "text", "weight": 1, "range": [11, 11], "name": "Abyssal Lurker", "description": "Abyssal Lurker", "img": "icons/svg/d20-grey.svg", "drawn": false, "flags": { "fb-cod": { "tags": ["aquatic"] } }, "documentUuid": null, "_key": "!tables.results!experiences00000.exp011" },
+    { "_id": "exp012", "type": "text", "weight": 1, "range": [12, 12], "name": "Titan of the Tides", "description": "Titan of the Tides", "img": "icons/svg/d20-grey.svg", "drawn": false, "flags": { "fb-cod": { "tags": ["aquatic"] } }, "documentUuid": null, "_key": "!tables.results!experiences00000.exp012" },
+    { "_id": "exp013", "type": "text", "weight": 1, "range": [13, 13], "name": "Steam-Powered Ravager", "description": "Steam-Powered Ravager", "img": "icons/svg/d20-grey.svg", "drawn": false, "flags": { "fb-cod": { "tags": ["mechanical", "fire"] } }, "documentUuid": null, "_key": "!tables.results!experiences00000.exp013" },
+    { "_id": "exp014", "type": "text", "weight": 1, "range": [14, 14], "name": "Clockwork Overlord", "description": "Clockwork Overlord", "img": "icons/svg/d20-grey.svg", "drawn": false, "flags": { "fb-cod": { "tags": ["mechanical"] } }, "documentUuid": null, "_key": "!tables.results!experiences00000.exp014" },
+    { "_id": "exp015", "type": "text", "weight": 1, "range": [15, 15], "name": "Bone-Clad Reaver", "description": "Bone-Clad Reaver", "img": "icons/svg/d20-grey.svg", "drawn": false, "flags": { "fb-cod": { "tags": ["undead"] } }, "documentUuid": null, "_key": "!tables.results!experiences00000.exp015" },
+    { "_id": "exp016", "type": "text", "weight": 1, "range": [16, 16], "name": "Forge-Born Juggernaut", "description": "Forge-Born Juggernaut", "img": "icons/svg/d20-grey.svg", "drawn": false, "flags": { "fb-cod": { "tags": ["fire", "mechanical"] } }, "documentUuid": null, "_key": "!tables.results!experiences00000.exp016" },
+    { "_id": "exp017", "type": "text", "weight": 1, "range": [17, 17], "name": "Inferno Crawler", "description": "Inferno Crawler", "img": "icons/svg/d20-grey.svg", "drawn": false, "flags": { "fb-cod": { "tags": ["fire", "beast"] } }, "documentUuid": null, "_key": "!tables.results!experiences00000.exp017" },
+    { "_id": "exp018", "type": "text", "weight": 1, "range": [18, 18], "name": "Sky-Sovereign Hunter", "description": "Sky-Sovereign Hunter", "img": "icons/svg/d20-grey.svg", "drawn": false, "flags": { "fb-cod": { "tags": ["wind", "beast"] } }, "documentUuid": null, "_key": "!tables.results!experiences00000.exp018" },
+    { "_id": "exp019", "type": "text", "weight": 1, "range": [19, 19], "name": "Cloud Dancer", "description": "Cloud Dancer", "img": "icons/svg/d20-grey.svg", "drawn": false, "flags": { "fb-cod": { "tags": ["wind"] } }, "documentUuid": null, "_key": "!tables.results!experiences00000.exp019" },
+    { "_id": "exp020", "type": "text", "weight": 1, "range": [20, 20], "name": "Ashen Wraith", "description": "Ashen Wraith", "img": "icons/svg/d20-grey.svg", "drawn": false, "flags": { "fb-cod": { "tags": ["fire", "undead"] } }, "documentUuid": null, "_key": "!tables.results!experiences00000.exp020" }
+  ],
+  "formula": "1d20",
+  "replacement": false,
+  "displayRoll": true,
+  "folder": null,
+  "_key": "!tables!experiences00000"
+}

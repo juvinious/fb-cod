@@ -1,0 +1,49 @@
+{
+  "name": "Colossus Motives & Tactics",
+  "_id": "motives000000000",
+  "img": "icons/svg/d12-grey.svg",
+  "description": "Random motives and corresponding tactics for Colossal adversaries.",
+  "results": [
+    { 
+      "type": "text", "weight": 1, "range": [1, 2], "_id": "mot000000000001",
+      "name": "Territorial Defense", 
+      "description": "<strong>Motive:</strong> Territorial Defense<br><strong>Tactics:</strong> Aggressively pushes intruders away from its core territory. Focuses on area-denial attacks.",
+      "img": "icons/svg/d12-grey.svg", "drawn": false, "flags": {}, "documentUuid": null, "_key": "!tables.results!motives000000000.mot000000000001"
+    },
+    { 
+      "type": "text", "weight": 1, "range": [3, 4], "_id": "mot000000000002",
+      "name": "Primal Hunger", 
+      "description": "<strong>Motive:</strong> Primal Hunger<br><strong>Tactics:</strong> Targets the smallest or weakest-looking prey first. Attempts to swallow or restrain victims.",
+      "img": "icons/svg/d12-grey.svg", "drawn": false, "flags": {}, "documentUuid": null, "_key": "!tables.results!motives000000000.mot000000000002"
+    },
+    { 
+      "type": "text", "weight": 1, "range": [5, 6], "_id": "mot000000000003",
+      "name": "Ancient Protocol", 
+      "description": "<strong>Motive:</strong> Ancient Protocol<br><strong>Tactics:</strong> Follows a rigid, predictable pattern of attacks. Prioritizes defensive shell/carapace over offense.",
+      "img": "icons/svg/d12-grey.svg", "drawn": false, "flags": {}, "documentUuid": null, "_key": "!tables.results!motives000000000.mot000000000003"
+    },
+    { 
+      "type": "text", "weight": 1, "range": [7, 8], "_id": "mot000000000004",
+      "name": "Corruption Spreading", 
+      "description": "<strong>Motive:</strong> Corruption Spreading<br><strong>Tactics:</strong> Emits hazardous environmental effects. Targets clusters of enemies with sweeping blows.",
+      "img": "icons/svg/d12-grey.svg", "drawn": false, "flags": {}, "documentUuid": null, "_key": "!tables.results!motives000000000.mot000000000004"
+    },
+    { 
+      "type": "text", "weight": 1, "range": [9, 10], "_id": "mot000000000005",
+      "name": "Search for Relics", 
+      "description": "<strong>Motive:</strong> Search for Relics<br><strong>Tactics:</strong> Focuses on characters carrying magical items. Uses non-lethal displacement to isolate targets.",
+      "img": "icons/svg/d12-grey.svg", "drawn": false, "flags": {}, "documentUuid": null, "_key": "!tables.results!motives000000000.mot000000000005"
+    },
+    { 
+      "type": "text", "weight": 1, "range": [11, 12], "_id": "mot000000000006",
+      "name": "Mindless Rampage", 
+      "description": "<strong>Motive:</strong> Mindless Rampage<br><strong>Tactics:</strong> Attacks the nearest target regardless of threat level. Moves unpredictably, crashing through obstacles.",
+      "img": "icons/svg/d12-grey.svg", "drawn": false, "flags": {}, "documentUuid": null, "_key": "!tables.results!motives000000000.mot000000000006"
+    }
+  ],
+  "formula": "1d12",
+  "replacement": true,
+  "displayRoll": true,
+  "folder": null,
+  "_key": "!tables!motives000000000"
+}

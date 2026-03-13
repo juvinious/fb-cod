@@ -39,15 +39,22 @@ export function openColossusImportDialog() {
         </div>
     `;
 
-    new Dialog({
-        title: 'Import Colossus',
+    new foundry.applications.api.DialogV2({
+        window: { 
+            title: 'Import Colossus',
+            icon: 'fas fa-file-import',
+            width: 600,
+            height: 'auto'
+        },
         content,
-        buttons: {
-            import: {
-                icon: '<i class="fas fa-file-import"></i>',
+        buttons: [
+            {
+                action: 'import',
                 label: 'Import',
-                callback: async (html) => {
-                    const raw = html.find('[name="rawColossus"]').val()?.trim();
+                icon: 'fas fa-file-import',
+                default: true,
+                callback: async (event, button, instance) => {
+                    const raw = instance.element.querySelector('[name="rawColossus"]').value?.trim();
                     if (!raw) {
                         ui.notifications.warn('No text provided — paste a colossus stat block first.');
                         return;
@@ -63,19 +70,15 @@ export function openColossusImportDialog() {
                     }
                 }
             },
-            cancel: {
-                icon: '<i class="fas fa-times"></i>',
-                label: 'Cancel'
+            {
+                action: 'cancel',
+                label: 'Cancel',
+                icon: 'fas fa-times'
             }
-        },
-        default: 'import',
-        render: (html) => {
+        ],
+        render: (instance) => {
             // Auto-focus the textarea when the dialog opens
-            html.find('[name="rawColossus"]').focus();
+            instance.element.querySelector('[name="rawColossus"]').focus();
         }
-    }, {
-        // Make the dialog wider to accommodate the textarea
-        width: 600,
-        height: 'auto'
     }).render(true);
 }

@@ -3,6 +3,7 @@ import { setupColossalSegmentModel } from './data/colossal-segment.mjs';
 import { setupColossusSheet } from './sheets/colossus-sheet.mjs';
 import { setupColossalSegmentSheet } from './sheets/colossus-segment-sheet.mjs';
 import { openColossusImportDialog } from './colossus-import-dialog.mjs';
+import { ColossusGenerator } from './colossus-generator.mjs';
 
 
 
@@ -83,28 +84,37 @@ Hooks.on("renderActorDirectory", function (app, html) {
     if (!game.user.isGM) return;
 
     const importBtnHTML = `
-        <button class="import-colossus-button" style="margin-top: 5px;">
-            <i class="fas fa-file-import"></i> Import Colossus
-        </button>
+        <div class="fb-cod-directory-controls" style="display:flex; gap:5px; margin-top:5px;">
+            <button class="import-colossus-button" style="flex:1;">
+                <i class="fas fa-file-import"></i> Import
+            </button>
+            <button class="generate-colossus-button" style="flex:1;">
+                <i class="fas fa-magic"></i> Generator
+            </button>
+        </div>
     `;
 
     // v13+ Native Application support
     if (html instanceof HTMLElement) {
         const footer = html.querySelector(".directory-footer");
-        if (footer && !footer.querySelector(".import-colossus-button")) {
+        if (footer && !footer.querySelector(".fb-cod-directory-controls")) {
             footer.insertAdjacentHTML("beforeend", importBtnHTML);
             footer.querySelector(".import-colossus-button").addEventListener("click", () => {
                 openColossusImportDialog();
+            });
+            footer.querySelector(".generate-colossus-button").addEventListener("click", () => {
+                ColossusGenerator.launch();
             });
         }
     }
     // v12 JQuery fallback
     else if (html.find) {
         const footer = html.find(".directory-footer");
-        if (footer.length && !footer.find(".import-colossus-button").length) {
+        if (footer.length && !footer.find(".fb-cod-directory-controls").length) {
             const $btn = $(importBtnHTML);
             footer.append($btn);
-            $btn.on("click", () => openColossusImportDialog());
+            $btn.find(".import-colossus-button").on("click", () => openColossusImportDialog());
+            $btn.find(".generate-colossus-button").on("click", () => ColossusGenerator.launch());
         }
     }
 });

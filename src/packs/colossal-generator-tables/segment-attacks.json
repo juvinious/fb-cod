@@ -1,0 +1,1574 @@
+{
+  "name": "Colossus Segment Attacks",
+  "_id": "segattacks000000",
+  "img": "icons/svg/d20-grey.svg",
+  "description": "Random attacks based on segment types.",
+  "results": [
+    {
+      "_id": "attacksg001",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "name": "Punch (Arm)",
+      "description": "A powerful blunt strike.",
+      "img": "icons/skills/melee/unarmed-punch-fist-white.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": []
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg001"
+    },
+    {
+      "_id": "attacksg002",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "name": "Kick (Leg)",
+      "description": "A forceful kick that can knock targets back.",
+      "img": "icons/equipment/feet/boots-armored-grey.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": []
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg002"
+    },
+    {
+      "_id": "attacksg003",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "name": "Rend (Claw/Arm)",
+      "description": "Tears through armor and flesh with sharp claws.",
+      "img": "icons/skills/melee/strike-blade-claw-red.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "beast"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg003"
+    },
+    {
+      "_id": "attacksg004",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "name": "Stomp (Leg)",
+      "description": "Crushes anything beneath a massive foot.",
+      "img": "icons/skills/melee/strike-hammer-destructive-orange.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": []
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg004"
+    },
+    {
+      "_id": "attacksg005",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "name": "Swat (Tail/Arm/Wing)",
+      "description": "A wide sweep to clear away bothersome pests.",
+      "img": "icons/skills/melee/strike-blade-scimitar-gray-red.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": []
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg005"
+    },
+    {
+      "_id": "attacksg006",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "name": "Bite (Head)",
+      "description": "Snaps at nearby targets with massive jaws.",
+      "img": "icons/creatures/abilities/mouth-teeth-human.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "beast"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg006"
+    },
+    {
+      "_id": "attacksg007",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "name": "Smash (Torso/Arm)",
+      "description": "Uses momentum to slam into a group of targets.",
+      "img": "icons/weapons/maces/mace-round-spiked-black.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": []
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg007"
+    },
+    {
+      "_id": "attacksg008",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "name": "Crush (Arm/Pincer)",
+      "description": "Grabs and squeezes the life out of a target.",
+      "img": "icons/skills/melee/strike-blade-claw-red.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "aquatic"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg008"
+    },
+    {
+      "_id": "attacksg009",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "name": "Fire Breath (Head)",
+      "description": "A torrent of flame that incinerates everything in its path.",
+      "img": "icons/magic/fire/projectile-wave-yellow.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "fire"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg009"
+    },
+    {
+      "_id": "attacksg010",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "name": "Frost Breath (Head)",
+      "description": "Freezing mist that slows and numbs targets.",
+      "img": "icons/magic/air/fog-gas-smoke-dense-white.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "aquatic",
+            "wind"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg010"
+    },
+    {
+      "_id": "attacksg011",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        11,
+        11
+      ],
+      "name": "Acid Breath (Head)",
+      "description": "Corrosive liquid that melts flesh and metal.",
+      "img": "icons/magic/acid/dissolve-drip-droplet-smoke.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "beast",
+            "acid"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg011"
+    },
+    {
+      "_id": "attacksg012",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        12,
+        12
+      ],
+      "name": "Lightning Blast (Head/Thorax)",
+      "description": "A crackling arc of electricity.",
+      "img": "icons/magic/lightning/bolt-strike-blue.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "wind",
+            "mechanical"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg012"
+    },
+    {
+      "_id": "attacksg013",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        13,
+        13
+      ],
+      "name": "Shadow Rend (Claw/Arm)",
+      "description": "Ethereal claws that reach past physical defense.",
+      "img": "icons/magic/unholy/silhouette-evil-horned-giant.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "void",
+            "undead"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg013"
+    },
+    {
+      "_id": "attacksg014",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        14,
+        14
+      ],
+      "name": "Gale Shriek (Head)",
+      "description": "A high-pitched scream that carries the force of a hurricane.",
+      "img": "icons/magic/air/wind-tornado-cyclone-white.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "wind"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg014"
+    },
+    {
+      "_id": "attacksg015",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        15,
+        15
+      ],
+      "name": "Earth Slam (Leg/Torso)",
+      "description": "Stomps the ground with seismic force.",
+      "img": "icons/magic/earth/strike-fist-stone.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "earth"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg015"
+    },
+    {
+      "_id": "attacksg016",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        16,
+        16
+      ],
+      "name": "Mechanical Beam (Head/Thorax)",
+      "description": "Fires a concentrated beam of energy from an internal core.",
+      "img": "icons/magic/light/projectile-beam-yellow.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "mechanical"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg016"
+    },
+    {
+      "_id": "attacksg017",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        17,
+        17
+      ],
+      "name": "Ink Spray (Abdomen/Head)",
+      "description": "Releases a thick, blinding cloud.",
+      "img": "icons/magic/air/fog-gas-smoke-dense-white.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "aquatic"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg017"
+    },
+    {
+      "_id": "attacksg018",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        18,
+        18
+      ],
+      "name": "Soul Scream (Head)",
+      "description": "Unleashes a wave of necrotic energy from the void.",
+      "img": "icons/magic/unholy/silhouette-evil-horned-giant.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "undead",
+            "void"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg018"
+    },
+    {
+      "_id": "attacksg019",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        19,
+        19
+      ],
+      "name": "Tail Swipe (Tail)",
+      "description": "A massive sweep that hits everyone behind the Colossus.",
+      "img": "icons/creatures/tentacles/tentacle-eyes-yellow-pink.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "beast"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg019"
+    },
+    {
+      "_id": "attacksg020",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        20,
+        20
+      ],
+      "name": "Gore (Head/Tail)",
+      "description": "Charges forward or swings a spiked segment.",
+      "img": "icons/creatures/abilities/bull-head-horns-glowing.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "beast",
+            "earth"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg020"
+    },
+    {
+      "_id": "attacksg021",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        21,
+        21
+      ],
+      "name": "Dive Bomb (Wing)",
+      "description": "Plummets from the sky, dealing massive impact damage.",
+      "img": "icons/magic/control/buff-flight-wings-blue.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "wind",
+            "beast"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg021"
+    },
+    {
+      "_id": "attacksg022",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        22,
+        22
+      ],
+      "name": "Talon Sweep (Wing/Leg)",
+      "description": "Sweeps the ground with razor-sharp talons.",
+      "img": "icons/creatures/claws/claw-scaled-red.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "beast"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg022"
+    },
+    {
+      "_id": "attacksg023",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        23,
+        23
+      ],
+      "name": "Sonic Boom (Wing/Head)",
+      "description": "A localized shockwave that deafens and disorients.",
+      "img": "icons/magic/air/air-wave-gust-blue.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "wind",
+            "mechanical"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg023"
+    },
+    {
+      "_id": "attacksg024",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        24,
+        24
+      ],
+      "name": "Piston Leap (Leg)",
+      "description": "Launches forward with a mechanical jump, crushing on impact.",
+      "img": "icons/magic/control/buff-flight-wings-blue.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "mechanical"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg024"
+    },
+    {
+      "_id": "attacksg025",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        25,
+        25
+      ],
+      "name": "Webbed Sweep (Leg/Tail)",
+      "description": "A sticky, sweeping attack that entangles multiple foes.",
+      "img": "icons/creatures/webs/web-spider-glowing-purple.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "aquatic",
+            "beast"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg025"
+    },
+    {
+      "_id": "attacksg026",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        26,
+        26
+      ],
+      "name": "Tremor Kick (Leg)",
+      "description": "A powerful kick that ripples the ground.",
+      "img": "icons/magic/earth/strike-fist-stone.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "earth",
+            "beast"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg026"
+    },
+    {
+      "_id": "attacksg027",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        27,
+        27
+      ],
+      "name": "Magma Spout (Head/Abdomen)",
+      "description": "Erupts with molten rock and searing gas.",
+      "img": "icons/magic/fire/projectile-fireball-smoke-orange-red.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "fire",
+            "earth"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg027"
+    },
+    {
+      "_id": "attacksg028",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        28,
+        28
+      ],
+      "name": "Internal Combustion (Torso/Thorax)",
+      "description": "Self-inflicted heat burst that radiates outward.",
+      "img": "icons/magic/fire/flame-burning-chain.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "mechanical",
+            "fire"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg028"
+    },
+    {
+      "_id": "attacksg029",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        29,
+        29
+      ],
+      "name": "Searing Wave (Torso/Wing)",
+      "description": "A wave of heat that blisters the air.",
+      "img": "icons/magic/fire/projectile-wave-yellow.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "fire"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg029"
+    },
+    {
+      "_id": "attacksg030",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        30,
+        30
+      ],
+      "name": "Flaming Gore (Head)",
+      "description": "A charge with horns wreathed in mystical fire.",
+      "img": "icons/magic/death/projectile-skull-fire-orange.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "fire",
+            "beast"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg030"
+    },
+    {
+      "_id": "attacksg031",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        31,
+        31
+      ],
+      "name": "Crystal Shard (Head/Tail)",
+      "description": "Launches sharp crystalline fragments at a target.",
+      "img": "icons/magic/earth/barrier-stone-explosion-spiked.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "earth",
+            "void"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg031"
+    },
+    {
+      "_id": "attacksg032",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        32,
+        32
+      ],
+      "name": "Mud Slide (Leg/Abdomen)",
+      "description": "Forces targets to lose their footing in a slurry of earth.",
+      "img": "icons/magic/water/water-jet-wave-blue.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "earth",
+            "aquatic"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg032"
+    },
+    {
+      "_id": "attacksg033",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        33,
+        33
+      ],
+      "name": "Rock Throw (Arm/Head)",
+      "description": "Hurls a massive boulder.",
+      "img": "icons/magic/earth/projectiles-fire-stone-salvo.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "earth"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg033"
+    },
+    {
+      "_id": "attacksg034",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        34,
+        34
+      ],
+      "name": "Plasma Cutter (Arm/Head)",
+      "description": "A thin, high-intensity beam of energy.",
+      "img": "icons/magic/light/projectile-beam-yellow.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "mechanical",
+            "fire"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg034"
+    },
+    {
+      "_id": "attacksg035",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        35,
+        35
+      ],
+      "name": "Sawblade Spin (Arm/Tail)",
+      "description": "A spinning metallic blade that carves through targets.",
+      "img": "icons/skills/melee/sword-twirl-orange.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "mechanical"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg035"
+    },
+    {
+      "_id": "attacksg036",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        36,
+        36
+      ],
+      "name": "Harpoon Shot (Arm/Abdomen)",
+      "description": "Fires a chained harpoon to pull enemies closer.",
+      "img": "icons/weapons/polearms/spear-hooked-broad.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "mechanical",
+            "aquatic"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg036"
+    },
+    {
+      "_id": "attacksg037",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        37,
+        37
+      ],
+      "name": "Rocket Punch (Arm)",
+      "description": "A mechanically propelled punch with long range.",
+      "img": "icons/skills/melee/unarmed-punch-fist-white.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "mechanical"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg037"
+    },
+    {
+      "_id": "attacksg038",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        38,
+        38
+      ],
+      "name": "Ethereal Grasp (Arm/Claw)",
+      "description": "A ghostly hand that bypasses physical armor.",
+      "img": "icons/magic/death/hand-undead-skeleton-fire-green.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "void",
+            "undead"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg038"
+    },
+    {
+      "_id": "attacksg039",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        39,
+        39
+      ],
+      "name": "Soul Drain (Head/Abdomen)",
+      "description": "Drains the essence of nearby creatures.",
+      "img": "icons/magic/perception/eye-ringed-glow-angry-teal.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "undead",
+            "void"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg039"
+    },
+    {
+      "_id": "attacksg040",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        40,
+        40
+      ],
+      "name": "Shadow Spike (Tail/Leg)",
+      "description": "A spike of solid shadow that erupts from the ground.",
+      "img": "icons/magic/perception/shadow-stealth-eyes-purple.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "void"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg040"
+    },
+    {
+      "_id": "attacksg041",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        41,
+        41
+      ],
+      "name": "Ghostly Wail (Head)",
+      "description": "A bone-chilling shriek from the afterlife.",
+      "img": "icons/magic/unholy/silhouette-evil-horned-giant.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "undead",
+            "void"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg041"
+    },
+    {
+      "_id": "attacksg042",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        42,
+        42
+      ],
+      "name": "High-Pressure Stream (Head/Abdomen)",
+      "description": "A focused blast of water that pierces like a needle.",
+      "img": "icons/magic/water/water-jet-wave-blue.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "aquatic"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg042"
+    },
+    {
+      "_id": "attacksg043",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        43,
+        43
+      ],
+      "name": "Tsunami Slam (Torso/Arm)",
+      "description": "A slam with the weight of the entire ocean.",
+      "img": "icons/magic/water/water-jet-wave-blue.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "aquatic"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg043"
+    },
+    {
+      "_id": "attacksg044",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        44,
+        44
+      ],
+      "name": "Whirlpool Maw (Head)",
+      "description": "Creates a vacuum in its jaws to pull targets in.",
+      "img": "icons/creatures/abilities/mouth-teeth-human.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "aquatic"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg044"
+    },
+    {
+      "_id": "attacksg045",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        45,
+        45
+      ],
+      "name": "Barnacle Bash (Arm/Carapace)",
+      "description": "A heavy strike with a segment covered in hardened shells.",
+      "img": "icons/magic/earth/barrier-stone-explosion-spiked.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "aquatic"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg045"
+    },
+    {
+      "_id": "attacksg046",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        46,
+        46
+      ],
+      "name": "Acidic Spatter (Tail/Abdomen)",
+      "description": "Flicks corrosive fluid in a splatter pattern.",
+      "img": "icons/magic/acid/dissolve-pool-bubbles.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "beast",
+            "acid"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg046"
+    },
+    {
+      "_id": "attacksg047",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        47,
+        47
+      ],
+      "name": "Corrosive Cloud (Thorax/Torso)",
+      "description": "Exhales a lingering cloud of acid.",
+      "img": "icons/magic/air/fog-gas-smoke-dense-white.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "mechanical",
+            "acid"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg047"
+    },
+    {
+      "_id": "attacksg048",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        48,
+        48
+      ],
+      "name": "Needle Rain (Wing/Abdomen)",
+      "description": "Fires a flurry of sharp quills or fragments.",
+      "img": "icons/weapons/ammunition/arrows-war-white.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "beast"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg048"
+    },
+    {
+      "_id": "attacksg049",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        49,
+        49
+      ],
+      "name": "Bone Club (Arm/Tail)",
+      "description": "A strike with a massive, reinforced skeletal structure.",
+      "img": "icons/magic/death/hand-undead-skeleton-fire-green.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "undead"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg049"
+    },
+    {
+      "_id": "attacksg050",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        50,
+        50
+      ],
+      "name": "Lightning Lash (Tail/Tentacle)",
+      "description": "A whip-like strike that carries an electric charge.",
+      "img": "icons/magic/lightning/bolt-strike-blue.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "wind",
+            "mechanical"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg050"
+    },
+    {
+      "_id": "attacksg051",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        51,
+        51
+      ],
+      "name": "Void Burst (Torso/Head)",
+      "description": "A radial explosion of raw void energy.",
+      "img": "icons/magic/death/skull-energy-light-purple.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "void"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg051"
+    },
+    {
+      "_id": "attacksg052",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        52,
+        52
+      ],
+      "name": "Steam Blast (Thorax/Abdomen)",
+      "description": "A jet of superheated steam.",
+      "img": "icons/magic/air/fog-gas-smoke-dense-white.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "mechanical",
+            "fire"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg052"
+    },
+    {
+      "_id": "attacksg053",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        53,
+        53
+      ],
+      "name": "Frost Spike (Tail/Leg)",
+      "description": "Launches a massive spear of ice.",
+      "img": "icons/magic/water/projectiles-ice-faceted-shard-salvo-blue.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "aquatic",
+            "wind"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg053"
+    },
+    {
+      "_id": "attacksg054",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        54,
+        54
+      ],
+      "name": "Serrated Kick (Leg)",
+      "description": "A kick with jagged edges that inflicts bleeding.",
+      "img": "icons/equipment/feet/boots-armored-grey.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "mechanical",
+            "beast"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg054"
+    },
+    {
+      "_id": "attacksg055",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        55,
+        55
+      ],
+      "name": "Trampling Rush (Leg)",
+      "description": "A high-speed charge that flattens everything.",
+      "img": "icons/magic/earth/barrier-stone-explosion-red.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "beast",
+            "earth"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg055"
+    },
+    {
+      "_id": "attacksg056",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        56,
+        56
+      ],
+      "name": "Wing Slap (Wing)",
+      "description": "A forceful slap with a massive wing.",
+      "img": "icons/magic/control/buff-flight-wings-blue.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "beast",
+            "wind"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg056"
+    },
+    {
+      "_id": "attacksg057",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        57,
+        57
+      ],
+      "name": "Aerial Barrel Roll (Wing/Torso)",
+      "description": "A spinning maneuver that impacts multiple ground targets.",
+      "img": "icons/magic/air/wind-tornado-cyclone-white.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "wind"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg057"
+    },
+    {
+      "_id": "attacksg058",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        58,
+        58
+      ],
+      "name": "Gust Blast (Wing)",
+      "description": "A burst of wind that projects sharp debris.",
+      "img": "icons/magic/air/wind-tornado-cyclone-white.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "wind"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg058"
+    },
+    {
+      "_id": "attacksg059",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        59,
+        59
+      ],
+      "name": "Hydraulic Crush (Arm/Pincer)",
+      "description": "Mechanically reinforced squeeze.",
+      "img": "icons/magic/fire/flame-burning-chain.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "mechanical"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg059"
+    },
+    {
+      "_id": "attacksg060",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        60,
+        60
+      ],
+      "name": "Stalactite Drop (Wing/Tail)",
+      "description": "Hurls earth and rock from above.",
+      "img": "icons/magic/earth/strike-fist-stone.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "earth"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg060"
+    },
+    {
+      "_id": "attacksg061",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        61,
+        61
+      ],
+      "name": "Molten Spit (Head)",
+      "description": "Launches a glob of molten rock.",
+      "img": "icons/magic/fire/projectile-fireball-smoke-orange-red.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "fire"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg061"
+    },
+    {
+      "_id": "attacksg062",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        62,
+        62
+      ],
+      "name": "Static Charge (Carapace/Thorax)",
+      "description": "Builds up energy that shocks anyone who touches it.",
+      "img": "icons/magic/lightning/bolt-strike-blue.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "wind",
+            "mechanical"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg062"
+    },
+    {
+      "_id": "attacksg063",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        63,
+        63
+      ],
+      "name": "Soul Reaper (Arm/Claw)",
+      "description": "Cuts through to the very soul of the target.",
+      "img": "icons/magic/unholy/hand-light-green.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "undead"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg063"
+    },
+    {
+      "_id": "attacksg064",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        64,
+        64
+      ],
+      "name": "Abyssal Maw (Head)",
+      "description": "A bite that consumes both flesh and light.",
+      "img": "icons/creatures/abilities/mouth-teeth-human.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "void"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg064"
+    },
+    {
+      "_id": "attacksg065",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        65,
+        65
+      ],
+      "name": "Pressure Wave (Torso/Wing)",
+      "description": "A shockwave of high-pressure air or water.",
+      "img": "icons/magic/air/air-wave-gust-blue.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "aquatic",
+            "wind"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg065"
+    },
+    {
+      "_id": "attacksg066",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        66,
+        66
+      ],
+      "name": "Clockwork Slam (Arm/Leg)",
+      "description": "A slam with perfectly timed mechanical force.",
+      "img": "icons/magic/fire/flame-burning-chain.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "mechanical"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg066"
+    },
+    {
+      "_id": "attacksg067",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        67,
+        67
+      ],
+      "name": "Grave Grip (Arm/Tentacle)",
+      "description": "A cold, undead grip that drains life.",
+      "img": "icons/magic/death/hand-undead-skeleton-fire-green.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "undead"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg067"
+    },
+    {
+      "_id": "attacksg068",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        68,
+        68
+      ],
+      "name": "Sand Sweep (Tail/Leg)",
+      "description": "Envelops the ground in abrasive, blinding sand.",
+      "img": "icons/magic/air/fog-gas-smoke-dense-white.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "earth",
+            "wind"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg068"
+    },
+    {
+      "_id": "attacksg069",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        69,
+        69
+      ],
+      "name": "Magma Burst (Abdomen/Torso)",
+      "description": "Explosive eruption of magma from deep within.",
+      "img": "icons/creatures/abilities/dragon-fire-breath-orange.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "fire"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg069"
+    },
+    {
+      "_id": "attacksg070",
+      "type": "text",
+      "weight": 1,
+      "range": [
+        70,
+        70
+      ],
+      "name": "Void Cleave (Arm/Claw)",
+      "description": "A strike that tears a hole in reality.",
+      "img": "icons/magic/death/skull-energy-light-purple.webp",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "void"
+          ]
+        }
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!segattacks000000.attacksg070"
+    }
+  ],
+  "formula": "1d70",
+  "replacement": true,
+  "displayRoll": true,
+  "folder": null,
+  "_key": "!tables!segattacks000000"
+}

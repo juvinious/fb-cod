@@ -1,18 +1,14 @@
 {
-  "colossal-adversaries": {
-    "packedMTime": 1773237572885.7024,
-    "unpackedMTime": 1773237705900.5754
-  },
-  "colossal-loot": {
-    "packedMTime": 1773237573155.7192,
-    "unpackedMTime": 1773237706172.5867
-  },
-  "colossal-weapons": {
-    "packedMTime": 1773238755712.1624,
-    "unpackedMTime": 1773238843994.2827
+  "colossal-generator-tables": {
+    "packedMTime": 1773375146034.7078,
+    "unpackedMTime": 1773376248285.0593
   },
   "colossal-segments": {
     "packedMTime": 1773251627297.6626,
-    "unpackedMTime": 1773251741274.0625
+    "unpackedMTime": 1773338575113.7346
+  },
+  "colossal-weapons": {
+    "packedMTime": 1773238755712.1624,
+    "unpackedMTime": 1773338575683.7273
   }
 }
