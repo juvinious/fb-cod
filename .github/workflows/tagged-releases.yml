@@ -38,7 +38,7 @@ jobs:
       - name: Create module zip
         run: |
           # Create a clean zip for release
-          zip -r fb-cod-${{ github.ref_name }}.zip . -x "*.git*" "node_modules/*" ".github/*" "src/*" "scripts/*" "temp/*" ".gitignore" "package.json" "package-lock.json" "README.md" "LICENSE"
+          zip -r fb-cod-${{ github.ref_name }}.zip . -x "*.git*" "node_modules/*" ".github/*" "src/*" "temp/*" ".gitignore" "package.json" "package-lock.json"
 
       - name: Create GitHub Release and upload assets
         uses: softprops/action-gh-release@v2

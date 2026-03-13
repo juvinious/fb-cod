@@ -1,5 +1,10 @@
 # Daggerheart: COD
 
+![GitHub Release](https://img.shields.io/github/v/release/juvinious/fb-cod?style=flat-square)
+![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/juvinious/fb-cod/total?style=flat-square)
+![Foundry VTT Version](https://img.shields.io/badge/Foundry-v13-orange?style=flat-square)
+![License](https://img.shields.io/github/license/juvinious/fb-cod?style=flat-square)
+
 A Foundry VTT supplementary module for the **[Daggerheart](https://foundryborne.online/)** system that introduces the **Colossal** adversary type and other content based around Colossus of the Drylands. This module allows you to import and manage giant, multi-segmented colossi the same way they are presented in the official source materials.
 
 ## Features
