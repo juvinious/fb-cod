@@ -2,14 +2,14 @@
     "id": "fb-cod",
     "title": "Daggerheart: COD",
     "description": "Daggerheart extension adding Colossus of the Drylands adversaries and related content.",
-    "version": "1.3.0",
+    "version": "1.3.1",
     "compatibility": {
         "minimum": "13",
         "verified": "13.351"
     },
     "url": "https://github.com/juvinious/fb-cod",
-    "manifest": "https://raw.githubusercontent.com/juvinious/fb-cod/main/module.json",
-    "download": "https://github.com/juvinious/fb-cod/archive/refs/heads/main.zip",
+    "manifest": "https://github.com/juvinious/fb-cod/releases/latest/download/module.json",
+    "download": "https://github.com/juvinious/fb-cod/releases/download/v1.3.1/fb-cod-v1.3.1.zip",
     "relationships": {
         "systems": [
             {

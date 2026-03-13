@@ -26,7 +26,7 @@ The module includes several ready-to-use compendiums:
 You can install this module directly in Foundry VTT by pasting the manifest link into the Add-On Modules menu:
 
 **Manifest URL:**
-`https://raw.githubusercontent.com/juvinious/fb-cod/main/module.json`
+`https://github.com/juvinious/fb-cod/releases/latest/download/module.json`
 
 
 ## License

@@ -1,0 +1,48 @@
+name: Build & Release with Compiled Packs
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Compile packs
+        run: npm run build:packs
+
+      - name: Update module.json with version and release URLs
+        run: |
+          TAG_NAME=${{ github.ref_name }}
+          VERSION=${TAG_NAME#v}
+          # Inject version and correct release URLs into module.json
+          jq ".version = \"$VERSION\" | .manifest = \"https://github.com/juvinious/fb-cod/releases/latest/download/module.json\" | .download = \"https://github.com/juvinious/fb-cod/releases/download/$TAG_NAME/fb-cod-$TAG_NAME.zip\"" module.json > module.json.tmp && mv module.json.tmp module.json
+
+      - name: Create module zip
+        run: |
+          # Create a clean zip for release
+          zip -r fb-cod-${{ github.ref_name }}.zip . -x "*.git*" "node_modules/*" ".github/*" "src/*" "scripts/*" "temp/*" ".gitignore" "package.json" "package-lock.json" "README.md" "LICENSE"
+
+      - name: Create GitHub Release and upload assets
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            module.json
+            fb-cod-${{ github.ref_name }}.zip
+          generate_release_notes: true
+          draft: false
+          prerelease: false
+          fail_on_unmatched_files: true
