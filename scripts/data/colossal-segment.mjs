@@ -78,11 +78,7 @@ export function setupColossalSegmentModel() {
              */
             schema.segmentType = new fields.StringField({
                 required: true,
-                initial: 'carapace',
-                choices: () => {
-                    const types = CONFIG.FB_COD.segmentTypes;
-                    return (types && Object.keys(types).length > 0) ? types : null;
-                }
+                initial: 'carapace'
             });
 
             // --- Adjacency ---
@@ -99,11 +95,7 @@ export function setupColossalSegmentModel() {
                 required: false,
                 initial: '',
                 blank: true,
-                nullable: true,
-                choices: () => {
-                    const groups = CONFIG.FB_COD.chainGroups;
-                    return (groups && Object.keys(groups).length > 0) ? groups : null;
-                }
+                nullable: true
             });
 
             /** The specific subgroup identifier (e.g., 'A', 'B') for multiple groups of same type. */
@@ -160,7 +152,11 @@ export function setupColossalSegmentModel() {
 
             // 1. Segment Type & Position
             if (this.segmentType) {
-                const label = this.schema.getField('segmentType').choices[this.segmentType];
+                const field = this.schema.getField('segmentType');
+                let choices = field.choices;
+                if (typeof choices === 'function') choices = choices();
+                const label = (choices || {})[this.segmentType];
+                
                 let typeLabel = label || this.segmentType.capitalize();
                 if (this.position) typeLabel += ` [${this.position}]`;
                 tags.push(typeLabel);

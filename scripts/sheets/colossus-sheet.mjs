@@ -74,14 +74,11 @@ export function setupColossusSheet() {
                     return doc;
                 },
                 addSegment: async function (event, target) {
-                    /** 
-                     * Fetch the segment types from the DataModel schema. 
+                    /**
+                     * Fetch the segment types from the system's configuration.
                      * This ensures the dropdown matches the valid types defined in the system.
-                     * @type {typeof ColossalSegmentDataModel}
                      */
-                    const SegmentModel = CONFIG.Item.dataModels["fb-cod.colossal-segment"];
-                    const field = SegmentModel.schema.getField("segmentType");
-                    const choices = typeof field.choices === "function" ? field.choices() : field.choices;
+                    const choices = CONFIG.FB_COD.segmentTypes || {};
 
                     const content = `
                         <div class="daggerheart dh-style">

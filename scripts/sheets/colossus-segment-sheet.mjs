@@ -64,6 +64,7 @@ export function setupColossalSegmentSheet() {
             actions: {
                 template: 'modules/fb-cod/templates/items/segment/features.hbs',
                 scrollable: ['.actions']
+
             }
         };
 
@@ -89,9 +90,9 @@ export function setupColossalSegmentSheet() {
         async _prepareContext(options) {
             const context = await super._prepareContext(options);
 
-            // Provide choices for the dropdowns
-            context.segmentTypeChoices = this.document.system.schema.getField('segmentType').choices;
-            context.chainGroupChoices = this.document.system.schema.getField('chainGroup').choices;
+            // Provide choices for the dropdowns from the global config (source of truth from compendiums)
+            context.segmentTypeChoices = CONFIG.FB_COD.segmentTypes || {};
+            context.chainGroupChoices = CONFIG.FB_COD.chainGroups || {};
 
             // Associate features from the actor by identifier
             if (this.document.parent) {

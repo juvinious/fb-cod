@@ -94,6 +94,78 @@ Hooks.once('init', async () => {
     }
 });
 
+Hooks.once('setup', async () => {
+    console.log("fb-cod | Setup hook: performing early indexing of segments and chain groups.");
+    await _indexPackData();
+});
+
+/**
+ * Helper to index segment types and chain groups from compendiums.
+ * This is called during 'setup' for early validation and 'ready' for full consistency.
+ */
+async function _indexPackData() {
+    // --- Index Segments ---
+    const pack = game.packs.get("fb-cod.colossal-segments");
+    if (pack) {
+        const index = await pack.getIndex({ fields: ["segmentType", "system.segmentType"] });
+        const mapping = {};
+        for (const entry of index) {
+            const type = entry.segmentType || entry.system?.segmentType;
+            if (type) mapping[type] = entry.name;
+        }
+        CONFIG.FB_COD.segmentTypes = mapping;
+    }
+
+    // --- Index Chain Groups ---
+    const cgPack = game.packs.get("fb-cod.colossal-chain-groups");
+    if (cgPack) {
+        const cgIndex = await cgPack.getIndex({ fields: ["chainGroup", "system.chainGroup", "system.segmentTypes", "system.categories", "system.fatal"] });
+        const cgMapping = { "": "Not Chained" };
+        const cgMetadata = {};
+        for (const entry of cgIndex) {
+            const group = entry.chainGroup || entry.system?.chainGroup;
+            if (group) {
+                cgMapping[group] = entry.name;
+                cgMetadata[group] = {
+                    name: entry.name,
+                    segmentTypes: entry.system?.segmentTypes || [],
+                    categories: entry.system?.categories || [],
+                    fatal: entry.system?.fatal ?? true
+                };
+            }
+        }
+        CONFIG.FB_COD.chainGroups = cgMapping;
+        CONFIG.FB_COD.chainGroupsMetadata = cgMetadata;
+    }
+}
+
+/**
+ * Rename Synchronization Hook
+ * If a Colossal Segment is renamed, update all associated features' identifiers.
+ */
+Hooks.on("preUpdateItem", (item, update) => {
+    if (item.type !== "fb-cod.colossal-segment" || !update.name) return true;
+    
+    const oldName = item.name;
+    const newName = update.name;
+    const actor = item.parent;
+    
+    if (actor && oldName !== newName) {
+        const featuresToUpdate = actor.items.filter(i => 
+            i.type === "feature" && 
+            i.system.identifier === oldName &&
+            i.system.originItemType === "fb-cod.colossal-segment"
+        );
+
+        if (featuresToUpdate.length > 0) {
+            console.log(`fb-cod | Renaming segment "${oldName}" to "${newName}". Synchronizing ${featuresToUpdate.length} features.`);
+            const updates = featuresToUpdate.map(i => ({ _id: i.id, "system.identifier": newName }));
+            actor.updateEmbeddedDocuments("Item", updates);
+        }
+    }
+    return true;
+});
+
 // ── Inject "Import Colossus" button into the Actor Directory Footer ───────
 Hooks.on("renderActorDirectory", function (app, html) {
     if (!game.user.isGM) return;
@@ -135,48 +207,7 @@ Hooks.on("renderActorDirectory", function (app, html) {
 });
 
 Hooks.once('ready', async () => {
-    /**
-     * Build the segment types mapping dynamically from the compendium index.
-     * This avoids hardcoding and ensures the compendium is the source of truth.
-     * We do this in 'ready' to ensure all packs (including those from other modules)
-     * are fully loaded and indexed by the system.
-     */
-    const pack = game.packs.get("fb-cod.colossal-segments");
-    if (!pack) {
-        console.error("fb-cod | Could not find fb-cod.colossal-segments pack!");
-        return;
-    }
-    // Request both top-level and system-level fields for indexing fallback
-    const index = await pack.getIndex({ fields: ["segmentType", "system.segmentType"] });
-    const mapping = {};
-    for (const entry of index) {
-        const type = entry.segmentType || entry.system?.segmentType;
-        if (type) mapping[type] = entry.name;
-    }
-    CONFIG.FB_COD.segmentTypes = mapping;
-    console.log("fb-cod | Dynamically built segment types from ready hook:", mapping);
-
-    // --- Build Chain Groups Mapping ---
-    const cgPack = game.packs.get("fb-cod.colossal-chain-groups");
-    if (cgPack) {
-        const cgIndex = await cgPack.getIndex({ fields: ["chainGroup", "system.chainGroup", "system.segmentTypes", "system.categories", "system.fatal"] });
-        const cgMapping = { "": "Not Chained" };
-        const cgMetadata = {};
-        for (const entry of cgIndex) {
-            const group = entry.chainGroup || entry.system?.chainGroup;
-            if (group) {
-                cgMapping[group] = entry.name;
-                cgMetadata[group] = {
-                    name: entry.name,
-                    segmentTypes: entry.system?.segmentTypes || [],
-                    categories: entry.system?.categories || [],
-                    fatal: entry.system?.fatal ?? true
-                };
-            }
-        }
-        CONFIG.FB_COD.chainGroups = cgMapping;
-        CONFIG.FB_COD.chainGroupsMetadata = cgMetadata;
-        console.log("fb-cod | Dynamically built chain groups and metadata:", cgMapping, cgMetadata);
-    }
+    console.log("fb-cod | Ready hook: refreshing pack indices.");
+    await _indexPackData();
 });
 
