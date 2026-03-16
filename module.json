@@ -30,6 +30,7 @@
                 "colossal-adversaries",
                 "colossal-weapons",
                 "colossal-loot",
+                "colossal-chain-groups",
                 "colossal-segments",
                 "colossal-generator-tables"
             ]
@@ -89,6 +90,15 @@
             "label": "Colossal Loot",
             "system": "daggerheart",
             "path": "packs/colossal-loot",
+            "type": "Item",
+            "private": false,
+            "flags": {}
+        },
+        {
+            "name": "colossal-chain-groups",
+            "label": "Colossal Chain Groups",
+            "system": "daggerheart",
+            "path": "packs/colossal-chain-groups",
             "type": "Item",
             "private": false,
             "flags": {}

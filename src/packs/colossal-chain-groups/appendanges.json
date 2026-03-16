@@ -1,0 +1,32 @@
+{
+    "name": "Appendages",
+    "type": "fb-cod.colossal-chain-group",
+    "_id": "ccgappendages000",
+    "img": "icons/commodities/biological/antenna-blue.webp",
+    "system": {
+        "description": "<p>Grouped appendages.</p>",
+        "chainGroup": "C",
+        "segmentTypes": [
+            "wing",
+            "tail",
+            "claw",
+            "talon",
+            "antennae",
+            "tentacle",
+            "pincer"
+        ],
+        "categories": [
+            "sgwing0000000000",
+            "sgtail0000000000",
+            "sgclaw0000000000",
+            "sgtalon000000000",
+            "sgantennae000000",
+            "sgtentacle000000",
+            "sgpincer00000000"
+        ],
+        "fatal": false,
+        "subgroup": null
+    },
+    "folder": null,
+    "_key": "!items!ccgappendages000"
+}

@@ -1,0 +1,15 @@
+{
+    "name": "Not Chained",
+    "type": "fb-cod.colossal-chain-group",
+    "_id": "ccgnotchained000",
+    "img": "icons/magic/air/fog-gas-smoke-swirling-blue.webp",
+    "system": {
+        "description": "<p>No associated chain group.</p>",
+        "chainGroup": "",
+        "categories": [],
+        "fatal": false,
+        "subgroup": null
+    },
+    "folder": null,
+    "_key": "!items!ccgnotchained000"
+}

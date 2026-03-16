@@ -4,15 +4,24 @@
             "fb-cod.colossus": "Colossus"
         },
         "Item": {
-            "fb-cod.colossal-segment": "Colossal Segment"
+            "fb-cod.colossal-segment": "Colossal Segment",
+            "fb-cod.colossal-chain-group": "Colossal Chain Group"
         }
     },
-    "FB-COD": {
+    "fb-cod": {
         "Colossus": {
             "Colossus": "Colossus"
         },
+        "ChainGroup": {
+            "Label": "Colossal Chain Group",
+            "Identifier": "Chain Group Identifier",
+            "IdentifierNotes": "The single character code (A, B, C...) used to group segments.",
+            "Categories": "Target Categories",
+            "CategoriesNotes": "Segment types that this group targets. When all segments of these types are Destroyed, the group is completed."
+        },
         "ItemTypes": {
-            "ColossalSegment": "Colossal Segment"
+            "ColossalSegment": "Colossal Segment",
+            "ColossalChainGroup": "Colossal Chain Group"
         }
     }
 }

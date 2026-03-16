@@ -71,30 +71,17 @@ export function setupColossalSegmentModel() {
             /** Nullify the system's resource field as requested */
             schema.resource = new fields.ObjectField({ initial: {} });
 
-            /** The type/location of this segment on the colossus body. */
+            /** 
+             * The type/location of this segment on the colossus body. 
+             * These choices are dynamically populated from the fb-cod.colossal-segments compendium 
+             * during module initialization.
+             */
             schema.segmentType = new fields.StringField({
                 required: true,
-                initial: 'other',
-                choices: {
-                    'head': 'Head',
-                    'neck': 'Neck',
-                    'torso': 'Torso',
-                    'thorax': 'Thorax',
-                    'abdomen': 'Abdomen',
-                    'carapace': 'Carapace',
-                    'shell': 'Shell',
-                    'arm': 'Arm',
-                    'forelimb': 'Forelimb',
-                    'leg': 'Leg',
-                    'hindlimb': 'Hindlimb',
-                    'wing': 'Wing',
-                    'claw': 'Claw',
-                    'talon': 'Talon',
-                    'pincer': 'Pincer',
-                    'tentacle': 'Tentacle',
-                    'antennae': 'Antennae',
-                    'tail': 'Tail',
-                    'other': 'Other'
+                initial: 'carapace',
+                choices: () => {
+                    const types = CONFIG.FB_COD.segmentTypes;
+                    return (types && Object.keys(types).length > 0) ? types : null;
                 }
             });
 
@@ -104,8 +91,6 @@ export function setupColossalSegmentModel() {
 
             // --- Defeat Conditions ---
             /** If true, destroying this segment defeats the entire colossus. */
-            schema.fatal = new fields.BooleanField({ initial: false });
-
             /**
              * Chain group identifier (e.g. 'A', 'B'). When all segments in the
              * same group are Destroyed, the colossus is defeated.
@@ -115,22 +100,17 @@ export function setupColossalSegmentModel() {
                 initial: '',
                 blank: true,
                 nullable: true,
-                choices: {
-                    '': 'Not Chained',
-                    'A': 'Chain A',
-                    'B': 'Chain B',
-                    'C': 'Chain C',
-                    'D': 'Chain D',
-                    'E': 'Chain E',
-                    'F': 'Chain F',
-                    'G': 'Chain G',
-                    'H': 'Chain H',
-                    'I': 'Chain I',
-                    'J': 'Chain J',
-                    'K': 'Chain K',
-                    'L': 'Chain L'
+                choices: () => {
+                    const groups = CONFIG.FB_COD.chainGroups;
+                    return (groups && Object.keys(groups).length > 0) ? groups : null;
                 }
             });
+
+            /** The specific subgroup identifier (e.g., 'A', 'B') for multiple groups of same type. */
+            schema.subgroup = new fields.StringField({ required: false, initial: '', nullable: true });
+
+            /** Whether this segment is fatal (usually determined by the Chain Group). */
+            schema.fatal = new fields.BooleanField({ required: true, initial: false });
 
             // --- Status Flags ---
             /** Whether this segment has been Destroyed (HP reduced to 0). */
@@ -151,6 +131,9 @@ export function setupColossalSegmentModel() {
             // --- Metadata ---
             /** The relative position or instance identifier (e.g. "Left", "Right", "1", "Front"). */
             schema.position = new fields.StringField({ required: false, initial: '', nullable: true });
+
+            /** Internal: The original compendium ID of the footprint used to create this segment. */
+            schema.footprintId = new fields.StringField({ required: false, initial: '', nullable: true });
 
             return schema;
         }

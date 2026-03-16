@@ -1,0 +1,26 @@
+{
+    "name": "Limbs",
+    "type": "fb-cod.colossal-chain-group",
+    "_id": "ccglimbs00000000",
+    "img": "icons/commodities/biological/hand-clawed-grey.webp",
+    "system": {
+        "description": "<p>Grouped Limbs.</p>",
+        "chainGroup": "A",
+        "segmentTypes": [
+            "arm",
+            "leg",
+            "forelimb",
+            "hindlimb"
+        ],
+        "categories": [
+            "sghindlimb000000",
+            "sgforelimb000000",
+            "sgleg00000000000",
+            "sgarm00000000000"
+        ],
+        "fatal": true,
+        "subgroup": null
+    },
+    "folder": null,
+    "_key": "!items!ccglimbs00000000"
+}

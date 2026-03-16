@@ -1,6 +1,7 @@
 /**
  * Data and Logic for procedurally generating Colossi.
  */
+import { ColossusImporter } from './colossus-importer.mjs';
 export const ARCHETYPES = {
     quadruped: {
         label: "Quadruped (Great-Beast)",
@@ -132,7 +133,7 @@ export const ARCHETYPES = {
     corecentric: {
         label: "Core-Centric (Void-Eye)",
         segments: [
-            { type: "other", count: 1, fatal: true, name: "Fatal Core (Nucleus)" },
+            { type: "carapace", count: 1, fatal: true, name: "Fatal Core (Nucleus)" },
             { type: "torso", count: 1, name: "Fleshy Mass" },
             { type: "tentacle", count: 6, position: ["Alpha", "Beta", "Gamma", "Delta", "Epsilon", "Zeta"] },
             { type: "shell", count: 1, name: "Protective Aura" }
@@ -146,7 +147,7 @@ export const ARCHETYPES = {
     headless: {
         label: "Headless-Construct (Ancient-Engine)",
         segments: [
-            { type: "other", count: 1, fatal: true, name: "Reactor Core" },
+            { type: "carapace", count: 1, fatal: true, name: "Reactor Core" },
             { type: "torso", count: 1, name: "Central Frame" },
             { type: "arm", count: 4, position: ["Front-Left", "Front-Right", "Rear-Left", "Rear-Right"] },
             { type: "leg", count: 2, position: ["Left Support", "Right Support"] },
@@ -264,7 +265,7 @@ export class ColossusGenerator {
 
         // 3. Generate Segments
         const createdSegments = await this._generateSegments(actor, archetype, tier);
-        
+
         // 4. Assign Chains (grouped segments)
         await this._assignChains(actor, createdSegments, options.archetype);
 
@@ -303,25 +304,25 @@ export class ColossusGenerator {
      */
     static _filterTableResults(table, theme) {
         if (!table.results) return [];
-        
+
         const results = table.results.contents || table.results;
-        
+
         // Priority 1: Direct theme match
         const matching = results.filter(r => {
             const tags = r.flags?.["fb-cod"]?.tags || [];
             return tags.includes(theme);
         });
-        
+
         if (matching.length > 0) return matching;
-        
+
         // Priority 2: Generic (no tags)
         const generic = results.filter(r => {
             const tags = r.flags?.["fb-cod"]?.tags || [];
             return tags.length === 0;
         });
-        
+
         if (generic.length > 0) return generic;
-        
+
         // Fallback: All results
         return results;
     }
@@ -334,11 +335,11 @@ export class ColossusGenerator {
         const experiences = {};
         if (table) {
             const candidates = this._filterTableResults(table, theme);
-            
+
             // Randomly shuffle candidates
             const shuffled = candidates.sort(() => 0.5 - Math.random());
             const selection = shuffled.slice(0, count);
-            
+
             for (const res of selection) {
                 const name = res.name || res.description;
                 const id = foundry.utils.randomID();
@@ -361,7 +362,7 @@ export class ColossusGenerator {
     static async _generateProceduralFeatures(actor, segments, archetypeId, theme, tier = 1) {
         const featuresTable = await fromUuid("Compendium.fb-cod.colossal-generator-tables.segfeatures00000");
         const attacksTable = await fromUuid("Compendium.fb-cod.colossal-generator-tables.segattacks000000");
-        
+
         if (!featuresTable || !attacksTable) {
             console.error("fb-cod | Could not find segment tables.");
             return;
@@ -369,7 +370,7 @@ export class ColossusGenerator {
 
         const itemsToCreate = [];
         const seenNames = new Set();
-        
+
         const combatTypes = ["head", "arm", "leg", "claw", "pincer", "tail", "wing", "tentacle", "forelimb", "hindlimb"];
         const supportTypes = ["torso", "thorax", "abdomen", "carapace", "shell", "antennae"];
 
@@ -496,7 +497,7 @@ export class ColossusGenerator {
         const match = fullName.match(/\((.*)\)/);
         if (!match) return true; // Generic item
         const allowedTypes = match[1].toLowerCase().split("/").map(t => t.trim());
-        
+
         // Map synonyms
         const synonyms = {
             "forelimb": ["arm", "leg"],
@@ -509,7 +510,7 @@ export class ColossusGenerator {
 
         const target = segmentType.toLowerCase();
         if (allowedTypes.includes(target)) return true;
-        
+
         // Check synonyms
         const mapped = synonyms[target] || [];
         return mapped.some(m => allowedTypes.includes(m));
@@ -524,7 +525,7 @@ export class ColossusGenerator {
         const diceNum = tier;
         const damageBonus = tier * 6;
         const formula = `${diceNum}d8+${damageBonus}`;
-        
+
         let range = "veryClose";
         const n = name.toLowerCase();
         if (n.includes("breath") || n.includes("blast") || n.includes("shriek") || n.includes("scream") || n.includes("cloud")) {
@@ -618,8 +619,15 @@ export class ColossusGenerator {
         if (!segmentsPack) return;
 
         const segmentItems = [];
+        let segDefIndex = 0;
         for (const segDef of archetype.segments) {
             const footprint = await this._getFootprint(segmentsPack, segDef.type);
+
+            // Find desired adjacency targets from archetype
+            const adjTargets = archetype.adjacency
+                .filter(pair => pair.includes(segDef.type))
+                .map(pair => pair.find(t => t !== segDef.type))
+                .filter(Boolean);
 
             for (let i = 0; i < segDef.count; i++) {
                 const pos = segDef.position ? segDef.position[i] : "";
@@ -638,137 +646,84 @@ export class ColossusGenerator {
                         hitPoints: {
                             value: (footprint.system.hitPoints?.value || 5) + (tier * 2),
                             max: (footprint.system.hitPoints?.max || 5) + (tier * 2)
-                        }
+                        },
+                        footprintId: footprint._id,
+                        adjacentSegments: adjTargets,
+                        chainGroup: "", // Explicitly clear
+                        subgroup: ""    // Explicitly clear
                     })
                 });
             }
+            segDefIndex++;
         }
 
         const created = await actor.createEmbeddedDocuments("Item", segmentItems);
 
-        // Map for adjacency linking
-        const nameMap = {};
-        created.forEach(item => {
-            const type = item.system.segmentType;
-            const pos = item.system.position;
-            const key = pos ? `${type} [${pos}]` : type;
-
-            if (!nameMap[key]) nameMap[key] = [];
-            nameMap[key].push(item.name);
-
-            // Allow generic type matching
-            if (!nameMap[type]) nameMap[type] = [];
-            nameMap[type].push(item.name);
-
-            // Allow custom name matching
-            const customName = item.name.replace(/\s*\(.*\)\s*/, "").trim();
-            if (!nameMap[customName]) nameMap[customName] = [];
-            nameMap[customName].push(item.name);
-        });
-
-        // Link Adjacency
-        const updates = [];
-        for (const item of created) {
-            const type = item.system.segmentType;
-            const pos = item.system.position;
-            const currentKeys = [
-                pos ? `${type} [${pos}]` : type,
-                type,
-                item.name.replace(/\s*\(.*\)\s*/, "").trim()
-            ];
-
-            const adjs = new Set();
-            for (const [a, b] of archetype.adjacency) {
-                if (currentKeys.includes(a)) {
-                    (nameMap[b] || []).forEach(n => adjs.add(n));
-                } else if (currentKeys.includes(b)) {
-                    (nameMap[a] || []).forEach(n => adjs.add(n));
-                }
-            }
-
-            const uniqueAdjs = Array.from(adjs).filter(n => n !== item.name);
-            if (uniqueAdjs.length) {
-                updates.push({ _id: item.id, "system.adjacentSegments": uniqueAdjs });
-            }
-        }
-
-        if (updates.length) {
-            await actor.updateEmbeddedDocuments("Item", updates);
-        }
+        // Link Adjacency using unified utility
+        await ColossusImporter.linkSegments(actor);
 
         return created;
     }
 
+
     /**
-     * Internal: Automatically group related segments into chains.
-     */
+    * Internal: Automatically group related segments into chains using dynamic identifiers and subgroups.
+    */
     static async _assignChains(actor, segments, archetypeId) {
         const updates = [];
-        const groupsToChain = [];
-        const assignedIds = new Set();
-        
-        const typeGroups = segments.reduce((acc, s) => {
-            const type = s.system.segmentType;
-            if (!acc[type]) acc[type] = [];
-            acc[type].push(s);
-            return acc;
-        }, {});
+        const metadata = CONFIG.FB_COD.chainGroupsMetadata || {};
 
-        // 1. Locomotion (Legs/Limbs)
-        const limbs = [...(typeGroups['leg'] || []), ...(typeGroups['hindlimb'] || []), ...(typeGroups['forelimb'] || [])];
-        if (limbs.length >= 2) groupsToChain.push(limbs);
+        // 1. Group segments by their resolved chain group
+        const segmentsByGroup = {};
 
-        // 2. Heads (if > 1)
-        const heads = typeGroups['head'] || [];
-        if (heads.length > 1) groupsToChain.push(heads);
+        for (const s of segments) {
+            const footprintId = s.system?.footprintId || "";
+            const type = (s.system?.segmentType || s.system?._source?.segmentType || "").toLowerCase();
+            if (!type) continue;
 
-        // 3. Wings (if > 1)
-        const wings = typeGroups['wing'] || [];
-        if (wings.length > 1) groupsToChain.push(wings);
-
-        // 4. Arms (if > 2)
-        const arms = typeGroups['arm'] || [];
-        if (arms.length > 2) groupsToChain.push(arms);
-
-        // 5. Multiple Body Segments (e.g. Serpentine Torsos)
-        const bodies = [...(typeGroups['torso'] || []), ...(typeGroups['thorax'] || []), ...(typeGroups['abdomen'] || [])];
-        if (bodies.length > 1) groupsToChain.push(bodies);
-
-        // 6. Appendages (Tentacles/Claws/Tail/Antennae) - Only if not already assigned
-        const appendages = [
-            ...(typeGroups['tentacle'] || []), 
-            ...(typeGroups['claw'] || []), 
-            ...(typeGroups['pincer'] || []),
-            ...(typeGroups['antennae'] || []),
-            ...(typeGroups['tail'] || [])
-        ];
-        
-        // Mark current assignments to avoid double-chaining the same segment
-        groupsToChain.forEach(g => g.forEach(s => assignedIds.add(s.id)));
-        
-        const filteredAppendages = appendages.filter(s => !assignedIds.has(s.id));
-        if (filteredAppendages.length >= 2) groupsToChain.push(filteredAppendages);
-
-        // Final assignment: sequential letters
-        const LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        let chainIndex = 0;
-
-        for (const group of groupsToChain) {
-            const letter = LETTERS[chainIndex++] || "Z";
-            group.forEach(s => {
-                updates.push({ _id: s.id, "system.chainGroup": letter });
+            const match = Object.entries(metadata).find(([ident, data]) => {
+                // For generator, prioritize matching via the specific footprint ID if available
+                return (data.categories || []).includes(footprintId) || (data.segmentTypes || []).includes(type);
             });
+
+            const ident = match ? match[0] : "";
+            if (!ident) continue;
+
+            if (!segmentsByGroup[ident]) segmentsByGroup[ident] = [];
+            segmentsByGroup[ident].push(s);
         }
 
-        if (updates.length) {
-            console.log(`fb-cod | Assigning ${updates.length} segments into ${groupsToChain.length} sequential chain groups.`);
+        // 2. Assign segments in a group to a single chain (subgroup 'a') ONLY if there are multiple segments
+        for (const [ident, segmentList] of Object.entries(segmentsByGroup)) {
+            if (segmentList.length > 1) {
+                for (const s of segmentList) {
+                    updates.push({
+                        _id: s.id,
+                        "system.chainGroup": ident,
+                        "system.subgroup": "a"
+                    });
+                }
+            } else if (segmentList.length === 1) {
+                // Ensure single segments are explicitly unchained
+                const s = segmentList[0];
+                updates.push({
+                    _id: s.id,
+                    "system.chainGroup": "",
+                    "system.subgroup": ""
+                });
+            }
+        }
+
+        if (updates.length > 0) {
+            console.log(`fb-cod | Assigning ${updates.length} segments to chain groups.`);
             await actor.updateEmbeddedDocuments("Item", updates);
         }
     }
 
     static async _getFootprint(pack, type) {
-        const index = await pack.getIndex({ fields: ["system.segmentType"] });
-        let entry = index.find(i => i.system?.segmentType === type);
+        // Index using both top-level and system-level fields for compatibility
+        const index = await pack.getIndex({ fields: ["segmentType", "system.segmentType"] });
+        let entry = index.find(i => (i.segmentType || i.system?.segmentType) === type);
         if (!entry) entry = index.find(i => i.name.toLowerCase().includes(type));
 
         if (entry) return pack.getDocument(entry._id);

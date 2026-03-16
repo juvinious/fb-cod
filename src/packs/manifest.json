@@ -4,11 +4,15 @@
     "unpackedMTime": 1773376248285.0593
   },
   "colossal-segments": {
-    "packedMTime": 1773251627297.6626,
-    "unpackedMTime": 1773338575113.7346
+    "packedMTime": 1773602420446.2754,
+    "unpackedMTime": 1773603062064.8425
   },
   "colossal-weapons": {
     "packedMTime": 1773238755712.1624,
     "unpackedMTime": 1773338575683.7273
+  },
+  "colossal-chain-groups": {
+    "packedMTime": 1773615850072.1746,
+    "unpackedMTime": 1773616081249.6062
   }
 }

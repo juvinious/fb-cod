@@ -74,8 +74,14 @@ export function setupColossusSheet() {
                     return doc;
                 },
                 addSegment: async function (event, target) {
+                    /** 
+                     * Fetch the segment types from the DataModel schema. 
+                     * This ensures the dropdown matches the valid types defined in the system.
+                     * @type {typeof ColossalSegmentDataModel}
+                     */
                     const SegmentModel = CONFIG.Item.dataModels["fb-cod.colossal-segment"];
-                    const choices = SegmentModel.schema.getField("segmentType").choices;
+                    const field = SegmentModel.schema.getField("segmentType");
+                    const choices = typeof field.choices === "function" ? field.choices() : field.choices;
 
                     const content = `
                         <div class="daggerheart dh-style">
@@ -112,10 +118,22 @@ export function setupColossusSheet() {
                     if (!result) return;
 
                     try {
+                        // Dynamically retrieve the default icon from the colossal-segments pack index
+                        // This avoids hardcoding paths and ensures consistency with the compendium.
+                        const pack = game.packs.get("fb-cod.colossal-segments");
+                        let img = "icons/svg/item-bag.svg"; // Default fallback
+                        if (pack) {
+                            const index = await pack.getIndex({ fields: ["system.segmentType"] });
+                            const entry = index.find(i => i.system?.segmentType === result.segmentType) ||
+                                index.find(i => i.name.toLowerCase().includes(result.segmentType));
+                            if (entry) img = entry.img;
+                        }
+
                         // Create the item first, then immediately open the FeatureSheet for full editing
                         const [item] = await this.document.createEmbeddedDocuments("Item", [{
                             name: result.name || "New Segment",
                             type: "fb-cod.colossal-segment",
+                            img: img,
                             system: {
                                 segmentType: result.segmentType,
                                 difficulty: 12,
@@ -378,25 +396,33 @@ export function setupColossusSheet() {
                 const sys = segment.system;
                 if (!sys) continue;
 
-                const groupName = sys.chainGroup ? `Chain ${sys.chainGroup.toUpperCase()}` : "Core Segments";
-                if (!context.segmentGroups[groupName]) {
-                    context.segmentGroups[groupName] = {
-                        name: groupName,
+                // Resolve chain group metadata
+                const groupMetadata = (CONFIG.FB_COD.chainGroupsMetadata || {})[sys.chainGroup];
+                const groupLabel = groupMetadata?.name || sys.chainGroup;
+                const subgroupLabel = sys.subgroup ? ` (${sys.subgroup.toUpperCase()})` : "";
+
+                const groupKey = sys.chainGroup ? `${sys.chainGroup}-${sys.subgroup}` : "core";
+                const displayHeader = sys.chainGroup ? `Chain ${groupLabel}${subgroupLabel}` : "Core Segments";
+
+                if (!context.segmentGroups[groupKey]) {
+                    context.segmentGroups[groupKey] = {
+                        name: displayHeader,
                         segments: [],
                         total: 0,
                         destroyed: 0,
-                        isChainDefeated: false
+                        isChainDefeated: false,
+                        fatal: groupMetadata ? groupMetadata.fatal : (sys.chainGroup ? true : false)
                     };
                 }
 
-                context.segmentGroups[groupName].segments.push(segment);
-                context.segmentGroups[groupName].total++;
+                context.segmentGroups[groupKey].segments.push(segment);
+                context.segmentGroups[groupKey].total++;
 
                 // Pre-calculate tags for rendering
                 segment.computedTags = segment.system._getTags();
 
                 if (sys.destroyed) {
-                    context.segmentGroups[groupName].destroyed++;
+                    context.segmentGroups[groupKey].destroyed++;
                     if (sys.fatal) context.isDefeated = true; // Any fatal segment destroyed kills colossus
                 }
             }
@@ -405,8 +431,8 @@ export function setupColossusSheet() {
             for (const group of Object.values(context.segmentGroups)) {
                 if (group.total > 0 && group.total === group.destroyed) {
                     group.isChainDefeated = true;
-                    if (group.name !== "Core Segments") {
-                        context.isDefeated = true; // Chain fully destroyed kills colossus
+                    if (group.fatal) {
+                        context.isDefeated = true; // Fatal chain fully destroyed kills colossus
                     }
                 }
             }

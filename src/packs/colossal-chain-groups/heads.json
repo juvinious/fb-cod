@@ -1,0 +1,20 @@
+{
+    "name": "Heads",
+    "type": "fb-cod.colossal-chain-group",
+    "_id": "ccgheads00000000",
+    "img": "icons/creatures/abilities/bull-head-horns-glowing.webp",
+    "system": {
+        "description": "<p>Grouped Heads (like a hydra).</p>",
+        "chainGroup": "B",
+        "segmentTypes": [
+            "head"
+        ],
+        "categories": [
+            "sghead0000000000"
+        ],
+        "fatal": true,
+        "subgroup": null
+    },
+    "folder": null,
+    "_key": "!items!ccgheads00000000"
+}

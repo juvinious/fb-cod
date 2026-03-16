@@ -1,0 +1,28 @@
+{
+    "name": "Body",
+    "type": "fb-cod.colossal-chain-group",
+    "_id": "ccgbody000000000",
+    "img": "icons/commodities/biological/shell-conch-gray.webp",
+    "system": {
+        "description": "<p>Grouped body parts.</p>",
+        "chainGroup": "C",
+        "segmentTypes": [
+            "torso",
+            "thorax",
+            "abdomen",
+            "shell",
+            "core"
+        ],
+        "categories": [
+            "sgtorso000000000",
+            "sgthorax00000000",
+            "sgabdomen0000000",
+            "sgshell000000000",
+            "sgcore0000000000"
+        ],
+        "fatal": true,
+        "subgroup": null
+    },
+    "folder": null,
+    "_key": "!items!ccgbody000000000"
+}

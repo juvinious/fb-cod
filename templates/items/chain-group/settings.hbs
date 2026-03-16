@@ -1,0 +1,22 @@
+<section class="tab settings" data-group="primary" data-tab="settings">
+    <div class="form-group">
+        <label>{{localize "fb-cod.ChainGroup.Identifier"}}</label>
+        <div class="form-fields">
+            <input type="text" name="system.chainGroup" value="{{system.chainGroup}}" placeholder="e.g. A, B, C"/>
+        </div>
+        <p class="notes">{{localize "fb-cod.ChainGroup.IdentifierNotes"}}</p>
+    </div>
+
+    <div class="form-group categories">
+        <label>{{localize "fb-cod.ChainGroup.Categories"}}</label>
+        <div class="form-fields categories-list" style="display: flex; flex-direction: column; gap: 4px; padding: 4px; border: 1px solid var(--color-border-light); border-radius: 4px; max-height: 200px; overflow-y: auto;">
+            {{#each segmentTypesList}}
+            <label class="checkbox" style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                <input type="checkbox" name="system.segmentTypes" value="{{this.id}}" {{checked this.selected}}/>
+                <span>{{this.name}}</span>
+            </label>
+            {{/each}}
+        </div>
+        <p class="notes">{{localize "fb-cod.ChainGroup.CategoriesNotes"}}</p>
+    </div>
+</section>

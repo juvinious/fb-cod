@@ -1,0 +1,15 @@
+{
+    "name": "Uncategorized",
+    "type": "fb-cod.colossal-chain-group",
+    "_id": "ccguncategorized",
+    "img": "icons/magic/fire/flame-burning-chain.webp",
+    "system": {
+        "description": "<p>Grouped Limbs.</p>",
+        "chainGroup": "U",
+        "categories": [],
+        "fatal": true,
+        "subgroup": null
+    },
+    "folder": null,
+    "_key": "!items!ccguncategorized"
+}
