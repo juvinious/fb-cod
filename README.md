@@ -85,6 +85,10 @@ Chain (A) - Passive: When all segements in Chain A are destroyed, the Iron Behem
 Swift Leap - Action: The behemoth can leap to a very close location.
 ```
 
+<a href="assets/images/iron-behemoth.webp" target="_blank">
+  <img src="assets/images/iron-behemoth.webp" alt="Iron Behemoth" width="250" style="border-radius: 8px; border: 1px solid #444;">
+</a>
+
 ## Installation
 
 You can install this module directly in Foundry VTT by pasting the manifest link into the Add-On Modules menu:
