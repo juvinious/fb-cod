@@ -1,0 +1,32 @@
+{
+  "name": "Talon Sweep",
+  "type": "feature",
+  "_id": "S9eRok0Z6Q2US8DQ",
+  "img": "icons/creatures/claws/claw-scaled-red.webp",
+  "system": {
+    "description": "Sweeps the ground with razor-sharp talons.",
+    "featureForm": "attack",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "beast",
+        "wing",
+        "leg"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!S9eRok0Z6Q2US8DQ"
+}

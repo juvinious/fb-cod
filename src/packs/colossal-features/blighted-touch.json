@@ -1,0 +1,33 @@
+{
+  "name": "Blighted Touch",
+  "type": "feature",
+  "_id": "9paR0kDwn3EFduNV",
+  "img": "icons/magic/death/hand-undead-skeleton-fire-green.webp",
+  "system": {
+    "description": "<strong>Blighted Touch:</strong> Deals necrotic damage and weakens the physical defenses of targets.",
+    "featureForm": "passive",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "undead",
+        "void",
+        "arm",
+        "tentacle"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!9paR0kDwn3EFduNV"
+}

@@ -1,0 +1,33 @@
+{
+  "name": "Internal Combustion",
+  "type": "feature",
+  "_id": "hlGCRM0WHsjmt9ez",
+  "img": "icons/magic/fire/flame-burning-chain.webp",
+  "system": {
+    "description": "Self-inflicted heat burst that radiates outward.",
+    "featureForm": "attack",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "mechanical",
+        "fire",
+        "torso",
+        "thorax"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!hlGCRM0WHsjmt9ez"
+}

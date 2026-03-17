@@ -1,0 +1,33 @@
+{
+  "name": "Necrotic Pulse",
+  "type": "feature",
+  "_id": "e9hOHaZI6w6rg3Ul",
+  "img": "icons/magic/death/skull-energy-light-purple.webp",
+  "system": {
+    "description": "<strong>Necrotic Pulse:</strong> Deals magic damage and prevents healing for 1 round.",
+    "featureForm": "passive",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "undead",
+        "void",
+        "torso",
+        "head"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!e9hOHaZI6w6rg3Ul"
+}

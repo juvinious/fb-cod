@@ -1,0 +1,33 @@
+{
+  "name": "Acidic Slime",
+  "type": "feature",
+  "_id": "bKH9GFhDwO5VYnPh",
+  "img": "icons/magic/acid/dissolve-pool-bubbles.webp",
+  "system": {
+    "description": "<strong>Acidic Slime:</strong> Leaves a trail that deals acid damage and makes the ground difficult terrain.",
+    "featureForm": "passive",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "beast",
+        "aquatic",
+        "abdomen",
+        "leg"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!bKH9GFhDwO5VYnPh"
+}

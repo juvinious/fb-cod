@@ -1,0 +1,32 @@
+{
+  "name": "Grave Chill",
+  "type": "feature",
+  "_id": "CXkbNscEGc0lplnU",
+  "img": "icons/magic/death/skull-energy-light-purple.webp",
+  "system": {
+    "description": "<strong>Grave Chill:</strong> Fearful aura that also reduces AC of affected targets.",
+    "featureForm": "passive",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "undead",
+        "head",
+        "tail"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!CXkbNscEGc0lplnU"
+}

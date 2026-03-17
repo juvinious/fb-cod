@@ -1,0 +1,32 @@
+{
+  "name": "Magnetic Shield",
+  "type": "feature",
+  "_id": "kvBn0Pvl49UGGewS",
+  "img": "icons/magic/defensive/shield-barrier-blue.webp",
+  "system": {
+    "description": "<strong>Magnetic Shield:</strong> Gains resistance to physical projectiles (arrows, bolts).",
+    "featureForm": "passive",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "mechanical",
+        "carapace",
+        "torso"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!kvBn0Pvl49UGGewS"
+}

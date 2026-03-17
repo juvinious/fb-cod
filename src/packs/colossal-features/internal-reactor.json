@@ -1,0 +1,33 @@
+{
+  "name": "Internal Reactor",
+  "type": "feature",
+  "_id": "y48i8mujIngByVT5",
+  "img": "icons/magic/fire/flame-burning-chain.webp",
+  "system": {
+    "description": "<strong>Internal Reactor:</strong> Gains temporary HP whenever it deals fire or mechanical damage.",
+    "featureForm": "passive",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "mechanical",
+        "fire",
+        "torso",
+        "thorax"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!y48i8mujIngByVT5"
+}

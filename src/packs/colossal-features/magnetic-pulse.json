@@ -1,0 +1,32 @@
+{
+  "name": "Magnetic Pulse",
+  "type": "feature",
+  "_id": "1DBZ9dL2e5ykH4fG",
+  "img": "icons/magic/fire/flame-burning-chain.webp",
+  "system": {
+    "description": "<strong>Magnetic Pulse:</strong> Disables all metallic equipment and constructs within Close range.",
+    "featureForm": "passive",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "mechanical",
+        "mechanical",
+        "thorax"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!1DBZ9dL2e5ykH4fG"
+}

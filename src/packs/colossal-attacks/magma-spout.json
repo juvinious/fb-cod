@@ -1,0 +1,33 @@
+{
+  "name": "Magma Spout",
+  "type": "feature",
+  "_id": "l0Bn6ORDXgIdRA4g",
+  "img": "icons/magic/fire/projectile-fireball-smoke-orange-red.webp",
+  "system": {
+    "description": "Erupts with molten rock and searing gas.",
+    "featureForm": "attack",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "fire",
+        "earth",
+        "head",
+        "abdomen"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!l0Bn6ORDXgIdRA4g"
+}

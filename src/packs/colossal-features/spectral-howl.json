@@ -1,0 +1,32 @@
+{
+  "name": "Spectral Howl",
+  "type": "feature",
+  "_id": "eXaQz8IEQRvB5CSJ",
+  "img": "icons/magic/control/fear-fright-white.webp",
+  "system": {
+    "description": "<strong>Spectral Howl:</strong> A bone-chilling scream that imposes Fear on all who hear it.",
+    "featureForm": "passive",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "undead",
+        "void",
+        "head"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!eXaQz8IEQRvB5CSJ"
+}

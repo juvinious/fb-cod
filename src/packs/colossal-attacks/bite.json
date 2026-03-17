@@ -1,0 +1,31 @@
+{
+  "name": "Bite",
+  "type": "feature",
+  "_id": "evaGxJyDN4F49aoi",
+  "img": "icons/creatures/abilities/mouth-teeth-human.webp",
+  "system": {
+    "description": "Snaps at nearby targets with massive jaws.",
+    "featureForm": "attack",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "beast",
+        "head"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!evaGxJyDN4F49aoi"
+}

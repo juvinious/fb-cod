@@ -1,0 +1,33 @@
+{
+  "name": "Defensive Spikes",
+  "type": "feature",
+  "_id": "OsL29qb0FT0Zfdz7",
+  "img": "icons/magic/earth/barrier-stone-explosion-spiked.webp",
+  "system": {
+    "description": "<strong>Defensive Spikes:</strong> Deals damage to anyone making a successful melee attack against this segment.",
+    "featureForm": "passive",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "beast",
+        "earth",
+        "carapace",
+        "shell"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!OsL29qb0FT0Zfdz7"
+}

@@ -1,0 +1,32 @@
+{
+  "name": "Screeching Echo",
+  "type": "feature",
+  "_id": "RpQizyjrSI2ubynP",
+  "img": "icons/creatures/unholy/demon-fire-horned-winged-roar.webp",
+  "system": {
+    "description": "<strong>Screeching Echo:</strong> Dissonant shriek that deals magic damage and prevents spellcasting.",
+    "featureForm": "passive",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "beast",
+        "wind",
+        "head"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!RpQizyjrSI2ubynP"
+}

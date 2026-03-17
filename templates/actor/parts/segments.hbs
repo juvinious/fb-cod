@@ -41,14 +41,14 @@
         </h4>
         <ul class="items-list segments-list">
             {{#each group.segments as |segment|}}
-                <li class="inventory-item segment-item {{#if segment.system.destroyed}}destroyed{{/if}} {{#if segment.system.isBroken}}broken{{/if}} {{#if segment.system.isCollapsed}}collapsed{{/if}}"
+            <li class="inventory-item segment-item {{#if segment.system.destroyed}}destroyed{{/if}} {{#if segment.system.isBroken}}broken{{/if}} {{#if segment.system.isCollapsed}}collapsed{{/if}}"
                 data-item-id="{{segment.id}}" data-item-uuid="{{segment.uuid}}" data-type="fb-cod.colossal-segment">
                 <div class="inventory-item-header padded">
                     {{!-- Image/Portrait opens the native FeatureSheet --}}
                     <div class="img-portait" data-action="editDoc" data-item-uuid="{{segment.uuid}}"
                         data-tooltip="Edit Segment" style="cursor: pointer;">
                         <img src="{{segment.img}}" class="item-img" />
-                        <img class="roll-img d20" src="systems/daggerheart/assets/icons/dice/default/d20.svg" alt="d20">
+                        <img class="edit-icon" src="systems/daggerheart/assets/icons/dice/default/d20.svg" alt="edit">
                     </div>
 
                     {{!-- Name & Tags --}}
@@ -66,7 +66,7 @@
                     {{!-- Stats/Resources (Difficulty, HP, Tokens) --}}
                     <div class="item-resource"
                         style="display:flex; align-items:center; gap:12px; margin-right:15px; flex-wrap:nowrap; min-width:300px; justify-content: flex-end;">
-                        
+
                         {{!-- Difficulty --}}
                         <div class="stat" title="Difficulty"><i class="fas fa-shield-alt"></i>
                             {{segment.system.difficulty}}
@@ -79,7 +79,8 @@
                                 title="-1 HP">
                                 <i class="fas fa-minus"></i>
                             </a>
-                            <span class="token-value">{{segment.system.hitPoints.value}} / {{segment.system.hitPoints.max}}</span>
+                            <span class="token-value">{{segment.system.hitPoints.value}} /
+                                {{segment.system.hitPoints.max}}</span>
                             <a data-action="adjustSegmentHP" data-item-id="{{segment.id}}" data-adjustment="1"
                                 title="+1 HP">
                                 <i class="fas fa-plus"></i>
@@ -109,12 +110,12 @@
                             data-tooltip="{{#if segment.system.destroyed}}Restore Segment{{else}}Destroy Segment{{/if}}">
                             <i class="fa-solid fa-skull"></i>
                         </a>
-                        
+
                         {{!-- Edit --}}
                         <a data-action="editDoc" data-item-uuid="{{segment.uuid}}" data-tooltip="Edit Segment">
                             <i class="fa-solid fa-edit"></i>
                         </a>
-                        
+
                         {{!-- Delete --}}
                         <a data-action="deleteDoc" data-item-uuid="{{segment.uuid}}" data-tooltip="Delete Segment">
                             <i class="fas fa-trash"></i>

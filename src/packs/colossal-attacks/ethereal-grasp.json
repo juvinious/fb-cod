@@ -1,0 +1,33 @@
+{
+  "name": "Ethereal Grasp",
+  "type": "feature",
+  "_id": "onzicqkWTszwCYe7",
+  "img": "icons/magic/death/hand-undead-skeleton-fire-green.webp",
+  "system": {
+    "description": "A ghostly hand that bypasses physical armor.",
+    "featureForm": "attack",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "void",
+        "undead",
+        "arm",
+        "claw"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!onzicqkWTszwCYe7"
+}

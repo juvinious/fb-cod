@@ -1,0 +1,33 @@
+{
+  "name": "Toxic Skin",
+  "type": "feature",
+  "_id": "XLW9WsDpJvW6mKvz",
+  "img": "icons/magic/acid/dissolve-pool-bubbles.webp",
+  "system": {
+    "description": "<strong>Toxic Skin:</strong> Contact with this segment inflicts Poison damage.",
+    "featureForm": "passive",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "beast",
+        "undead",
+        "carapace",
+        "abdomen"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!XLW9WsDpJvW6mKvz"
+}

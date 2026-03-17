@@ -1,0 +1,32 @@
+{
+  "name": "Earth Slam",
+  "type": "feature",
+  "_id": "ulaK4l6dVrhxdPkE",
+  "img": "icons/magic/earth/strike-fist-stone.webp",
+  "system": {
+    "description": "Stomps the ground with seismic force.",
+    "featureForm": "attack",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "earth",
+        "leg",
+        "torso"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!ulaK4l6dVrhxdPkE"
+}

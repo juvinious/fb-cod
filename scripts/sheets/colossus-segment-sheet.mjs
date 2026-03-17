@@ -19,26 +19,113 @@ export function setupColossalSegmentSheet() {
             classes: ['colossal-segment'],
             position: { width: 650 },
             actions: {
+                /**
+                 * Override addNewItem to show the 2-button dialog (Create vs Browse)
+                 * even if we are not technically a 'character' actor.
+                 */
+                addNewItem: async function (event, target) {
+                    const createChoice = await foundry.applications.api.DialogV2.wait({
+                        window: { title: "Add Feature" },
+                        classes: ['dh-style', 'two-big-buttons'],
+                        buttons: [
+                            { action: 'create', label: 'Create Item', icon: 'fa-solid fa-plus' },
+                            { action: 'browse', label: 'Browse Compendium', icon: 'fa-solid fa-book' }
+                        ]
+                    });
+
+                    if (!createChoice) return;
+                    if (createChoice === 'browse') return this.constructor.DEFAULT_OPTIONS.actions.browseItem.call(this, event, target);
+                    return this.constructor.DEFAULT_OPTIONS.actions.createDoc.call(this, event, target);
+                },
+
+                /**
+                 * Create a new document on the parent Actor and link it to this segment.
+                 */
                 createDoc: async function (event, target) {
-                    const segmentName = this.document.name;
-                    const { type } = target.dataset;
+                    const { type, documentClass } = target.dataset;
 
-                    if (!this.document.parent) return ui.notifications.warn("fb-cod | Cannot add feature to a segment that is not on an actor.");
-
-                    // Call the original createDoc from DHBaseActorSheet (via FeatureSheet.DEFAULT_OPTIONS)
-                    const doc = await FeatureSheet.DEFAULT_OPTIONS.actions.createDoc.call(this, event, target);
-
-                    // Link it to this segment
-                    if (doc && type === 'feature') {
-                        await doc.update({
-                            "system.identifier": segmentName,
-                            "system.originItemType": "fb-cod.colossal-segment"
-                        });
+                    // Handle ActiveEffect creation
+                    if (documentClass === "ActiveEffect" || type === "effect") {
+                        const cls = getDocumentClass("ActiveEffect");
+                        return await cls.create({
+                            name: cls.defaultName({ type: "base", parent: this.document }),
+                            icon: "icons/svg/aura.svg",
+                            origin: this.document.uuid
+                        }, { parent: this.document, renderSheet: !event.shiftKey });
                     }
-                    return doc;
+
+                    const actor = this.document.parent;
+                    if (!actor) return ui.notifications.warn("fb-cod | Cannot add items to a segment not on an actor.");
+
+                    const isAttack = type === 'feature-attack' || target.dataset.featureForm === 'attack';
+                    const isSupport = type === 'feature-support';
+                    const itemType = type.startsWith('feature') ? 'feature' : type;
+
+                    const cls = getDocumentClass("Item");
+                    const data = {
+                        name: cls.defaultName({ type: itemType, parent: actor }),
+                        type: itemType,
+                        system: {
+                            identifier: this.document.name,
+                            originItemType: "fb-cod.colossal-segment",
+                            featureForm: isAttack ? 'attack' : (isSupport ? 'passive' : 'action')
+                        }
+                    };
+
+                    return await cls.create(data, { parent: actor, renderSheet: !event.shiftKey });
+                },
+
+                /**
+                 * Open the compendium browser for features/attacks.
+                 */
+                browseItem: async function (event, target) {
+                    const type = target.dataset.type || 'feature';
+                    const isAttack = type === 'feature-attack';
+                    const isSupport = type === 'feature-support';
+                    const presets = {
+                        render: {
+                            noFolder: true
+                        },
+                        folder: isAttack ? 'colossalAttacks' : (isSupport ? 'colossalFeatures' : 'features')
+                    };
+
+                    if (isAttack) {
+                        presets.filter = {
+                            "system.featureForm": { key: "system.featureForm", value: "attack" },
+                            "pack": { key: "pack", value: "fb-cod.colossal-attacks" }
+                        };
+                    } else {
+                        presets.folder = 'colossalFeatures';
+                        presets.filter = {
+                            "system.featureForm": { key: "system.featureForm", value: "passive" },
+                            "pack": { key: "pack", value: "fb-cod.colossal-features" }
+                        };
+                    }
+
+                    ui.compendiumBrowser.open(presets);
                 }
-            }
+            },
+            contextMenus: [
+                {
+                    handler: function (target) {
+                        return this._getContextMenuCommonOptions({ usable: true, toChat: true, deletable: true });
+                    },
+                    selector: '[data-item-uuid][data-type^="feature"]',
+                    options: {
+                        parentClassHooks: false,
+                        fixed: true
+                    }
+                }
+            ]
         }, { inplace: false });
+
+        /**
+         * Related documents to cause a rerender (e.g. the parent actor).
+         * @inheritdoc
+         */
+        get relatedDocs() {
+            return [this.document.parent].filter(d => d);
+        }
 
         /**
          * Override PARTS to replace the header and settings with our custom templates,
@@ -192,6 +279,39 @@ export function setupColossalSegmentSheet() {
             });
 
             return context;
+        }
+
+        /** @inheritdoc */
+        async _onDrop(event) {
+            event.preventDefault();
+            event.stopPropagation();
+
+            const data = foundry.applications.ux.TextEditor.implementation.getDragEventData(event);
+            if (!data || data.type !== "Item") return super._onDrop(event);
+
+            const actor = this.document.parent;
+            if (!actor) return ui.notifications.warn("fb-cod | Cannot drop items onto a segment not on an actor.");
+
+            const item = await fromUuid(data.uuid);
+            if (!item || item.type !== "feature") return super._onDrop(event);
+
+            // If it's already on the actor, we might just be re-linking it?
+            // Actually, if it's already on the actor, we just update its identifier.
+            if (item.parent === actor) {
+                return await item.update({
+                    "system.identifier": this.document.name,
+                    "system.originItemType": "fb-cod.colossal-segment"
+                });
+            }
+
+            // If it's from a compendium or another actor, create a copy
+            const itemData = item.toObject();
+            delete itemData._id;
+            itemData.system = itemData.system || {};
+            itemData.system.identifier = this.document.name;
+            itemData.system.originItemType = "fb-cod.colossal-segment";
+
+            return await Item.create(itemData, { parent: actor });
         }
     };
 }

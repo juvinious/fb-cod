@@ -1,0 +1,32 @@
+{
+  "name": "Needle Rain",
+  "type": "feature",
+  "_id": "s0uF9c3LoFP431UL",
+  "img": "icons/weapons/ammunition/arrows-war-white.webp",
+  "system": {
+    "description": "Fires a flurry of sharp quills or fragments.",
+    "featureForm": "attack",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "beast",
+        "wing",
+        "abdomen"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!s0uF9c3LoFP431UL"
+}

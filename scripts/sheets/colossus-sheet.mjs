@@ -23,6 +23,45 @@ export function setupColossusSheet() {
                 ]
             },
             actions: {
+                /**
+                 * Override addNewItem to show the 2-button dialog (Create vs Browse)
+                 */
+                addNewItem: async function (event, target) {
+                    const createChoice = await foundry.applications.api.DialogV2.wait({
+                        window: { title: "Add Feature" },
+                        classes: ['dh-style', 'two-big-buttons'],
+                        buttons: [
+                            { action: 'create', label: 'Create Item', icon: 'fa-solid fa-plus' },
+                            { action: 'browse', label: 'Browse Compendium', icon: 'fa-solid fa-book' }
+                        ]
+                    });
+
+                    if (!createChoice) return;
+                    if (createChoice === 'browse') return this.constructor.DEFAULT_OPTIONS.actions.browseItem.call(this, event, target);
+                    return this.constructor.DEFAULT_OPTIONS.actions.createDoc.call(this, event, target);
+                },
+
+                /**
+                 * Open the compendium browser for features/attacks.
+                 */
+                browseItem: async function (event, target) {
+                    const type = target.dataset.type || 'feature';
+                    const isSupport = type === 'feature-support';
+                    const presets = {
+                        render: { noFolder: true },
+                        folder: isSupport ? 'colossalFeatures' : 'features'
+                    };
+
+                    if (isSupport) {
+                        presets.filter = {
+                            "system.featureForm": { key: "system.featureForm", value: "passive" },
+                            "pack": { key: "pack", value: "fb-cod.colossal-features" }
+                        };
+                    }
+
+                    ui.compendiumBrowser.open(presets);
+                },
+
                 toggleHitPoints: async function (_, button) {
                     const hitPointsValue = Number.parseInt(button.dataset.value);
                     const newValue = this.document.system.resources.hitPoints.value >= hitPointsValue ? hitPointsValue - 1 : hitPointsValue;
@@ -46,30 +85,37 @@ export function setupColossusSheet() {
                     this.actor.diceRoll(config);
                 },
                 createDoc: async function (event, target) {
-                    let { segmentName, type } = target.dataset;
+                    let { type, documentClass } = target.dataset;
+                    const clsName = documentClass || "Item";
 
-                    if (!segmentName) {
-                        const segmentGroup = target.closest('.segment-feature-group');
-                        if (segmentGroup && segmentGroup.dataset.segmentName) {
-                            segmentName = segmentGroup.dataset.segmentName;
-                        } else {
-                            const segmentItem = target.closest('.segment-item');
-                            if (segmentItem) {
-                                const segment = this.document.items.get(segmentItem.dataset.itemId);
-                                if (segment) segmentName = segment.name;
-                            }
-                        }
+                    // The system mixin handler is not directly in DHBaseActorSheet.DEFAULT_OPTIONS.actions
+                    // because DHBaseActorSheet explicitly defines its own actions without merging.
+                    // We grab it from the mixin's return class instead.
+                    const mixinClass = Object.getPrototypeOf(DHBaseActorSheet);
+                    const systemHandler = mixinClass.DEFAULT_OPTIONS.actions.createDoc;
+
+                    if (!systemHandler) {
+                        console.error("fb-cod | Cannot find system createDoc handler.");
+                        return null;
                     }
 
-                    // Call the original createDoc from DHBaseActorSheet (via DHBaseActorSheet.DEFAULT_OPTIONS)
-                    const doc = await DHBaseActorSheet.DEFAULT_OPTIONS.actions.createDoc.call(this, event, target);
+                    // Call original Daggerheart createDoc
+                    const originalType = type;
+                    const originalClass = target.dataset.documentClass;
 
-                    // If it was a feature created from a segment's section, link it
-                    if (segmentName && doc && type === 'feature') {
-                        await doc.update({
-                            "system.identifier": segmentName,
-                            "system.originItemType": "fb-cod.colossal-segment"
-                        });
+                    if (type === 'feature-support') target.dataset.type = 'feature';
+                    if (!target.dataset.documentClass) target.dataset.documentClass = clsName;
+
+                    const doc = await systemHandler.call(this, event, target);
+
+                    target.dataset.type = originalType;
+                    target.dataset.documentClass = originalClass;
+
+                    // Support passive feature creation for Colossus Core
+                    if (doc && (type === 'feature' || type === 'feature-support')) {
+                        const updateData = {};
+                        if (type === 'feature-support') updateData["system.featureForm"] = "passive";
+                        if (Object.keys(updateData).length > 0) await doc.update(updateData);
                     }
                     return doc;
                 },
@@ -267,7 +313,33 @@ export function setupColossusSheet() {
                     if (doc) doc.deleteDialog();
                 }
 
-            }
+            },
+            contextMenus: [
+                {
+                    // Limb Segments (Segments tab)
+                    handler: function (target) {
+                        return this._getContextMenuCommonOptions({ usable: false, toChat: false, deletable: true });
+                    },
+                    selector: '[data-item-uuid][data-type="fb-cod.colossal-segment"]',
+                    options: { parentClassHooks: false, fixed: true }
+                },
+                {
+                    // Core Features & Attack Section on Features Tab
+                    handler: function (target) {
+                        return this._getContextMenuCommonOptions({ usable: true, toChat: true, deletable: true });
+                    },
+                    selector: '.segment-feature-group[data-segment-name=""] [data-item-uuid]',
+                    options: { parentClassHooks: false, fixed: true }
+                },
+                {
+                    // Sidebar Shortcuts (Attacks/Reactions)
+                    handler: function (target) {
+                        return this._getContextMenuCommonOptions({ usable: true, toChat: true, deletable: true });
+                    },
+                    selector: '.shortcut-items-section .inventory-item[data-action-id]',
+                    options: { parentClassHooks: false, fixed: true }
+                }
+            ]
         }, { inplace: false });
 
         /** @override */
@@ -309,6 +381,18 @@ export function setupColossusSheet() {
                 labelPrefix: 'DAGGERHEART.GENERAL.Tabs'
             }
         };
+
+        /** @override */
+        _createContextMenus() {
+            // Filter out the base feature listener to prevent it from showing menus for segment features
+            const menus = (this.options.contextMenus || []).filter(c =>
+                c.selector !== '[data-item-uuid][data-type="feature"]'
+            );
+            for (const config of menus) {
+                const { handler, selector, options } = config;
+                this._createContextMenu(handler.bind(this), selector, options);
+            }
+        }
 
         /** @override */
         async _prepareContext(options) {

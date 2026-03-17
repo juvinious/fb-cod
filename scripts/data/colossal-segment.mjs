@@ -52,6 +52,11 @@ export function setupColossalSegmentModel() {
                 choices: CONFIG.DH.ITEM.featureForm,
                 label: 'DAGGERHEART.CONFIG.FeatureForm.label'
             });
+            /** Features linked to this segment (used by DH base sheets) */
+            schema.features = new fields.ArrayField(new fields.SchemaField({
+                type: new fields.StringField(),
+                item: new fields.StringField()
+            }), { initial: [] });
 
             // 2. Add Colossal Segment specific fields
             /** The difficulty that attackers must meet or beat to hit this segment. */

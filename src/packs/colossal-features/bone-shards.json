@@ -1,0 +1,32 @@
+{
+  "name": "Bone Shards",
+  "type": "feature",
+  "_id": "nQfT8c4GKanYeKwS",
+  "img": "icons/magic/death/hand-undead-skeleton-fire-green.webp",
+  "system": {
+    "description": "<strong>Bone Shards:</strong> Explodes out jagged bone fragments in all directions when hit.",
+    "featureForm": "passive",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "undead",
+        "torso",
+        "carapace"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!nQfT8c4GKanYeKwS"
+}

@@ -1,0 +1,33 @@
+{
+  "name": "Static Discharge",
+  "type": "feature",
+  "_id": "sZaw574LnhjJoTZd",
+  "img": "icons/magic/lightning/bolt-strike-blue.webp",
+  "system": {
+    "description": "<strong>Static Discharge:</strong> When an enemy hits this segment, they take lightning damage.",
+    "featureForm": "passive",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "wind",
+        "mechanical",
+        "leg",
+        "wing"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!sZaw574LnhjJoTZd"
+}

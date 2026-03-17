@@ -1,0 +1,32 @@
+{
+  "name": "Scorching Swat",
+  "type": "feature",
+  "_id": "w1N3utjBnRsLYWuL",
+  "img": "icons/magic/fire/projectile-fireball-smoke-orange-red.webp",
+  "system": {
+    "description": "<strong>Scorching Swat:</strong> A strike that also deals lingering fire damage.",
+    "featureForm": "passive",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "fire",
+        "arm",
+        "tail"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!w1N3utjBnRsLYWuL"
+}

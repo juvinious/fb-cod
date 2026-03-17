@@ -1,0 +1,33 @@
+{
+  "name": "Sandstorm",
+  "type": "feature",
+  "_id": "n8WvcTAEUc4ownha",
+  "img": "icons/magic/air/fog-gas-smoke-dense-white.webp",
+  "system": {
+    "description": "<strong>Sandstorm:</strong> Creates a localized desert storm that blinds and scrapes enemies.",
+    "featureForm": "passive",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "earth",
+        "wind",
+        "thorax",
+        "torso"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!n8WvcTAEUc4ownha"
+}

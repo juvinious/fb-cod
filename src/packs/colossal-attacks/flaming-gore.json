@@ -1,0 +1,32 @@
+{
+  "name": "Flaming Gore",
+  "type": "feature",
+  "_id": "8Pesucle3dYzphV1",
+  "img": "icons/magic/death/projectile-skull-fire-orange.webp",
+  "system": {
+    "description": "A charge with horns wreathed in mystical fire.",
+    "featureForm": "attack",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "fire",
+        "beast",
+        "head"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!8Pesucle3dYzphV1"
+}

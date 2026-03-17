@@ -1,0 +1,33 @@
+{
+  "name": "Steam Blast",
+  "type": "feature",
+  "_id": "foKjdIJi9F5PtAeR",
+  "img": "icons/magic/air/fog-gas-smoke-dense-white.webp",
+  "system": {
+    "description": "A jet of superheated steam.",
+    "featureForm": "attack",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "mechanical",
+        "fire",
+        "thorax",
+        "abdomen"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!foKjdIJi9F5PtAeR"
+}

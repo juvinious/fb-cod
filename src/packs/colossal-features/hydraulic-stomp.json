@@ -1,0 +1,32 @@
+{
+  "name": "Hydraulic Stomp",
+  "type": "feature",
+  "_id": "gFCIhOpSlPovnQgf",
+  "img": "icons/magic/earth/strike-fist-stone.webp",
+  "system": {
+    "description": "<strong>Hydraulic Stomp:</strong> Powerful stomp that also knocks back nearby enemies.",
+    "featureForm": "passive",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "mechanical",
+        "earth",
+        "leg"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!gFCIhOpSlPovnQgf"
+}

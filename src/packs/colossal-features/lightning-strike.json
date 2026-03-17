@@ -1,0 +1,32 @@
+{
+  "name": "Lightning Strike",
+  "type": "feature",
+  "_id": "08TViBBAr8qJFbFG",
+  "img": "icons/magic/lightning/bolt-strike-blue.webp",
+  "system": {
+    "description": "<strong>Lightning Strike:</strong> Calls down a bolt of electricity on a target within Far range.",
+    "featureForm": "passive",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "wind",
+        "head",
+        "wing"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!08TViBBAr8qJFbFG"
+}

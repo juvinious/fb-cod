@@ -1,0 +1,33 @@
+{
+  "name": "Molten Coating",
+  "type": "feature",
+  "_id": "x0pvhzyWc2AtRnSj",
+  "img": "icons/magic/fire/flame-burning-skull-orange.webp",
+  "system": {
+    "description": "<strong>Molten Coating:</strong> Attempting to touch or climb this segment deals fire damage and imposes stress.",
+    "featureForm": "passive",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "fire",
+        "earth",
+        "carapace",
+        "shell"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!x0pvhzyWc2AtRnSj"
+}

@@ -1,0 +1,32 @@
+{
+  "name": "Pressurized Jet",
+  "type": "feature",
+  "_id": "rolP6Dox9hM2dfBU",
+  "img": "icons/magic/water/water-jet-wave-blue.webp",
+  "system": {
+    "description": "<strong>Pressurized Jet:</strong> Blasts a high-pressure stream of water that knocks targets back.",
+    "featureForm": "passive",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "aquatic",
+        "head",
+        "abdomen"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!rolP6Dox9hM2dfBU"
+}

@@ -1,0 +1,32 @@
+{
+  "name": "Tsunami Slam",
+  "type": "feature",
+  "_id": "8JQrXG9VXVeXQfjC",
+  "img": "icons/magic/water/water-jet-wave-blue.webp",
+  "system": {
+    "description": "A slam with the weight of the entire ocean.",
+    "featureForm": "attack",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "aquatic",
+        "torso",
+        "arm"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!8JQrXG9VXVeXQfjC"
+}

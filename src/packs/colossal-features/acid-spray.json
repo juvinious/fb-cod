@@ -1,0 +1,32 @@
+{
+  "name": "Acid Spray",
+  "type": "feature",
+  "_id": "IOnZt7JYxoKqiNf0",
+  "img": "icons/magic/acid/dissolve-drip-droplet-smoke.webp",
+  "system": {
+    "description": "<strong>Acid Spray:</strong> Sprays a cone of acid dealing persistent damage over time.",
+    "featureForm": "passive",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "beast",
+        "head",
+        "abdomen"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!IOnZt7JYxoKqiNf0"
+}

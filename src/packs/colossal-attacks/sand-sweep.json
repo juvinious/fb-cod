@@ -1,0 +1,33 @@
+{
+  "name": "Sand Sweep",
+  "type": "feature",
+  "_id": "DMRt0nnOsSf8Z7uK",
+  "img": "icons/magic/air/fog-gas-smoke-dense-white.webp",
+  "system": {
+    "description": "Envelops the ground in abrasive, blinding sand.",
+    "featureForm": "attack",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "earth",
+        "wind",
+        "tail",
+        "leg"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!DMRt0nnOsSf8Z7uK"
+}

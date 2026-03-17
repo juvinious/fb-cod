@@ -4,81 +4,1696 @@
   "img": "icons/svg/d20-grey.svg",
   "description": "Random features and attacks based on segment types.",
   "results": [
-    { "_id": "featsg001", "type": "text", "weight": 1, "range": [1, 1], "name": "Crushing Blow (Torso/Arm)", "description": "<strong>Crushing Blow:</strong> Deals massive physical damage to adjacent targets.", "img": "icons/skills/melee/strike-hammer-destructive-orange.webp", "drawn": false, "flags": { "fb-cod": { "tags": [] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg001" },
-    { "_id": "featsg002", "type": "text", "weight": 1, "range": [2, 2], "name": "Tail Swipe (Tail)", "description": "<strong>Tail Swipe:</strong> Hits all targets in a wide arc behind the Colossus.", "img": "icons/creatures/tentacles/tentacle-eyes-yellow-pink.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["beast"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg002" },
-    { "_id": "featsg003", "type": "text", "weight": 1, "range": [3, 3], "name": "Piercing Gaze (Head)", "description": "<strong>Piercing Gaze:</strong> Deals magical damage and imposes Stress on a target within Far range.", "img": "icons/magic/life/heart-glowing-red.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["void"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg003" },
-    { "_id": "featsg004", "type": "text", "weight": 1, "range": [4, 4], "name": "Acid Spray (Head/Abdomen)", "description": "<strong>Acid Spray:</strong> Sprays a cone of acid dealing persistent damage over time.", "img": "icons/magic/acid/dissolve-drip-droplet-smoke.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["beast"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg004" },
-    { "_id": "featsg005", "type": "text", "weight": 1, "range": [5, 5], "name": "Trample (Leg)", "description": "<strong>Trample:</strong> Moves through enemy spaces, dealing damage and knocking them prone.", "img": "icons/magic/earth/barrier-stone-explosion-red.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["beast", "earth"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg005" },
-    { "_id": "featsg006", "type": "text", "weight": 1, "range": [6, 6], "name": "Defensive Spikes (Carapace/Shell)", "description": "<strong>Defensive Spikes:</strong> Deals damage to anyone making a successful melee attack against this segment.", "img": "icons/magic/earth/barrier-stone-explosion-spiked.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["beast", "earth"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg006" },
-    { "_id": "featsg007", "type": "text", "weight": 1, "range": [7, 7], "name": "Thunderous Roar (Head)", "description": "<strong>Thunderous Roar:</strong> Stuns all targets within Close range for 1 round.", "img": "icons/creatures/unholy/demon-fire-horned-winged-roar.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["beast"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg007" },
-    { "_id": "featsg008", "type": "text", "weight": 1, "range": [8, 8], "name": "Grabbing Claw (Claw/Pincer/Arm)", "description": "<strong>Grabbing Claw:</strong> Grapples a target and prevents them from moving away.", "img": "icons/creatures/claws/claw-curved-jagged-yellow.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["beast", "aquatic"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg008" },
-    { "_id": "featsg009", "type": "text", "weight": 1, "range": [9, 9], "name": "Web Shot (Abdomen/Head)", "description": "<strong>Web Shot:</strong> Fires a sticky web that restrains targets in a circular area.", "img": "icons/creatures/webs/web-spider-glowing-purple.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["beast"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg009" },
-    { "_id": "featsg010", "type": "text", "weight": 1, "range": [10, 10], "name": "Fire Breath (Head)", "description": "<strong>Fire Breath:</strong> Exhales a massive line of fire dealing physical damage.", "img": "icons/magic/fire/projectile-wave-yellow.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["fire", "beast"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg010" },
-    { "_id": "featsg011", "type": "text", "weight": 1, "range": [11, 11], "name": "Whirlwind Attack (Torso/Thorax)", "description": "<strong>Whirlwind Attack:</strong> Spins rapidly, hitting all targets within Melee range.", "img": "icons/magic/air/wind-tornado-cyclone-white.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["wind"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg011" },
-    { "_id": "featsg012", "type": "text", "weight": 1, "range": [12, 12], "name": "Wing Buffet (Wing)", "description": "<strong>Wing Buffet:</strong> Creates a powerful gust of wind that pushes targets back and knocks them prone.", "img": "icons/magic/control/buff-flight-wings-blue.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["wind", "beast"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg012" },
-    { "_id": "featsg013", "type": "text", "weight": 1, "range": [13, 13], "name": "Poison Sting (Tail)", "description": "<strong>Poison Sting:</strong> Deals physical damage and inflicts a powerful poison.", "img": "icons/creatures/abilities/stinger-poison-green.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["beast"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg013" },
-    { "_id": "featsg014", "type": "text", "weight": 1, "range": [14, 14], "name": "Magnetic Pulse (Mechanical/Thorax)", "description": "<strong>Magnetic Pulse:</strong> Disables all metallic equipment and constructs within Close range.", "img": "icons/magic/fire/flame-burning-chain.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["mechanical"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg014" },
-    { "_id": "featsg015", "type": "text", "weight": 1, "range": [15, 15], "name": "Vent Steam (Mechanical/Thorax/Abdomen)", "description": "<strong>Vent Steam:</strong> Releases a cloud of hot steam dealing minor damage and obscuring vision.", "img": "icons/magic/air/fog-gas-smoke-dense-white.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["mechanical", "fire"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg015" },
-    { "_id": "featsg016", "type": "text", "weight": 1, "range": [16, 16], "name": "Pressurized Jet (Head/Abdomen)", "description": "<strong>Pressurized Jet:</strong> Blasts a high-pressure stream of water that knocks targets back.", "img": "icons/magic/water/water-jet-wave-blue.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["aquatic"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg016" },
-    { "_id": "featsg017", "type": "text", "weight": 1, "range": [17, 17], "name": "Magma Spit (Head)", "description": "<strong>Magma Spit:</strong> Launches a glob of molten rock that leaves a burning pool.", "img": "icons/magic/fire/projectile-fireball-smoke-orange-red.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["fire"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg017" },
-    { "_id": "featsg018", "type": "text", "weight": 1, "range": [18, 18], "name": "Sandstorm (Thorax/Torso)", "description": "<strong>Sandstorm:</strong> Creates a localized desert storm that blinds and scrapes enemies.", "img": "icons/magic/air/fog-gas-smoke-dense-white.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["earth", "wind"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg018" },
-    { "_id": "featsg019", "type": "text", "weight": 1, "range": [19, 19], "name": "Lightning Strike (Head/Wing)", "description": "<strong>Lightning Strike:</strong> Calls down a bolt of electricity on a target within Far range.", "img": "icons/magic/lightning/bolt-strike-blue.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["wind"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg019" },
-    { "_id": "featsg020", "type": "text", "weight": 1, "range": [20, 20], "name": "Shadow Tendril (Abdomen/Tail/Claw)", "description": "<strong>Shadow Tendril:</strong> Reaches out with ethereal limbs to drain life force.", "img": "icons/magic/perception/silhouette-stealth-shadow.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["void", "undead"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg020" },
-    { "_id": "featsg021", "type": "text", "weight": 1, "range": [21, 21], "name": "Bone Shards (Torso/Carapace)", "description": "<strong>Bone Shards:</strong> Explodes out jagged bone fragments in all directions when hit.", "img": "icons/magic/death/hand-undead-skeleton-fire-green.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["undead"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg021" },
-    { "_id": "featsg022", "type": "text", "weight": 1, "range": [22, 22], "name": "Clockwork Barrage (Torso/Arm)", "description": "<strong>Clockwork Barrage:</strong> Fires a volley of metallic bolts at multiple targets.", "img": "icons/weapons/ammunition/arrows-war-white.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["mechanical"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg022" },
-    { "_id": "featsg023", "type": "text", "weight": 1, "range": [23, 23], "name": "Frost Breath (Head)", "description": "<strong>Frost Breath:</strong> Exhales a freezing mist that slows all targets in a cone.", "img": "icons/magic/water/projectiles-ice-faceted-shard-salvo-blue.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["aquatic"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg023" },
-    { "_id": "featsg024", "type": "text", "weight": 1, "range": [24, 24], "name": "Earthquake Slam (Leg)", "description": "<strong>Earthquake Slam:</strong> Stomps the ground, causing a shockwave that knocks everyone nearby prone.", "img": "icons/magic/earth/strike-fist-stone.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["earth"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg024" },
-    { "_id": "featsg025", "type": "text", "weight": 1, "range": [25, 25], "name": "Spectral Howl (Head)", "description": "<strong>Spectral Howl:</strong> A bone-chilling scream that imposes Fear on all who hear it.", "img": "icons/magic/control/fear-fright-white.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["undead", "void"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg025" },
-    { "_id": "featsg026", "type": "text", "weight": 1, "range": [26, 26], "name": "Aura of Dread (Torso/Carapace)", "description": "<strong>Aura of Dread:</strong> Adjacent enemies suffer Disadvantage on Courage checks.", "img": "icons/magic/death/skull-energy-light-purple.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["undead", "void"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg026" },
-    { "_id": "featsg027", "type": "text", "weight": 1, "range": [27, 27], "name": "Static Discharge (Leg/Wing)", "description": "<strong>Static Discharge:</strong> When an enemy hits this segment, they take lightning damage.", "img": "icons/magic/lightning/bolt-strike-blue.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["wind", "mechanical"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg027" },
-    { "_id": "featsg028", "type": "text", "weight": 1, "range": [28, 28], "name": "Chilling Aura (Carapace/Torso)", "description": "<strong>Chilling Aura:</strong> Enemies starting their turn adjacent to this segment have their movement halved.", "img": "icons/magic/water/snowflake-ice-snow-white.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["aquatic", "undead"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg028" },
-    { "_id": "featsg029", "type": "text", "weight": 1, "range": [29, 29], "name": "Molten Coating (Carapace/Shell)", "description": "<strong>Molten Coating:</strong> Attempting to touch or climb this segment deals fire damage and imposes stress.", "img": "icons/magic/fire/flame-burning-skull-orange.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["fire", "earth"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg029" },
-    { "_id": "featsg030", "type": "text", "weight": 1, "range": [30, 30], "name": "Ethereal Shift (Abdomen/Wing)", "description": "<strong>Ethereal Shift:</strong> Briefly becomes incorporeal to phase through solid objects or avoid an attack.", "img": "icons/magic/light/explosion-star-blue.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["void", "undead"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg030" },
-    { "_id": "featsg031", "type": "text", "weight": 1, "range": [31, 31], "name": "Hovering Presence (Wing/Leg)", "description": "<strong>Hovering Presence:</strong> The Colossus can remain stationary in the air without needing to move.", "img": "icons/magic/control/buff-flight-wings-blue.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["wind", "mechanical"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg031" },
-    { "_id": "featsg032", "type": "text", "weight": 1, "range": [32, 32], "name": "Soul Siphon (Head/Claw)", "description": "<strong>Soul Siphon:</strong> Drains health from a recently fallen creature to restore its own.", "img": "icons/commodities/biological/hand-clawed-green.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["undead", "void"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg032" },
-    { "_id": "featsg033", "type": "text", "weight": 1, "range": [33, 33], "name": "Heat Vent (Thorax/Torso)", "description": "<strong>Heat Vent:</strong> Releases a burst of intense heat that pushes back adjacent enemies.", "img": "icons/magic/fire/flame-burning-fist-strike.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["fire", "mechanical"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg033" },
-    { "_id": "featsg034", "type": "text", "weight": 1, "range": [34, 34], "name": "Magnetic Shield (Carapace/Torso)", "description": "<strong>Magnetic Shield:</strong> Gains resistance to physical projectiles (arrows, bolts).", "img": "icons/magic/defensive/shield-barrier-blue.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["mechanical"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg034" },
-    { "_id": "featsg035", "type": "text", "weight": 1, "range": [35, 35], "name": "Acidic Slime (Abdomen/Leg)", "description": "<strong>Acidic Slime:</strong> Leaves a trail that deals acid damage and makes the ground difficult terrain.", "img": "icons/magic/acid/dissolve-pool-bubbles.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["beast", "aquatic"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg035" },
-    { "_id": "featsg036", "type": "text", "weight": 1, "range": [36, 36], "name": "Ink Cloud (Abdomen/Tail)", "description": "<strong>Ink Cloud:</strong> Creates a heavily obscured area in a Far radius.", "img": "icons/magic/air/fog-gas-smoke-dense-white.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["aquatic"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg036" },
-    { "_id": "featsg037", "type": "text", "weight": 1, "range": [37, 37], "name": "Regenerative Core (Torso/Thorax)", "description": "<strong>Regenerative Core:</strong> Restores 1 HP at the start of its turn if this segment is intact.", "img": "icons/magic/life/heart-cross-green.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["mechanical", "beast"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg037" },
-    { "_id": "featsg038", "type": "text", "weight": 1, "range": [38, 38], "name": "Sonar Ping (Head/Antennae)", "description": "<strong>Sonar Ping:</strong> Detects all hidden creatures within Very Far range.", "img": "icons/magic/air/air-wave-gust-blue.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["beast", "aquatic"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg038" },
-    { "_id": "featsg039", "type": "text", "weight": 1, "range": [39, 39], "name": "Overdrive (Thorax/Leg)", "description": "<strong>Overdrive:</strong> Briefly doubles movement speed but takes minor damage after.", "img": "icons/magic/fire/flame-burning-chain.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["mechanical"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg039" },
-    { "_id": "featsg040", "type": "text", "weight": 1, "range": [40, 40], "name": "Necrotic Pulse (Torso/Head)", "description": "<strong>Necrotic Pulse:</strong> Deals magic damage and prevents healing for 1 round.", "img": "icons/magic/death/skull-energy-light-purple.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["undead", "void"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg040" },
-    { "_id": "featsg041", "type": "text", "weight": 1, "range": [41, 41], "name": "Hydraulic Stomp (Leg)", "description": "<strong>Hydraulic Stomp:</strong> Powerful stomp that also knocks back nearby enemies.", "img": "icons/magic/earth/strike-fist-stone.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["mechanical", "earth"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg041" },
-    { "_id": "featsg042", "type": "text", "weight": 1, "range": [42, 42], "name": "Bio-Luminescent Pulse (Head/Abdomen)", "description": "<strong>Bio-Luminescent Pulse:</strong> Blinds all enemies in Close range for 1 round.", "img": "icons/magic/light/beams-strike-blue.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["aquatic", "void"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg042" },
-    { "_id": "featsg043", "type": "text", "weight": 1, "range": [43, 43], "name": "Gale Wings (Wing)", "description": "<strong>Gale Wings:</strong> Activating this allows moving an enemy within Close range to Very Close range.", "img": "icons/magic/air/wind-tornado-cyclone-white.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["wind"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg043" },
-    { "_id": "featsg044", "type": "text", "weight": 1, "range": [44, 44], "name": "Earthen Armor (Carapace/Shell)", "description": "<strong>Earthen Armor:</strong> Gains resistance to physical damage from non-magical sources.", "img": "icons/magic/earth/barrier-stone-explosion-red.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["earth"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg044" },
-    { "_id": "featsg045", "type": "text", "weight": 1, "range": [45, 45], "name": "Void Echo (Head/Antennae)", "description": "<strong>Void Echo:</strong> Forces an enemy to re-roll their last successful check.", "img": "icons/magic/perception/eye-ringed-glow-angry-red.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["void"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg045" },
-    { "_id": "featsg046", "type": "text", "weight": 1, "range": [46, 46], "name": "Corrosive Maw (Head)", "description": "<strong>Corrosive Maw:</strong> Bite attacks also reduce target's AC by 1 for the rest of combat.", "img": "icons/creatures/abilities/mouth-teeth-human.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["beast", "acid"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg046" },
-    { "_id": "featsg047", "type": "text", "weight": 1, "range": [47, 47], "name": "Whiplash Tail (Tail)", "description": "<strong>Whiplash Tail:</strong> A snap of the tail that can disarm a target.", "img": "icons/creatures/tentacles/tentacle-eyes-yellow-pink.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["beast"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg047" },
-    { "_id": "featsg048", "type": "text", "weight": 1, "range": [48, 48], "name": "Pressure Blast (Head/Arm)", "description": "<strong>Pressure Blast:</strong> Concentrated water blast that deals massive blunt damage.", "img": "icons/magic/water/water-jet-wave-blue.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["aquatic"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg048" },
-    { "_id": "featsg049", "type": "text", "weight": 1, "range": [49, 49], "name": "Seismic Kick (Leg)", "description": "<strong>Seismic Kick:</strong> A kick that also creates a small tremor, knocking adjacent enemies back.", "img": "icons/magic/earth/strike-fist-stone.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["earth", "beast"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg049" },
-    { "_id": "featsg050", "type": "text", "weight": 1, "range": [50, 50], "name": "Arcing Limb (Arm/Tentacle)", "description": "<strong>Arcing Limb:</strong> Melee attacks with this limb chain to one additional nearby enemy.", "img": "icons/magic/lightning/bolt-strike-blue.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["wind", "mechanical"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg050" },
-    { "_id": "featsg051", "type": "text", "weight": 1, "range": [51, 51], "name": "Soul Rend (Claw/Arm)", "description": "<strong>Soul Rend:</strong> Claws that cut through to the spirit, dealing magic damage.", "img": "icons/magic/unholy/hand-light-green.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["undead", "void"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg051" },
-    { "_id": "featsg052", "type": "text", "weight": 1, "range": [52, 52], "name": "Toxic Skin (Carapace/Abdomen)", "description": "<strong>Toxic Skin:</strong> Contact with this segment inflicts Poison damage.", "img": "icons/magic/acid/dissolve-pool-bubbles.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["beast", "undead"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg052" },
-    { "_id": "featsg053", "type": "text", "weight": 1, "range": [53, 53], "name": "Geothermal Vent (Thorax/Torso)", "description": "<strong>Geothermal Vent:</strong> Erupts with boiling water or steam when this segment is damaged.", "img": "icons/magic/fire/flame-burning-fist-strike.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["earth", "fire", "aquatic"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg053" },
-    { "_id": "featsg054", "type": "text", "weight": 1, "range": [54, 54], "name": "Feather Buffet (Wing)", "description": "<strong>Feather Buffet:</strong> Shoots sharp, magical feathers in a wide cone.", "img": "icons/magic/control/buff-flight-wings-blue.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["wind", "beast"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg054" },
-    { "_id": "featsg055", "type": "text", "weight": 1, "range": [55, 55], "name": "Static Field (Carapace/Thorax)", "description": "<strong>Static Field:</strong> Ranged attacks made from within Close range suffer a penalty.", "img": "icons/magic/lightning/bolt-strike-blue.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["wind", "mechanical"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg055" },
-    { "_id": "featsg056", "type": "text", "weight": 1, "range": [56, 56], "name": "Grave Chill (Head/Tail)", "description": "<strong>Grave Chill:</strong> Fearful aura that also reduces AC of affected targets.", "img": "icons/magic/death/skull-energy-light-purple.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["undead"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg056" },
-    { "_id": "featsg057", "type": "text", "weight": 1, "range": [57, 57], "name": "Internal Reactor (Torso/Thorax)", "description": "<strong>Internal Reactor:</strong> Gains temporary HP whenever it deals fire or mechanical damage.", "img": "icons/magic/fire/flame-burning-chain.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["mechanical", "fire"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg057" },
-    { "_id": "featsg058", "type": "text", "weight": 1, "range": [58, 58], "name": "Blighted Touch (Arm/Tentacle)", "description": "<strong>Blighted Touch:</strong> Deals necrotic damage and weakens the physical defenses of targets.", "img": "icons/magic/death/hand-undead-skeleton-fire-green.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["undead", "void"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg058" },
-    { "_id": "featsg059", "type": "text", "weight": 1, "range": [59, 59], "name": "Hydro-Hammer (Arm/Leg)", "description": "<strong>Hydro-Hammer:</strong> A blow with the force of an ocean wave.", "img": "icons/magic/water/water-jet-wave-blue.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["aquatic"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg059" },
-    { "_id": "featsg060", "type": "text", "weight": 1, "range": [60, 60], "name": "Thunderous Stomp (Leg)", "description": "<strong>Thunderous Stomp:</strong> Stomp that also deals sonic damage in a Close radius.", "img": "icons/magic/earth/barrier-stone-explosion-red.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["earth", "wind"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg060" },
-    { "_id": "featsg061", "type": "text", "weight": 1, "range": [61, 61], "name": "Abyssal Grip (Arm/Claw)", "description": "<strong>Abyssal Grip:</strong> Drains stress when grappling an opponent.", "img": "icons/magic/perception/eye-ringed-glow-angry-red.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["void"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg061" },
-    { "_id": "featsg062", "type": "text", "weight": 1, "range": [62, 62], "name": "Frost Volley (Thorax/Arm)", "description": "<strong>Frost Volley:</strong> Shoots shards of ice at multiple targets.", "img": "icons/magic/water/projectiles-ice-faceted-shard-salvo-blue.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["aquatic", "wind"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg062" },
-    { "_id": "featsg063", "type": "text", "weight": 1, "range": [63, 63], "name": "Scorching Swat (Arm/Tail)", "description": "<strong>Scorching Swat:</strong> A strike that also deals lingering fire damage.", "img": "icons/magic/fire/projectile-fireball-smoke-orange-red.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["fire"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg063" },
-    { "_id": "featsg064", "type": "text", "weight": 1, "range": [64, 64], "name": "Obsidian Shards (Carapace/Shell)", "description": "<strong>Obsidian Shards:</strong> Gains additional AC but becomes vulnerable to bludgeoning damage.", "img": "icons/magic/earth/barrier-stone-explosion-spiked.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["earth", "fire"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg064" },
-    { "_id": "featsg065", "type": "text", "weight": 1, "range": [65, 65], "name": "Warping Gaze (Head)", "description": "<strong>Warping Gaze:</strong> Confuses an enemy, making them move in a random direction.", "img": "icons/magic/control/fear-fright-white.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["void", "beast"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg065" },
-    { "_id": "featsg066", "type": "text", "weight": 1, "range": [66, 66], "name": "Mechanical Repair (Torso/Thorax)", "description": "<strong>Mechanical Repair:</strong> Can use an action to restore HP to an adjacent segment.", "img": "icons/magic/life/heart-cross-green.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["mechanical"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg066" },
-    { "_id": "featsg067", "type": "text", "weight": 1, "range": [67, 67], "name": "Screeching Echo (Head)", "description": "<strong>Screeching Echo:</strong> Dissonant shriek that deals magic damage and prevents spellcasting.", "img": "icons/creatures/unholy/demon-fire-horned-winged-roar.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["beast", "wind"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg067" },
-    { "_id": "featsg068", "type": "text", "weight": 1, "range": [68, 68], "name": "Ethereal Grasp (Claw/Arm)", "description": "<strong>Ethereal Grasp:</strong> Can grapple incorporeal creatures.", "img": "icons/commodities/biological/hand-clawed-green.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["void", "undead"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg068" },
-    { "_id": "featsg069", "type": "text", "weight": 1, "range": [69, 69], "name": "Celerity (Leg/Wing)", "description": "<strong>Celerity:</strong> Does not trigger opportunity attacks when moving.", "img": "icons/magic/control/buff-flight-wings-blue.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["wind"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg069" },
-    { "_id": "featsg070", "type": "text", "weight": 1, "range": [70, 70], "name": "Seismic Roar (Head/Thorax)", "description": "<strong>Seismic Roar:</strong> Deals sonic damage and creates difficult terrain in a Close radius.", "img": "icons/magic/earth/strike-fist-stone.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["earth", "beast"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg070" },
-    { "_id": "featsg071", "type": "text", "weight": 1, "range": [71, 71], "name": "Void Barrier (Carapace/Shell)", "description": "<strong>Void Barrier:</strong> Gains resistance to magical damage.", "img": "icons/magic/death/skull-energy-light-purple.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["void"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg071" },
-    { "_id": "featsg072", "type": "text", "weight": 1, "range": [72, 72], "name": "Mechanical Grip (Arm/Claw)", "description": "<strong>Mechanical Grip:</strong> Grappled targets cannot attempt to escape using Dexterity.", "img": "icons/magic/fire/flame-burning-chain.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["mechanical"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg072" },
-    { "_id": "featsg073", "type": "text", "weight": 1, "range": [73, 73], "name": "Infernal Heat (Thorax/Abdomen)", "description": "<strong>Infernal Heat:</strong> Adjacent enemies take fire damage at the start of their turn.", "img": "icons/magic/fire/flame-burning-fist-strike.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["fire"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg073" },
-    { "_id": "featsg074", "type": "text", "weight": 1, "range": [74, 74], "name": "Spectral Shift (Abdomen/Tail)", "description": "<strong>Spectral Shift:</strong> Can swap places with an adjacent creature as a reaction.", "img": "icons/magic/perception/eye-ringed-glow-angry-red.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["void", "undead"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg074" },
-    { "_id": "featsg075", "type": "text", "weight": 1, "range": [75, 75], "name": "Bio-Organic Repair (Torso/Thorax)", "description": "<strong>Bio-Organic Repair:</strong> Slowly regenerates over time, healing all segments for 1 HP every hour.", "img": "icons/magic/life/heart-glowing-red.webp", "drawn": false, "flags": { "fb-cod": { "tags": ["beast"] } }, "documentUuid": null, "_key": "!tables.results!segfeatures00000.featsg075" }
+    {
+      "_id": "featsg001",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "name": "Crushing Blow (Torso/Arm)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": []
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.2IAHo53qFx370rTF",
+      "_key": "!tables.results!segfeatures00000.featsg001"
+    },
+    {
+      "_id": "featsg002",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "name": "Tail Swipe (Tail)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "beast"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.t2hSCtcbcRM7HBab",
+      "_key": "!tables.results!segfeatures00000.featsg002"
+    },
+    {
+      "_id": "featsg003",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "name": "Piercing Gaze (Head)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "void"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.j8eu8uqigGGwrN3F",
+      "_key": "!tables.results!segfeatures00000.featsg003"
+    },
+    {
+      "_id": "featsg004",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "name": "Acid Spray (Head/Abdomen)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "beast"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.IOnZt7JYxoKqiNf0",
+      "_key": "!tables.results!segfeatures00000.featsg004"
+    },
+    {
+      "_id": "featsg005",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "name": "Trample (Leg)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "beast",
+            "earth"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.Z7hdYH1HDWtDFE4m",
+      "_key": "!tables.results!segfeatures00000.featsg005"
+    },
+    {
+      "_id": "featsg006",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "name": "Defensive Spikes (Carapace/Shell)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "beast",
+            "earth"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.OsL29qb0FT0Zfdz7",
+      "_key": "!tables.results!segfeatures00000.featsg006"
+    },
+    {
+      "_id": "featsg007",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "name": "Thunderous Roar (Head)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "beast"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.Jg73GZUFu3okOqLE",
+      "_key": "!tables.results!segfeatures00000.featsg007"
+    },
+    {
+      "_id": "featsg008",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "name": "Grabbing Claw (Claw/Pincer/Arm)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "beast",
+            "aquatic"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.ruibGW7XS1vFX7iw",
+      "_key": "!tables.results!segfeatures00000.featsg008"
+    },
+    {
+      "_id": "featsg009",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "name": "Web Shot (Abdomen/Head)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "beast"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.hraVhnJlxOiCtVTu",
+      "_key": "!tables.results!segfeatures00000.featsg009"
+    },
+    {
+      "_id": "featsg010",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "name": "Fire Breath (Head)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "fire",
+            "beast"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.abAs3yVLccJv5ntC",
+      "_key": "!tables.results!segfeatures00000.featsg010"
+    },
+    {
+      "_id": "featsg011",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        11,
+        11
+      ],
+      "name": "Whirlwind Attack (Torso/Thorax)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "wind"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.c7EJBVgYYHMYLgDG",
+      "_key": "!tables.results!segfeatures00000.featsg011"
+    },
+    {
+      "_id": "featsg012",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        12,
+        12
+      ],
+      "name": "Wing Buffet (Wing)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "wind",
+            "beast"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.Fqz18s7NjxvYIfaN",
+      "_key": "!tables.results!segfeatures00000.featsg012"
+    },
+    {
+      "_id": "featsg013",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        13,
+        13
+      ],
+      "name": "Poison Sting (Tail)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "beast"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.46tnTeS2FFXIuDtD",
+      "_key": "!tables.results!segfeatures00000.featsg013"
+    },
+    {
+      "_id": "featsg014",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        14,
+        14
+      ],
+      "name": "Magnetic Pulse (Mechanical/Thorax)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "mechanical"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.1DBZ9dL2e5ykH4fG",
+      "_key": "!tables.results!segfeatures00000.featsg014"
+    },
+    {
+      "_id": "featsg015",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        15,
+        15
+      ],
+      "name": "Vent Steam (Mechanical/Thorax/Abdomen)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "mechanical",
+            "fire"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.bkFZjhRGOJGi9art",
+      "_key": "!tables.results!segfeatures00000.featsg015"
+    },
+    {
+      "_id": "featsg016",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        16,
+        16
+      ],
+      "name": "Pressurized Jet (Head/Abdomen)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "aquatic"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.rolP6Dox9hM2dfBU",
+      "_key": "!tables.results!segfeatures00000.featsg016"
+    },
+    {
+      "_id": "featsg017",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        17,
+        17
+      ],
+      "name": "Magma Spit (Head)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "fire"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.tQKHhpvibRvPCuh0",
+      "_key": "!tables.results!segfeatures00000.featsg017"
+    },
+    {
+      "_id": "featsg018",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        18,
+        18
+      ],
+      "name": "Sandstorm (Thorax/Torso)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "earth",
+            "wind"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.n8WvcTAEUc4ownha",
+      "_key": "!tables.results!segfeatures00000.featsg018"
+    },
+    {
+      "_id": "featsg019",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        19,
+        19
+      ],
+      "name": "Lightning Strike (Head/Wing)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "wind"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.08TViBBAr8qJFbFG",
+      "_key": "!tables.results!segfeatures00000.featsg019"
+    },
+    {
+      "_id": "featsg020",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        20,
+        20
+      ],
+      "name": "Shadow Tendril (Abdomen/Tail/Claw)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "void",
+            "undead"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.IMhB8i8EBrDH665C",
+      "_key": "!tables.results!segfeatures00000.featsg020"
+    },
+    {
+      "_id": "featsg021",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        21,
+        21
+      ],
+      "name": "Bone Shards (Torso/Carapace)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "undead"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.nQfT8c4GKanYeKwS",
+      "_key": "!tables.results!segfeatures00000.featsg021"
+    },
+    {
+      "_id": "featsg022",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        22,
+        22
+      ],
+      "name": "Clockwork Barrage (Torso/Arm)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "mechanical"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.kGz7Ul5M8ysOISmX",
+      "_key": "!tables.results!segfeatures00000.featsg022"
+    },
+    {
+      "_id": "featsg023",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        23,
+        23
+      ],
+      "name": "Frost Breath (Head)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "aquatic"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.vR7rCJpbKCJc9Pc5",
+      "_key": "!tables.results!segfeatures00000.featsg023"
+    },
+    {
+      "_id": "featsg024",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        24,
+        24
+      ],
+      "name": "Earthquake Slam (Leg)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "earth"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.MpXm8JMNR8RwoVN0",
+      "_key": "!tables.results!segfeatures00000.featsg024"
+    },
+    {
+      "_id": "featsg025",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        25,
+        25
+      ],
+      "name": "Spectral Howl (Head)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "undead",
+            "void"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.eXaQz8IEQRvB5CSJ",
+      "_key": "!tables.results!segfeatures00000.featsg025"
+    },
+    {
+      "_id": "featsg026",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        26,
+        26
+      ],
+      "name": "Aura of Dread (Torso/Carapace)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "undead",
+            "void"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.FIszTgC3IgjEAxW9",
+      "_key": "!tables.results!segfeatures00000.featsg026"
+    },
+    {
+      "_id": "featsg027",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        27,
+        27
+      ],
+      "name": "Static Discharge (Leg/Wing)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "wind",
+            "mechanical"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.sZaw574LnhjJoTZd",
+      "_key": "!tables.results!segfeatures00000.featsg027"
+    },
+    {
+      "_id": "featsg028",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        28,
+        28
+      ],
+      "name": "Chilling Aura (Carapace/Torso)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "aquatic",
+            "undead"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.vqXhxGkpx3qsWbNq",
+      "_key": "!tables.results!segfeatures00000.featsg028"
+    },
+    {
+      "_id": "featsg029",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        29,
+        29
+      ],
+      "name": "Molten Coating (Carapace/Shell)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "fire",
+            "earth"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.x0pvhzyWc2AtRnSj",
+      "_key": "!tables.results!segfeatures00000.featsg029"
+    },
+    {
+      "_id": "featsg030",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        30,
+        30
+      ],
+      "name": "Ethereal Shift (Abdomen/Wing)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "void",
+            "undead"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.msBEtPCJYiFIJsdm",
+      "_key": "!tables.results!segfeatures00000.featsg030"
+    },
+    {
+      "_id": "featsg031",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        31,
+        31
+      ],
+      "name": "Hovering Presence (Wing/Leg)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "wind",
+            "mechanical"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.L3iCBftwMANIoSTw",
+      "_key": "!tables.results!segfeatures00000.featsg031"
+    },
+    {
+      "_id": "featsg032",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        32,
+        32
+      ],
+      "name": "Soul Siphon (Head/Claw)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "undead",
+            "void"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.z3woA9S2TMamFXOI",
+      "_key": "!tables.results!segfeatures00000.featsg032"
+    },
+    {
+      "_id": "featsg033",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        33,
+        33
+      ],
+      "name": "Heat Vent (Thorax/Torso)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "fire",
+            "mechanical"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.NEpAcVyFsYA5uqAF",
+      "_key": "!tables.results!segfeatures00000.featsg033"
+    },
+    {
+      "_id": "featsg034",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        34,
+        34
+      ],
+      "name": "Magnetic Shield (Carapace/Torso)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "mechanical"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.kvBn0Pvl49UGGewS",
+      "_key": "!tables.results!segfeatures00000.featsg034"
+    },
+    {
+      "_id": "featsg035",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        35,
+        35
+      ],
+      "name": "Acidic Slime (Abdomen/Leg)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "beast",
+            "aquatic"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.bKH9GFhDwO5VYnPh",
+      "_key": "!tables.results!segfeatures00000.featsg035"
+    },
+    {
+      "_id": "featsg036",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        36,
+        36
+      ],
+      "name": "Ink Cloud (Abdomen/Tail)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "aquatic"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.BYvLBcpzkUPo1ftS",
+      "_key": "!tables.results!segfeatures00000.featsg036"
+    },
+    {
+      "_id": "featsg037",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        37,
+        37
+      ],
+      "name": "Regenerative Core (Torso/Thorax)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "mechanical",
+            "beast"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.UDW12iJe4wpWOq0V",
+      "_key": "!tables.results!segfeatures00000.featsg037"
+    },
+    {
+      "_id": "featsg038",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        38,
+        38
+      ],
+      "name": "Sonar Ping (Head/Antennae)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "beast",
+            "aquatic"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.7WNNk74S1UFiy7hT",
+      "_key": "!tables.results!segfeatures00000.featsg038"
+    },
+    {
+      "_id": "featsg039",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        39,
+        39
+      ],
+      "name": "Overdrive (Thorax/Leg)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "mechanical"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.2CKdYzoNJTxxdgWH",
+      "_key": "!tables.results!segfeatures00000.featsg039"
+    },
+    {
+      "_id": "featsg040",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        40,
+        40
+      ],
+      "name": "Necrotic Pulse (Torso/Head)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "undead",
+            "void"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.e9hOHaZI6w6rg3Ul",
+      "_key": "!tables.results!segfeatures00000.featsg040"
+    },
+    {
+      "_id": "featsg041",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        41,
+        41
+      ],
+      "name": "Hydraulic Stomp (Leg)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "mechanical",
+            "earth"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.gFCIhOpSlPovnQgf",
+      "_key": "!tables.results!segfeatures00000.featsg041"
+    },
+    {
+      "_id": "featsg042",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        42,
+        42
+      ],
+      "name": "Bio-Luminescent Pulse (Head/Abdomen)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "aquatic",
+            "void"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.8krDXuSWGwb0ejMk",
+      "_key": "!tables.results!segfeatures00000.featsg042"
+    },
+    {
+      "_id": "featsg043",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        43,
+        43
+      ],
+      "name": "Gale Wings (Wing)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "wind"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.pRlZ9SliSxeXlf7o",
+      "_key": "!tables.results!segfeatures00000.featsg043"
+    },
+    {
+      "_id": "featsg044",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        44,
+        44
+      ],
+      "name": "Earthen Armor (Carapace/Shell)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "earth"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.tR5avd0aq74omj1X",
+      "_key": "!tables.results!segfeatures00000.featsg044"
+    },
+    {
+      "_id": "featsg045",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        45,
+        45
+      ],
+      "name": "Void Echo (Head/Antennae)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "void"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.ftD2mmfqDQB6Qtqm",
+      "_key": "!tables.results!segfeatures00000.featsg045"
+    },
+    {
+      "_id": "featsg046",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        46,
+        46
+      ],
+      "name": "Corrosive Maw (Head)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "beast",
+            "acid"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.BXDV965AJLTUN8Lh",
+      "_key": "!tables.results!segfeatures00000.featsg046"
+    },
+    {
+      "_id": "featsg047",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        47,
+        47
+      ],
+      "name": "Whiplash Tail (Tail)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "beast"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.akpqRhBDTH1gBLPc",
+      "_key": "!tables.results!segfeatures00000.featsg047"
+    },
+    {
+      "_id": "featsg048",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        48,
+        48
+      ],
+      "name": "Pressure Blast (Head/Arm)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "aquatic"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.uyqtV7sTrJVWhDtg",
+      "_key": "!tables.results!segfeatures00000.featsg048"
+    },
+    {
+      "_id": "featsg049",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        49,
+        49
+      ],
+      "name": "Seismic Kick (Leg)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "earth",
+            "beast"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.qxact3C6zzOWT6cp",
+      "_key": "!tables.results!segfeatures00000.featsg049"
+    },
+    {
+      "_id": "featsg050",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        50,
+        50
+      ],
+      "name": "Arcing Limb (Arm/Tentacle)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "wind",
+            "mechanical"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.vULp9WFCVVaCh3de",
+      "_key": "!tables.results!segfeatures00000.featsg050"
+    },
+    {
+      "_id": "featsg051",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        51,
+        51
+      ],
+      "name": "Soul Rend (Claw/Arm)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "undead",
+            "void"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.4Q5YSbEIcuYMVj1k",
+      "_key": "!tables.results!segfeatures00000.featsg051"
+    },
+    {
+      "_id": "featsg052",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        52,
+        52
+      ],
+      "name": "Toxic Skin (Carapace/Abdomen)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "beast",
+            "undead"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.XLW9WsDpJvW6mKvz",
+      "_key": "!tables.results!segfeatures00000.featsg052"
+    },
+    {
+      "_id": "featsg053",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        53,
+        53
+      ],
+      "name": "Geothermal Vent (Thorax/Torso)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "earth",
+            "fire",
+            "aquatic"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.zNV2zChyZYBSKfy6",
+      "_key": "!tables.results!segfeatures00000.featsg053"
+    },
+    {
+      "_id": "featsg054",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        54,
+        54
+      ],
+      "name": "Feather Buffet (Wing)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "wind",
+            "beast"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.K5C5HwHF8d3pc3W2",
+      "_key": "!tables.results!segfeatures00000.featsg054"
+    },
+    {
+      "_id": "featsg055",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        55,
+        55
+      ],
+      "name": "Static Field (Carapace/Thorax)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "wind",
+            "mechanical"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.IgY5mE5tf4nMigY5",
+      "_key": "!tables.results!segfeatures00000.featsg055"
+    },
+    {
+      "_id": "featsg056",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        56,
+        56
+      ],
+      "name": "Grave Chill (Head/Tail)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "undead"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.CXkbNscEGc0lplnU",
+      "_key": "!tables.results!segfeatures00000.featsg056"
+    },
+    {
+      "_id": "featsg057",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        57,
+        57
+      ],
+      "name": "Internal Reactor (Torso/Thorax)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "mechanical",
+            "fire"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.y48i8mujIngByVT5",
+      "_key": "!tables.results!segfeatures00000.featsg057"
+    },
+    {
+      "_id": "featsg058",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        58,
+        58
+      ],
+      "name": "Blighted Touch (Arm/Tentacle)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "undead",
+            "void"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.9paR0kDwn3EFduNV",
+      "_key": "!tables.results!segfeatures00000.featsg058"
+    },
+    {
+      "_id": "featsg059",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        59,
+        59
+      ],
+      "name": "Hydro-Hammer (Arm/Leg)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "aquatic"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.pZp0UsDHmQCUAUrt",
+      "_key": "!tables.results!segfeatures00000.featsg059"
+    },
+    {
+      "_id": "featsg060",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        60,
+        60
+      ],
+      "name": "Thunderous Stomp (Leg)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "earth",
+            "wind"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.49ZeyiYjEiLyPazC",
+      "_key": "!tables.results!segfeatures00000.featsg060"
+    },
+    {
+      "_id": "featsg061",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        61,
+        61
+      ],
+      "name": "Abyssal Grip (Arm/Claw)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "void"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.w5t67jFh4GUpKBtw",
+      "_key": "!tables.results!segfeatures00000.featsg061"
+    },
+    {
+      "_id": "featsg062",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        62,
+        62
+      ],
+      "name": "Frost Volley (Thorax/Arm)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "aquatic",
+            "wind"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.ya2C4GMmZ60pCo74",
+      "_key": "!tables.results!segfeatures00000.featsg062"
+    },
+    {
+      "_id": "featsg063",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        63,
+        63
+      ],
+      "name": "Scorching Swat (Arm/Tail)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "fire"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.w1N3utjBnRsLYWuL",
+      "_key": "!tables.results!segfeatures00000.featsg063"
+    },
+    {
+      "_id": "featsg064",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        64,
+        64
+      ],
+      "name": "Obsidian Shards (Carapace/Shell)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "earth",
+            "fire"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.qb2WolkOep9qzKDb",
+      "_key": "!tables.results!segfeatures00000.featsg064"
+    },
+    {
+      "_id": "featsg065",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        65,
+        65
+      ],
+      "name": "Warping Gaze (Head)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "void",
+            "beast"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.3CvdoW01CiFZt8y4",
+      "_key": "!tables.results!segfeatures00000.featsg065"
+    },
+    {
+      "_id": "featsg066",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        66,
+        66
+      ],
+      "name": "Mechanical Repair (Torso/Thorax)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "mechanical"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.RAeAnmExVNvz5maO",
+      "_key": "!tables.results!segfeatures00000.featsg066"
+    },
+    {
+      "_id": "featsg067",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        67,
+        67
+      ],
+      "name": "Screeching Echo (Head)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "beast",
+            "wind"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.RpQizyjrSI2ubynP",
+      "_key": "!tables.results!segfeatures00000.featsg067"
+    },
+    {
+      "_id": "featsg068",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        68,
+        68
+      ],
+      "name": "Ethereal Grasp (Claw/Arm)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "void",
+            "undead"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.a9BW6gjYF1DwI3Et",
+      "_key": "!tables.results!segfeatures00000.featsg068"
+    },
+    {
+      "_id": "featsg069",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        69,
+        69
+      ],
+      "name": "Celerity (Leg/Wing)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "wind"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.eEWMB4I1u0qBdWHB",
+      "_key": "!tables.results!segfeatures00000.featsg069"
+    },
+    {
+      "_id": "featsg070",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        70,
+        70
+      ],
+      "name": "Seismic Roar (Head/Thorax)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "earth",
+            "beast"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.UyuLZAyysWI8ZgPn",
+      "_key": "!tables.results!segfeatures00000.featsg070"
+    },
+    {
+      "_id": "featsg071",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        71,
+        71
+      ],
+      "name": "Void Barrier (Carapace/Shell)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "void"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.4qbMRKP6x5tlB4MR",
+      "_key": "!tables.results!segfeatures00000.featsg071"
+    },
+    {
+      "_id": "featsg072",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        72,
+        72
+      ],
+      "name": "Mechanical Grip (Arm/Claw)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "mechanical"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.Fyrcqt2YSjZgKaIO",
+      "_key": "!tables.results!segfeatures00000.featsg072"
+    },
+    {
+      "_id": "featsg073",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        73,
+        73
+      ],
+      "name": "Infernal Heat (Thorax/Abdomen)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "fire"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.7IY8wLYzQapQaX44",
+      "_key": "!tables.results!segfeatures00000.featsg073"
+    },
+    {
+      "_id": "featsg074",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        74,
+        74
+      ],
+      "name": "Spectral Shift (Abdomen/Tail)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "void",
+            "undead"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.a1L3m7MfnLuG8KH5",
+      "_key": "!tables.results!segfeatures00000.featsg074"
+    },
+    {
+      "_id": "featsg075",
+      "type": "document",
+      "weight": 1,
+      "range": [
+        75,
+        75
+      ],
+      "name": "Bio-Organic Repair (Torso/Thorax)",
+      "description": "",
+      "img": "",
+      "drawn": false,
+      "flags": {
+        "fb-cod": {
+          "tags": [
+            "beast"
+          ]
+        }
+      },
+      "documentUuid": "Compendium.fb-cod.colossal-features.Item.G2iLxjXoYmRHAUgT",
+      "_key": "!tables.results!segfeatures00000.featsg075"
+    }
   ],
   "formula": "1d75",
   "replacement": true,

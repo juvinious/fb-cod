@@ -1,0 +1,34 @@
+{
+  "name": "Geothermal Vent",
+  "type": "feature",
+  "_id": "zNV2zChyZYBSKfy6",
+  "img": "icons/magic/fire/flame-burning-fist-strike.webp",
+  "system": {
+    "description": "<strong>Geothermal Vent:</strong> Erupts with boiling water or steam when this segment is damaged.",
+    "featureForm": "passive",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "earth",
+        "fire",
+        "aquatic",
+        "thorax",
+        "torso"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!zNV2zChyZYBSKfy6"
+}

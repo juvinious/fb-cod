@@ -67,7 +67,7 @@
                 Custom attack card: portrait click uses rollSegmentAttack with data-segment-uuid + data-action-id
                 so we look up the action directly (bypassing fromUuid→Item→ActionSelectionDialog confusion).
                 --}}
-                <li class="inventory-item inventory-item-compact" data-action-id="{{action.id}}"
+                <li class="inventory-item inventory-item-compact" data-action-id="{{action.id}}" data-item-uuid="{{action.uuid}}" data-type="{{action.type}}"
                     data-segment-uuid="{{action._segmentUuid}}">
                     <div class="img-portait" data-action="rollSegmentAttack" data-action-id="{{action.id}}"
                         data-segment-uuid="{{action._segmentUuid}}" data-tooltip="Roll {{action.name}}">
@@ -124,7 +124,7 @@
                 Custom attack card: portrait click uses rollSegmentAttack with data-segment-uuid + data-action-id
                 so we look up the action directly (bypassing fromUuid→Item→ActionSelectionDialog confusion).
                 --}}
-                <li class="inventory-item inventory-item-compact" data-action-id="{{action.id}}"
+                <li class="inventory-item inventory-item-compact" data-action-id="{{action.id}}" data-item-uuid="{{action.uuid}}" data-type="{{action.type}}"
                     data-segment-uuid="{{action._segmentUuid}}">
                     <div class="img-portait" data-action="rollSegmentAttack" data-action-id="{{action.id}}"
                         data-segment-uuid="{{action._segmentUuid}}" data-tooltip="Roll {{action.name}}">

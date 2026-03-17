@@ -1,0 +1,32 @@
+{
+  "name": "Mechanical Repair",
+  "type": "feature",
+  "_id": "RAeAnmExVNvz5maO",
+  "img": "icons/magic/life/heart-cross-green.webp",
+  "system": {
+    "description": "<strong>Mechanical Repair:</strong> Can use an action to restore HP to an adjacent segment.",
+    "featureForm": "passive",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "mechanical",
+        "torso",
+        "thorax"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!RAeAnmExVNvz5maO"
+}

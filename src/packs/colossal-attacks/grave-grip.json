@@ -1,0 +1,32 @@
+{
+  "name": "Grave Grip",
+  "type": "feature",
+  "_id": "VxaZ3SBNtWtcYTSe",
+  "img": "icons/magic/death/hand-undead-skeleton-fire-green.webp",
+  "system": {
+    "description": "A cold, undead grip that drains life.",
+    "featureForm": "attack",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "undead",
+        "arm",
+        "tentacle"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!VxaZ3SBNtWtcYTSe"
+}

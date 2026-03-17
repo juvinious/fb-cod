@@ -1,0 +1,32 @@
+{
+  "name": "Clockwork Slam",
+  "type": "feature",
+  "_id": "6siX0XFxA83go9ZS",
+  "img": "icons/magic/fire/flame-burning-chain.webp",
+  "system": {
+    "description": "A slam with perfectly timed mechanical force.",
+    "featureForm": "attack",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "mechanical",
+        "arm",
+        "leg"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!6siX0XFxA83go9ZS"
+}

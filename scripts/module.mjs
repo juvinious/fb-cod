@@ -32,7 +32,8 @@ Hooks.once('init', async () => {
             id: "fb-cod.colossal-chain-group",
             label: "Colossal Chain Group"
         };
-        console.log("fb-cod | Registered custom feature types in CONFIG.DH");
+        CONFIG.DH.ITEM.featureForm.attack = "DAGGERHEART.CONFIG.FeatureForm.attack";
+        console.log("fb-cod | Registered custom feature types and 'attack' form in CONFIG.DH");
     }
 
     // 2. Register Actor and Item Data Models
@@ -137,6 +138,13 @@ async function _indexPackData() {
         CONFIG.FB_COD.chainGroups = cgMapping;
         CONFIG.FB_COD.chainGroupsMetadata = cgMetadata;
     }
+
+    // --- Index Attacks and Features (Just to trigger indexing) ---
+    const atkPack = game.packs.get("fb-cod.colossal-attacks");
+    if (atkPack) await atkPack.getIndex();
+
+    const featPack = game.packs.get("fb-cod.colossal-features");
+    if (featPack) await featPack.getIndex();
 }
 
 /**
@@ -207,7 +215,51 @@ Hooks.on("renderActorDirectory", function (app, html) {
 });
 
 Hooks.once('ready', async () => {
-    console.log("fb-cod | Ready hook: refreshing pack indices.");
+    console.log("fb-cod | Ready hook: refreshing pack indices and injecting browser filters.");
     await _indexPackData();
+
+    // Inject filters and configuration into the Daggerheart Compendium Browser
+    if (CONFIG.DH?.ITEMBROWSER) {
+        // 1. Ensure 'features' has a proper type config with form and pack filters
+        CONFIG.DH.ITEMBROWSER.typeConfig.features = {
+            columns: [
+                { key: 'system.featureForm', label: 'Form' }
+            ],
+            filters: [
+                {
+                    key: 'system.featureForm',
+                    label: 'Form',
+                    choices: () => CONFIG.DH.ITEM.featureForm
+                },
+                {
+                    key: 'pack',
+                    label: 'Source Pack',
+                    choices: () => game.packs.filter(p => p.documentName === 'Item').map(p => ({ 
+                        value: p.collection, 
+                        label: p.metadata.label 
+                    }))
+                }
+            ]
+        };
+
+        // 2. Add specific folders for Colossal Attacks and Features
+        CONFIG.DH.ITEMBROWSER.compendiumConfig.colossalAttacks = {
+            id: 'colossalAttacks',
+            keys: ['fb-cod.colossal-attacks'],
+            label: 'Colossal Attacks',
+            type: ['feature'],
+            listType: 'features'
+        };
+
+        CONFIG.DH.ITEMBROWSER.compendiumConfig.colossalFeatures = {
+            id: 'colossalFeatures',
+            keys: ['fb-cod.colossal-features'],
+            label: 'Colossal Features',
+            type: ['feature'],
+            listType: 'features'
+        };
+        
+        console.log("fb-cod | Injected custom filters and folders into ItemBrowser CONFIG.");
+    }
 });
 

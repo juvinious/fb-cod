@@ -1,0 +1,32 @@
+{
+  "name": "Wing Buffet",
+  "type": "feature",
+  "_id": "Fqz18s7NjxvYIfaN",
+  "img": "icons/magic/control/buff-flight-wings-blue.webp",
+  "system": {
+    "description": "<strong>Wing Buffet:</strong> Creates a powerful gust of wind that pushes targets back and knocks them prone.",
+    "featureForm": "passive",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "wind",
+        "beast",
+        "wing"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!Fqz18s7NjxvYIfaN"
+}

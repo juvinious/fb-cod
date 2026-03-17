@@ -1,0 +1,33 @@
+{
+  "name": "Regenerative Core",
+  "type": "feature",
+  "_id": "UDW12iJe4wpWOq0V",
+  "img": "icons/magic/life/heart-cross-green.webp",
+  "system": {
+    "description": "<strong>Regenerative Core:</strong> Restores 1 HP at the start of its turn if this segment is intact.",
+    "featureForm": "passive",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "mechanical",
+        "beast",
+        "torso",
+        "thorax"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!UDW12iJe4wpWOq0V"
+}

@@ -1,0 +1,32 @@
+{
+  "name": "Sawblade Spin",
+  "type": "feature",
+  "_id": "N4iM5EeEXoc0iihQ",
+  "img": "icons/skills/melee/sword-twirl-orange.webp",
+  "system": {
+    "description": "A spinning metallic blade that carves through targets.",
+    "featureForm": "attack",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "mechanical",
+        "arm",
+        "tail"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!N4iM5EeEXoc0iihQ"
+}

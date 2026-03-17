@@ -1,0 +1,33 @@
+{
+  "name": "Plasma Cutter",
+  "type": "feature",
+  "_id": "WPJuiT2lsUezUQi9",
+  "img": "icons/magic/light/projectile-beam-yellow.webp",
+  "system": {
+    "description": "A thin, high-intensity beam of energy.",
+    "featureForm": "attack",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "mechanical",
+        "fire",
+        "arm",
+        "head"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!WPJuiT2lsUezUQi9"
+}

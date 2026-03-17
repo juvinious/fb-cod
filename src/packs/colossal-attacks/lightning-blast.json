@@ -1,0 +1,33 @@
+{
+  "name": "Lightning Blast",
+  "type": "feature",
+  "_id": "fNJVNHRiPK7Xw1Ai",
+  "img": "icons/magic/lightning/bolt-strike-blue.webp",
+  "system": {
+    "description": "A crackling arc of electricity.",
+    "featureForm": "attack",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "wind",
+        "mechanical",
+        "head",
+        "thorax"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!fNJVNHRiPK7Xw1Ai"
+}

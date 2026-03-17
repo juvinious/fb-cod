@@ -1,0 +1,33 @@
+{
+  "name": "Soul Siphon",
+  "type": "feature",
+  "_id": "z3woA9S2TMamFXOI",
+  "img": "icons/commodities/biological/hand-clawed-green.webp",
+  "system": {
+    "description": "<strong>Soul Siphon:</strong> Drains health from a recently fallen creature to restore its own.",
+    "featureForm": "passive",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "undead",
+        "void",
+        "head",
+        "claw"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!z3woA9S2TMamFXOI"
+}

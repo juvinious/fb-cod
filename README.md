@@ -12,19 +12,29 @@ A Foundry VTT supplementary module for the **[Daggerheart](https://foundryborne.
 - **Colossus Actor Type:** Adds a new `Colossus` adversary actor type designed specifically for multi-segment colossi in Daggerheart.
     - **Dynamic Segments:** Manage complex colossi with multi-segmented body parts (Head, Limbs, Core, etc.), each with its own health, Difficulty/Armor, and unique abilities.
     - **Integrated Header Controls:** Quickly manage **HP**, **Attack Modifiers**, and status conditions like **Broken**, **Collapsed**, or **Destroyed** directly from the segment header.
-    - **Chain Defeat Logic:** Organize segments into **Chain Groups (A-L)**. Configure defeat conditions where destroying an entire chain or a "Fatal" segment brings down the Colossus.
+    - **Chain Defeat Logic:** Intelligent segment organization using **Chain Groups** and **Subgroups** (e.g., Chain A, Subgroup 1). Configure defeat conditions where destroying a "Fatal" segment or an entire "Fatal Chain" (via chain group metadata) brings down the Colossus.
+    - **Sheet UX & Interactivity:**
+        - **Features**: Organizes the Features tab into "Core Features" and individual "Segment Features" (Head, Torso, etc.) for a cleaner, themed layout.
+        - **Active Effects**: Full support for managing **Active Effects** on both the main Colossus actor and its individual segments.
+        - **Context Menus**: Right-click functionality tailored to each component (Limbs, Features, and Shortcuts), ensuring intuitive editing and deletion.
 - **Procedural Colossus Generator:** Instantly create unique, theme-accurate colossi through a guided UI.
     - **Thematic Logic:** Generates contextual abilities and segments based on 10+ core themes (Mechanical, Void, Aquatic, Fire, etc.).
     - **Tier-Based Scaling:** Automatically scales the number and power of attacks/features based on Tier (1-4).
-    - **Customization:** Select specific archetypes (e.g., Quadruped, Avian, Serpentine) or use the **Randomize Archetype** feature for a complete surprise.
-- **Built-in Importer:** Features a robust text parser that can instantly convert raw stat-blocks from the Colossus of the Drylands core rulebook into fully configured Colossi. Supports complex segment naming, Fatal tags, and Chain Groups.
+    - **Customization:** Select specific archetypes (e.g., Quadruped, Avian, Serpentine) or use the **Randomize Archetype** feature.
+- **Built-in Importer:** Text parser that converts stat-blocks from the Colossus of the Drylands core rulebook into fully configured Colossi. Supports complex segment naming, Fatal tags, and Chain Groups.
 
 ## Compendiums
 
-The module includes several ready-to-use compendiums:
-- **Colossal Adversaries:** Pre-configured multi-segment colossi.
-- **Colossal Segments:** A collection of segment footprints for manual builds.
-- **Colossal Weapons & Loot:** Specialized equipment for Colossal-scale encounters.
+The module includes a suite of ready-to-use compendiums:
+- **Colossal Adversaries:** Pre-configured multi-segment colossi (TODO).
+- **Colossal Segments:** A collection of specialized segment templates for manual builds.
+- **Colossal Features & Attacks:** Compendiums of themed abilities, attacks, and reactions for custom colossi.
+- **Colossal Weapons:** Equipment types based off the Colossus of the Drylands rules.
+- **Colossal Loot:** Specialized rewards for Colossal-scale encounters (TODO).
+- **Colossal Chain Groups:** Groups for heads, limbs, body and uncategorized chains. 
+
+## Roll-Tables
+- **Generator Tables:** Roll tables for the generator to use. 
 
 ## Installation
 

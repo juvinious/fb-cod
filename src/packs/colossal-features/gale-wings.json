@@ -1,0 +1,31 @@
+{
+  "name": "Gale Wings",
+  "type": "feature",
+  "_id": "pRlZ9SliSxeXlf7o",
+  "img": "icons/magic/air/wind-tornado-cyclone-white.webp",
+  "system": {
+    "description": "<strong>Gale Wings:</strong> Activating this allows moving an enemy within Close range to Very Close range.",
+    "featureForm": "passive",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "wind",
+        "wing"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!pRlZ9SliSxeXlf7o"
+}

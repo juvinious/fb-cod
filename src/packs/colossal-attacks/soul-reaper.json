@@ -1,0 +1,32 @@
+{
+  "name": "Soul Reaper",
+  "type": "feature",
+  "_id": "5Y9NecjsfF5NwigI",
+  "img": "icons/magic/unholy/hand-light-green.webp",
+  "system": {
+    "description": "Cuts through to the very soul of the target.",
+    "featureForm": "attack",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "undead",
+        "arm",
+        "claw"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!5Y9NecjsfF5NwigI"
+}

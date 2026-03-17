@@ -1,0 +1,32 @@
+{
+  "name": "Tremor Kick",
+  "type": "feature",
+  "_id": "9WkSYmty4jBSsMvz",
+  "img": "icons/magic/earth/strike-fist-stone.webp",
+  "system": {
+    "description": "A powerful kick that ripples the ground.",
+    "featureForm": "attack",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "earth",
+        "beast",
+        "leg"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!9WkSYmty4jBSsMvz"
+}

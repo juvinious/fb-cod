@@ -1,0 +1,32 @@
+{
+  "name": "Web Shot",
+  "type": "feature",
+  "_id": "hraVhnJlxOiCtVTu",
+  "img": "icons/creatures/webs/web-spider-glowing-purple.webp",
+  "system": {
+    "description": "<strong>Web Shot:</strong> Fires a sticky web that restrains targets in a circular area.",
+    "featureForm": "passive",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "beast",
+        "abdomen",
+        "head"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!hraVhnJlxOiCtVTu"
+}

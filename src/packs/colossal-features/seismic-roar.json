@@ -1,0 +1,33 @@
+{
+  "name": "Seismic Roar",
+  "type": "feature",
+  "_id": "UyuLZAyysWI8ZgPn",
+  "img": "icons/magic/earth/strike-fist-stone.webp",
+  "system": {
+    "description": "<strong>Seismic Roar:</strong> Deals sonic damage and creates difficult terrain in a Close radius.",
+    "featureForm": "passive",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "earth",
+        "beast",
+        "head",
+        "thorax"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!UyuLZAyysWI8ZgPn"
+}

@@ -1,0 +1,32 @@
+{
+  "name": "Stalactite Drop",
+  "type": "feature",
+  "_id": "srkamQfMIWfE6LO3",
+  "img": "icons/magic/earth/strike-fist-stone.webp",
+  "system": {
+    "description": "Hurls earth and rock from above.",
+    "featureForm": "attack",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "earth",
+        "wing",
+        "tail"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!srkamQfMIWfE6LO3"
+}

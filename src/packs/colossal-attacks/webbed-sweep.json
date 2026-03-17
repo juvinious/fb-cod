@@ -1,0 +1,33 @@
+{
+  "name": "Webbed Sweep",
+  "type": "feature",
+  "_id": "VHh6ENjMhJj4rE9f",
+  "img": "icons/creatures/webs/web-spider-glowing-purple.webp",
+  "system": {
+    "description": "A sticky, sweeping attack that entangles multiple foes.",
+    "featureForm": "attack",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "aquatic",
+        "beast",
+        "leg",
+        "tail"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!VHh6ENjMhJj4rE9f"
+}

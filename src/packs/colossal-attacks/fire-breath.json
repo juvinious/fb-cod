@@ -1,0 +1,31 @@
+{
+  "name": "Fire Breath",
+  "type": "feature",
+  "_id": "tXY0lNLu0NCWOJoG",
+  "img": "icons/magic/fire/projectile-wave-yellow.webp",
+  "system": {
+    "description": "A torrent of flame that incinerates everything in its path.",
+    "featureForm": "attack",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "fire",
+        "head"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!tXY0lNLu0NCWOJoG"
+}

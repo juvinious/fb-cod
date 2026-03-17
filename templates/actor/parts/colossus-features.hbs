@@ -7,9 +7,9 @@
             title="Core Features"
             type='feature'
             collection=@root.features
-            hideContextMenu=true
             canCreate=true
             showActions=true
+            hideContextMenu=false
             }}
         </div>
 
@@ -20,11 +20,18 @@
             title=group.label
             type='feature'
             collection=group.features
+            canCreate=false
             hideContextMenu=true
-            canCreate=true
             showActions=true
             }}
         </div>
         {{/each}}
+    </div>
+    <div class="fb-cod-note">
+        <i class="fa-solid fa-circle-info"></i>
+        <div class="note-content">
+            <h4>Please Note</h4>
+            <p>To edit a segments features, you need to edit the segment on the segment tab.</p>
+        </div>
     </div>
 </section>

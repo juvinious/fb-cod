@@ -1,0 +1,31 @@
+{
+  "name": "Poison Sting",
+  "type": "feature",
+  "_id": "46tnTeS2FFXIuDtD",
+  "img": "icons/creatures/abilities/stinger-poison-green.webp",
+  "system": {
+    "description": "<strong>Poison Sting:</strong> Deals physical damage and inflicts a powerful poison.",
+    "featureForm": "passive",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "beast",
+        "tail"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!46tnTeS2FFXIuDtD"
+}

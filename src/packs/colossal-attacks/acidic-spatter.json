@@ -1,0 +1,33 @@
+{
+  "name": "Acidic Spatter",
+  "type": "feature",
+  "_id": "oDBCEQagPp7jiZ06",
+  "img": "icons/magic/acid/dissolve-pool-bubbles.webp",
+  "system": {
+    "description": "Flicks corrosive fluid in a splatter pattern.",
+    "featureForm": "attack",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "beast",
+        "acid",
+        "tail",
+        "abdomen"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!oDBCEQagPp7jiZ06"
+}

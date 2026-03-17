@@ -1,0 +1,33 @@
+{
+  "name": "Sonic Boom",
+  "type": "feature",
+  "_id": "YcG2tYDebmaH41Mw",
+  "img": "icons/magic/air/air-wave-gust-blue.webp",
+  "system": {
+    "description": "A localized shockwave that deafens and disorients.",
+    "featureForm": "attack",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "wind",
+        "mechanical",
+        "wing",
+        "head"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!YcG2tYDebmaH41Mw"
+}

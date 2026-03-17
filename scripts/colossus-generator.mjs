@@ -397,6 +397,26 @@ export class ColossusGenerator {
                     if (seenNames.has(fullName)) continue;
 
                     if (this._isTypeAllowed(fullName, type)) {
+                        // 1. Try to load from Document (Compendium Item)
+                        if (res.documentUuid) {
+                            const itemDoc = await fromUuid(res.documentUuid);
+                            if (itemDoc) {
+                                const itemData = itemDoc.toObject();
+                                delete itemData._id;
+                                
+                                // Ensure system fields for linking are set
+                                itemData.system = itemData.system || {};
+                                itemData.system.identifier = s.name;
+                                itemData.system.originItemType = "fb-cod.colossal-segment";
+                                
+                                itemsToCreate.push(itemData);
+                                seenNames.add(fullName);
+                                attacksFound++;
+                                continue;
+                            }
+                        }
+
+                        // 2. Fallback: Procedural Construction from Text
                         const name = fullName.split(" (")[0];
                         itemsToCreate.push({
                             name: name,
@@ -404,7 +424,7 @@ export class ColossusGenerator {
                             img: res.img || "icons/svg/d20-grey.svg",
                             system: {
                                 description: res.description || "",
-                                featureForm: "action",
+                                featureForm: "attack",
                                 actions: this._createAttackAction(name, tier),
                                 identifier: s.name,
                                 originItemType: "fb-cod.colossal-segment"
@@ -421,6 +441,22 @@ export class ColossusGenerator {
                         const fullName = (res.name || "").trim();
                         if (seenNames.has(fullName)) continue;
                         if (this._isTypeAllowed(fullName, type)) {
+                            // 1. Try to load from Document (Compendium Item)
+                            if (res.documentUuid) {
+                                const itemDoc = await fromUuid(res.documentUuid);
+                                if (itemDoc) {
+                                    const itemData = itemDoc.toObject();
+                                    delete itemData._id;
+                                    itemData.system = itemData.system || {};
+                                    itemData.system.identifier = s.name;
+                                    itemData.system.originItemType = "fb-cod.colossal-segment";
+                                    itemsToCreate.push(itemData);
+                                    seenNames.add(fullName);
+                                    break;
+                                }
+                            }
+
+                            // 2. Fallback
                             itemsToCreate.push({
                                 name: fullName.split(" (")[0],
                                 type: "feature",
@@ -446,6 +482,23 @@ export class ColossusGenerator {
                     if (seenNames.has(fullName)) continue;
 
                     if (this._isTypeAllowed(fullName, type)) {
+                        // 1. Try to load from Document (Compendium Item)
+                        if (res.documentUuid) {
+                            const itemDoc = await fromUuid(res.documentUuid);
+                            if (itemDoc) {
+                                const itemData = itemDoc.toObject();
+                                delete itemData._id;
+                                itemData.system = itemData.system || {};
+                                itemData.system.identifier = s.name;
+                                itemData.system.originItemType = "fb-cod.colossal-segment";
+                                itemsToCreate.push(itemData);
+                                seenNames.add(fullName);
+                                featuresFound++;
+                                continue;
+                            }
+                        }
+
+                        // 2. Fallback
                         itemsToCreate.push({
                             name: fullName.split(" (")[0],
                             type: "feature",

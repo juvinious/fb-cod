@@ -1,0 +1,32 @@
+{
+  "name": "Hydro-Hammer",
+  "type": "feature",
+  "_id": "pZp0UsDHmQCUAUrt",
+  "img": "icons/magic/water/water-jet-wave-blue.webp",
+  "system": {
+    "description": "<strong>Hydro-Hammer:</strong> A blow with the force of an ocean wave.",
+    "featureForm": "passive",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "aquatic",
+        "arm",
+        "leg"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!pZp0UsDHmQCUAUrt"
+}

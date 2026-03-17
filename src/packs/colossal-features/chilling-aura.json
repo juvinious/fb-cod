@@ -1,0 +1,33 @@
+{
+  "name": "Chilling Aura",
+  "type": "feature",
+  "_id": "vqXhxGkpx3qsWbNq",
+  "img": "icons/magic/water/snowflake-ice-snow-white.webp",
+  "system": {
+    "description": "<strong>Chilling Aura:</strong> Enemies starting their turn adjacent to this segment have their movement halved.",
+    "featureForm": "passive",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "aquatic",
+        "undead",
+        "carapace",
+        "torso"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!vqXhxGkpx3qsWbNq"
+}

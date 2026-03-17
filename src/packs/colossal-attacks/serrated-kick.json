@@ -1,0 +1,32 @@
+{
+  "name": "Serrated Kick",
+  "type": "feature",
+  "_id": "agvNwSTSwbT3CZXZ",
+  "img": "icons/equipment/feet/boots-armored-grey.webp",
+  "system": {
+    "description": "A kick with jagged edges that inflicts bleeding.",
+    "featureForm": "attack",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "mechanical",
+        "beast",
+        "leg"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!agvNwSTSwbT3CZXZ"
+}

@@ -1,0 +1,33 @@
+{
+  "name": "Harpoon Shot",
+  "type": "feature",
+  "_id": "eJ1mYUihhA5K0y8r",
+  "img": "icons/weapons/polearms/spear-hooked-broad.webp",
+  "system": {
+    "description": "Fires a chained harpoon to pull enemies closer.",
+    "featureForm": "attack",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "mechanical",
+        "aquatic",
+        "arm",
+        "abdomen"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!eJ1mYUihhA5K0y8r"
+}

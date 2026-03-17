@@ -1,0 +1,31 @@
+{
+  "name": "Crushing Blow",
+  "type": "feature",
+  "_id": "2IAHo53qFx370rTF",
+  "img": "icons/skills/melee/strike-hammer-destructive-orange.webp",
+  "system": {
+    "description": "<strong>Crushing Blow:</strong> Deals massive physical damage to adjacent targets.",
+    "featureForm": "passive",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "torso",
+        "arm"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!2IAHo53qFx370rTF"
+}

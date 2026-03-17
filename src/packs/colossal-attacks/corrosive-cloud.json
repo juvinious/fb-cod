@@ -1,0 +1,33 @@
+{
+  "name": "Corrosive Cloud",
+  "type": "feature",
+  "_id": "6zGLb2CFE1MjBbpE",
+  "img": "icons/magic/air/fog-gas-smoke-dense-white.webp",
+  "system": {
+    "description": "Exhales a lingering cloud of acid.",
+    "featureForm": "attack",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "mechanical",
+        "acid",
+        "thorax",
+        "torso"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!6zGLb2CFE1MjBbpE"
+}

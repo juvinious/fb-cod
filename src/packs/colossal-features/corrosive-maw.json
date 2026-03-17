@@ -1,0 +1,32 @@
+{
+  "name": "Corrosive Maw",
+  "type": "feature",
+  "_id": "BXDV965AJLTUN8Lh",
+  "img": "icons/creatures/abilities/mouth-teeth-human.webp",
+  "system": {
+    "description": "<strong>Corrosive Maw:</strong> Bite attacks also reduce target's AC by 1 for the rest of combat.",
+    "featureForm": "passive",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "beast",
+        "acid",
+        "head"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!BXDV965AJLTUN8Lh"
+}

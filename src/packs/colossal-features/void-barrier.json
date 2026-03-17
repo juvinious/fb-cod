@@ -1,0 +1,32 @@
+{
+  "name": "Void Barrier",
+  "type": "feature",
+  "_id": "4qbMRKP6x5tlB4MR",
+  "img": "icons/magic/death/skull-energy-light-purple.webp",
+  "system": {
+    "description": "<strong>Void Barrier:</strong> Gains resistance to magical damage.",
+    "featureForm": "passive",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "void",
+        "carapace",
+        "shell"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!4qbMRKP6x5tlB4MR"
+}

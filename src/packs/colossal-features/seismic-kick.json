@@ -1,0 +1,32 @@
+{
+  "name": "Seismic Kick",
+  "type": "feature",
+  "_id": "qxact3C6zzOWT6cp",
+  "img": "icons/magic/earth/strike-fist-stone.webp",
+  "system": {
+    "description": "<strong>Seismic Kick:</strong> A kick that also creates a small tremor, knocking adjacent enemies back.",
+    "featureForm": "passive",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "earth",
+        "beast",
+        "leg"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!qxact3C6zzOWT6cp"
+}

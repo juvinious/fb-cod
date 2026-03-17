@@ -1,0 +1,32 @@
+{
+  "name": "Crush",
+  "type": "feature",
+  "_id": "5uK9IPF4RvCMigDZ",
+  "img": "icons/skills/melee/strike-blade-claw-red.webp",
+  "system": {
+    "description": "Grabs and squeezes the life out of a target.",
+    "featureForm": "attack",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "aquatic",
+        "arm",
+        "pincer"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!5uK9IPF4RvCMigDZ"
+}

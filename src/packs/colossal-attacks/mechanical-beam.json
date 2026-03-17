@@ -1,0 +1,32 @@
+{
+  "name": "Mechanical Beam",
+  "type": "feature",
+  "_id": "AOuPmrpZDzpSVliX",
+  "img": "icons/magic/light/projectile-beam-yellow.webp",
+  "system": {
+    "description": "Fires a concentrated beam of energy from an internal core.",
+    "featureForm": "attack",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "mechanical",
+        "head",
+        "thorax"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!AOuPmrpZDzpSVliX"
+}

@@ -1,0 +1,33 @@
+{
+  "name": "Frost Volley",
+  "type": "feature",
+  "_id": "ya2C4GMmZ60pCo74",
+  "img": "icons/magic/water/projectiles-ice-faceted-shard-salvo-blue.webp",
+  "system": {
+    "description": "<strong>Frost Volley:</strong> Shoots shards of ice at multiple targets.",
+    "featureForm": "passive",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "aquatic",
+        "wind",
+        "thorax",
+        "arm"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!ya2C4GMmZ60pCo74"
+}

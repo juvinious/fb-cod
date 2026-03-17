@@ -1,0 +1,33 @@
+{
+  "name": "Soul Drain",
+  "type": "feature",
+  "_id": "JIZVw1MRH6joJ3Ae",
+  "img": "icons/magic/perception/eye-ringed-glow-angry-teal.webp",
+  "system": {
+    "description": "Drains the essence of nearby creatures.",
+    "featureForm": "attack",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "undead",
+        "void",
+        "head",
+        "abdomen"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!JIZVw1MRH6joJ3Ae"
+}

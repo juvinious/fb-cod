@@ -1,0 +1,32 @@
+{
+  "name": "Fire Breath",
+  "type": "feature",
+  "_id": "abAs3yVLccJv5ntC",
+  "img": "icons/magic/fire/projectile-wave-yellow.webp",
+  "system": {
+    "description": "<strong>Fire Breath:</strong> Exhales a massive line of fire dealing physical damage.",
+    "featureForm": "passive",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "fire",
+        "beast",
+        "head"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!abAs3yVLccJv5ntC"
+}

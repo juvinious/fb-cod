@@ -1,0 +1,33 @@
+{
+  "name": "Arcing Limb",
+  "type": "feature",
+  "_id": "vULp9WFCVVaCh3de",
+  "img": "icons/magic/lightning/bolt-strike-blue.webp",
+  "system": {
+    "description": "<strong>Arcing Limb:</strong> Melee attacks with this limb chain to one additional nearby enemy.",
+    "featureForm": "passive",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "wind",
+        "mechanical",
+        "arm",
+        "tentacle"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!vULp9WFCVVaCh3de"
+}

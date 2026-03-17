@@ -1,0 +1,32 @@
+{
+  "name": "Whirlwind Attack",
+  "type": "feature",
+  "_id": "c7EJBVgYYHMYLgDG",
+  "img": "icons/magic/air/wind-tornado-cyclone-white.webp",
+  "system": {
+    "description": "<strong>Whirlwind Attack:</strong> Spins rapidly, hitting all targets within Melee range.",
+    "featureForm": "passive",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "wind",
+        "torso",
+        "thorax"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!c7EJBVgYYHMYLgDG"
+}

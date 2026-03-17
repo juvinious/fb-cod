@@ -1,0 +1,32 @@
+{
+  "name": "Aerial Barrel Roll",
+  "type": "feature",
+  "_id": "5nBut6awQJtoWMub",
+  "img": "icons/magic/air/wind-tornado-cyclone-white.webp",
+  "system": {
+    "description": "A spinning maneuver that impacts multiple ground targets.",
+    "featureForm": "attack",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "wind",
+        "wing",
+        "torso"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!5nBut6awQJtoWMub"
+}

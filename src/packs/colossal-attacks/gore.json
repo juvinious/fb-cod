@@ -1,0 +1,33 @@
+{
+  "name": "Gore",
+  "type": "feature",
+  "_id": "YWESYtW198lJYc1H",
+  "img": "icons/creatures/abilities/bull-head-horns-glowing.webp",
+  "system": {
+    "description": "Charges forward or swings a spiked segment.",
+    "featureForm": "attack",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "beast",
+        "earth",
+        "head",
+        "tail"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!YWESYtW198lJYc1H"
+}

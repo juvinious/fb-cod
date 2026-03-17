@@ -1,0 +1,32 @@
+{
+  "name": "Acid Breath",
+  "type": "feature",
+  "_id": "KVaOgEgLCuO9l6VE",
+  "img": "icons/magic/acid/dissolve-drip-droplet-smoke.webp",
+  "system": {
+    "description": "Corrosive liquid that melts flesh and metal.",
+    "featureForm": "attack",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "beast",
+        "acid",
+        "head"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!KVaOgEgLCuO9l6VE"
+}

@@ -23,5 +23,12 @@
             "ColossalSegment": "Colossal Segment",
             "ColossalChainGroup": "Colossal Chain Group"
         }
+    },
+    "DAGGERHEART": {
+        "CONFIG": {
+            "FeatureForm": {
+                "attack": "Attack"
+            }
+        }
     }
 }

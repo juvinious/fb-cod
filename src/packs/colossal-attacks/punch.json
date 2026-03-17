@@ -1,0 +1,30 @@
+{
+  "name": "Punch",
+  "type": "feature",
+  "_id": "i05jWgRarR8FFowY",
+  "img": "icons/skills/melee/unarmed-punch-fist-white.webp",
+  "system": {
+    "description": "A powerful blunt strike.",
+    "featureForm": "attack",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "arm"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!i05jWgRarR8FFowY"
+}

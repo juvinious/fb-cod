@@ -1,0 +1,32 @@
+{
+  "name": "Pressure Blast",
+  "type": "feature",
+  "_id": "uyqtV7sTrJVWhDtg",
+  "img": "icons/magic/water/water-jet-wave-blue.webp",
+  "system": {
+    "description": "<strong>Pressure Blast:</strong> Concentrated water blast that deals massive blunt damage.",
+    "featureForm": "passive",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "aquatic",
+        "head",
+        "arm"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!uyqtV7sTrJVWhDtg"
+}

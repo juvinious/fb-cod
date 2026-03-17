@@ -1,0 +1,32 @@
+{
+  "name": "Abyssal Grip",
+  "type": "feature",
+  "_id": "w5t67jFh4GUpKBtw",
+  "img": "icons/magic/perception/eye-ringed-glow-angry-red.webp",
+  "system": {
+    "description": "<strong>Abyssal Grip:</strong> Drains stress when grappling an opponent.",
+    "featureForm": "passive",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "void",
+        "arm",
+        "claw"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!w5t67jFh4GUpKBtw"
+}

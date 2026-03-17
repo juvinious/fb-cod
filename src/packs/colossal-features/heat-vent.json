@@ -1,0 +1,33 @@
+{
+  "name": "Heat Vent",
+  "type": "feature",
+  "_id": "NEpAcVyFsYA5uqAF",
+  "img": "icons/magic/fire/flame-burning-fist-strike.webp",
+  "system": {
+    "description": "<strong>Heat Vent:</strong> Releases a burst of intense heat that pushes back adjacent enemies.",
+    "featureForm": "passive",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "fire",
+        "mechanical",
+        "thorax",
+        "torso"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!NEpAcVyFsYA5uqAF"
+}

@@ -1,0 +1,33 @@
+{
+  "name": "Obsidian Shards",
+  "type": "feature",
+  "_id": "qb2WolkOep9qzKDb",
+  "img": "icons/magic/earth/barrier-stone-explosion-spiked.webp",
+  "system": {
+    "description": "<strong>Obsidian Shards:</strong> Gains additional AC but becomes vulnerable to bludgeoning damage.",
+    "featureForm": "passive",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "earth",
+        "fire",
+        "carapace",
+        "shell"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!qb2WolkOep9qzKDb"
+}

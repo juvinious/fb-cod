@@ -1,0 +1,33 @@
+{
+  "name": "Pressure Wave",
+  "type": "feature",
+  "_id": "L4ngypfPmTwGjrEC",
+  "img": "icons/magic/air/air-wave-gust-blue.webp",
+  "system": {
+    "description": "A shockwave of high-pressure air or water.",
+    "featureForm": "attack",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "aquatic",
+        "wind",
+        "torso",
+        "wing"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!L4ngypfPmTwGjrEC"
+}

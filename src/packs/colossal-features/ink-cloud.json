@@ -1,0 +1,32 @@
+{
+  "name": "Ink Cloud",
+  "type": "feature",
+  "_id": "BYvLBcpzkUPo1ftS",
+  "img": "icons/magic/air/fog-gas-smoke-dense-white.webp",
+  "system": {
+    "description": "<strong>Ink Cloud:</strong> Creates a heavily obscured area in a Far radius.",
+    "featureForm": "passive",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "aquatic",
+        "abdomen",
+        "tail"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!BYvLBcpzkUPo1ftS"
+}

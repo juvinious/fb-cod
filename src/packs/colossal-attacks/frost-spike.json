@@ -1,0 +1,33 @@
+{
+  "name": "Frost Spike",
+  "type": "feature",
+  "_id": "7vh1DeEgXC8bOQ7n",
+  "img": "icons/magic/water/projectiles-ice-faceted-shard-salvo-blue.webp",
+  "system": {
+    "description": "Launches a massive spear of ice.",
+    "featureForm": "attack",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "aquatic",
+        "wind",
+        "tail",
+        "leg"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!7vh1DeEgXC8bOQ7n"
+}

@@ -1,0 +1,33 @@
+{
+  "name": "Shadow Rend",
+  "type": "feature",
+  "_id": "RSmcsvLlqMmV2rku",
+  "img": "icons/magic/unholy/silhouette-evil-horned-giant.webp",
+  "system": {
+    "description": "Ethereal claws that reach past physical defense.",
+    "featureForm": "attack",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "void",
+        "undead",
+        "claw",
+        "arm"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!RSmcsvLlqMmV2rku"
+}

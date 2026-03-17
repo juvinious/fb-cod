@@ -1,0 +1,31 @@
+{
+  "name": "Gale Shriek",
+  "type": "feature",
+  "_id": "VNSjfVr6bxNuYNc5",
+  "img": "icons/magic/air/wind-tornado-cyclone-white.webp",
+  "system": {
+    "description": "A high-pitched scream that carries the force of a hurricane.",
+    "featureForm": "attack",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "wind",
+        "head"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!VNSjfVr6bxNuYNc5"
+}

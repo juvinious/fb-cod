@@ -1,0 +1,33 @@
+{
+  "name": "Sonar Ping",
+  "type": "feature",
+  "_id": "7WNNk74S1UFiy7hT",
+  "img": "icons/magic/air/air-wave-gust-blue.webp",
+  "system": {
+    "description": "<strong>Sonar Ping:</strong> Detects all hidden creatures within Very Far range.",
+    "featureForm": "passive",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "beast",
+        "aquatic",
+        "head",
+        "antennae"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!7WNNk74S1UFiy7hT"
+}

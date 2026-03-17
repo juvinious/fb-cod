@@ -1,0 +1,32 @@
+{
+  "name": "Void Burst",
+  "type": "feature",
+  "_id": "6j2BJsb9oJZYbX4i",
+  "img": "icons/magic/death/skull-energy-light-purple.webp",
+  "system": {
+    "description": "A radial explosion of raw void energy.",
+    "featureForm": "attack",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "void",
+        "torso",
+        "head"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!6j2BJsb9oJZYbX4i"
+}

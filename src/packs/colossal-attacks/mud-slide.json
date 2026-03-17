@@ -1,0 +1,33 @@
+{
+  "name": "Mud Slide",
+  "type": "feature",
+  "_id": "QDRGhfAUMm4owaYy",
+  "img": "icons/magic/water/water-jet-wave-blue.webp",
+  "system": {
+    "description": "Forces targets to lose their footing in a slurry of earth.",
+    "featureForm": "attack",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "earth",
+        "aquatic",
+        "leg",
+        "abdomen"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!QDRGhfAUMm4owaYy"
+}

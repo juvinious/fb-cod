@@ -1,0 +1,33 @@
+{
+  "name": "Static Field",
+  "type": "feature",
+  "_id": "IgY5mE5tf4nMigY5",
+  "img": "icons/magic/lightning/bolt-strike-blue.webp",
+  "system": {
+    "description": "<strong>Static Field:</strong> Ranged attacks made from within Close range suffer a penalty.",
+    "featureForm": "passive",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "wind",
+        "mechanical",
+        "carapace",
+        "thorax"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!IgY5mE5tf4nMigY5"
+}

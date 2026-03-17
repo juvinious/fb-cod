@@ -369,3 +369,47 @@
     opacity: 0.9;
     text-align: left;
 }
+
+/* Informational Note */
+.fb-cod-note {
+    background: rgba(245, 184, 90, 0.05);
+    border: 1px solid rgba(245, 184, 90, 0.2);
+    border-radius: 4px;
+    padding: 12px;
+    margin: 15px 0;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+}
+
+.fb-cod-note i {
+    color: #f5b85a;
+    font-size: 1.2rem;
+    margin-top: 2px;
+}
+
+.fb-cod-note .note-content {
+    flex: 1;
+}
+
+.fb-cod-note h4 {
+    margin: 0 0 4px 0;
+    font-family: "Modesto Condensed", serif;
+    font-size: 1.1rem;
+    color: #f5b85a;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.fb-cod-note p {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: rgba(252, 239, 226, 0.8);
+    font-style: italic;
+}
+
+/* Hide context menu icons for segment-linked features on the main sheet */
+.segment-feature-group:not([data-segment-name=""]) [data-action="triggerContextMenu"] {
+    display: none !important;
+}

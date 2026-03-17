@@ -1,0 +1,32 @@
+{
+  "name": "Bio-Organic Repair",
+  "type": "feature",
+  "_id": "G2iLxjXoYmRHAUgT",
+  "img": "icons/magic/life/heart-glowing-red.webp",
+  "system": {
+    "description": "<strong>Bio-Organic Repair:</strong> Slowly regenerates over time, healing all segments for 1 HP every hour.",
+    "featureForm": "passive",
+    "identifier": "",
+    "originItemType": "fb-cod.colossal-segment"
+  },
+  "effects": [],
+  "flags": {
+    "fb-cod": {
+      "tags": [
+        "beast",
+        "torso",
+        "thorax"
+      ]
+    }
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0"
+  },
+  "_key": "!items!G2iLxjXoYmRHAUgT"
+}

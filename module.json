@@ -32,6 +32,8 @@
                 "colossal-loot",
                 "colossal-chain-groups",
                 "colossal-segments",
+                "colossal-attacks",
+                "colossal-features",
                 "colossal-generator-tables"
             ]
         }
@@ -81,6 +83,24 @@
             "label": "Colossal Weapons",
             "system": "daggerheart",
             "path": "packs/colossal-weapons",
+            "type": "Item",
+            "private": false,
+            "flags": {}
+        },
+        {
+            "name": "colossal-attacks",
+            "label": "Colossal Attacks",
+            "system": "daggerheart",
+            "path": "packs/colossal-attacks",
+            "type": "Item",
+            "private": false,
+            "flags": {}
+        },
+        {
+            "name": "colossal-features",
+            "label": "Colossal Features",
+            "system": "daggerheart",
+            "path": "packs/colossal-features",
             "type": "Item",
             "private": false,
             "flags": {}
