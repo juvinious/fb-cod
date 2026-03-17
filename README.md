@@ -36,6 +36,55 @@ The module includes a suite of ready-to-use compendiums:
 ## Roll-Tables
 - **Generator Tables:** Roll tables for the generator to use. 
 
+## Importer Parameters
+
+Below is an example of the expected format for the importer:
+
+```text
+Iron Behemoth, Metal Predator
+Tier 1 Colossus
+
+The Iron Behemoth is a massive mechanical creature that roams the drylands, scavenging for scrap metal. It resembles a giant iron wolf with clockwork joints and glowing amber eyes.
+
+Thresholds: 4/10 | Stress: 8
+Experience: Mechanical Scrapper +1, Heavy Metal +1
+Motives & Tactics: It hunts alone, using its superior reach and crushing bite to disable prey before they can react.
+Size: 25 ft. tall, 15 ft. wide
+
+FEATURES
+Relentless - Passive: The Iron Behemoth does not suffer from fear effects.
+
+IRON HEAD
+Adjacent Segments: Torso
+Difficulty: 14 | HP: 10
+ATK: +1 | Bite: Melee | 1d8 phy
+FEATURES
+Fatal
+Crushing Jaws - Action: The target is grappled on a successful hit.
+
+IRON TORSO
+Adjacent Segments: Head, Legs, Arms
+Difficulty: 12 | HP: 15
+FEATURES
+Sturdy Frame - Passive: Reduce damage taken by 1.
+
+IRON ARMS (2)
+Adjacent Segments: Torso
+Difficulty: 13 | HP: 6
+ATK: +2 | Punch: Melee | 1d8 phy
+FEATURES
+Chain (A) - Passive: When all segements in Chain A are destroyed, the Iron Behemoth is defeated.
+Hydraulic Press - Action: Deal additional damage if the target is grappled.
+
+IRON LEGS (2)
+Adjacent Segments: Torso
+Difficulty: 12 | HP: 8
+ATK: +1 | Stomp: Melee | 1d10 phy
+FEATURES
+Chain (A) - Passive: When all segements in Chain A are destroyed, the Iron Behemoth is defeated.
+Swift Leap - Action: The behemoth can leap to a very close location.
+```
+
 ## Installation
 
 You can install this module directly in Foundry VTT by pasting the manifest link into the Add-On Modules menu:
