@@ -2,7 +2,7 @@
   "name": "Shotgun",
   "type": "weapon",
   "_id": "shotgun000000000",
-  "img": "modules/fb-cod/assets/icons/weapons/shotgun.webp",
+  "img": "icons/weapons/guns/gun-double-barrel.webp",
   "system": {
     "description": {
       "value": "<p>Scattershot: When you make an attack, target all creatures in front of you within range.</p>"

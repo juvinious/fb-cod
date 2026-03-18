@@ -2,7 +2,7 @@
   "name": "Small Revolver",
   "type": "weapon",
   "_id": "smallrevolver000",
-  "img": "modules/fb-cod/assets/icons/weapons/small-revolver.webp",
+  "img": "icons/weapons/guns/gun-pistol-flintlock.webp",
   "system": {
     "description": {
       "value": "<p>Quick Shot: Spend 2 Hope to gain a +4 bonus to primary weapon damage.</p>"

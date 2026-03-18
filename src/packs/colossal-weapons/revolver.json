@@ -2,7 +2,7 @@
   "name": "Revolver",
   "type": "weapon",
   "_id": "revolver00000000",
-  "img": "modules/fb-cod/assets/icons/weapons/revolver.webp",
+  "img": "icons/weapons/guns/gun-pistol-brown.webp",
   "system": {
     "description": {
       "value": "<p>Six Shot: Place 6 Ammo tokens on your character sheet. Spend 1 Ammo token to make an attack. You can mark a Stress to regain spent Ammo tokens.</p>"

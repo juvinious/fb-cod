@@ -2,7 +2,7 @@
   "name": "Lasso",
   "type": "weapon",
   "_id": "lasso00000000000",
-  "img": "modules/fb-cod/assets/icons/weapons/lasso.webp",
+  "img": "icons/sundries/survival/rope-coiled-brown.webp",
   "system": {
     "description": {
       "value": "<p>Roped: On a successful attack, you can temporarily Rope the target instead of dealing damage. While Roped, the target is Restrained and Vulnerable, but you must remain within Very Close range of the target. When the target clears this condition, you can make a Strength Reaction Roll. On a success, they remain Roped.</p>"

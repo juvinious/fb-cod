@@ -2,7 +2,7 @@
   "name": "Rifle",
   "type": "weapon",
   "_id": "rifle00000000000",
-  "img": "modules/fb-cod/assets/icons/weapons/rifle.webp",
+  "img": "icons/weapons/guns/gun-wood.webp",
   "system": {
     "description": {
       "value": "<p>Sightline: Spend 2 Hope to gain advantage on an attack roll.</p>"
